@@ -299,8 +299,6 @@ namespace fmod_test
 
 							if( fmod_channel )
 							{
-								FMOD::Sound *currentsound = 0;
-
 								fmod_result = fmod_channel->isPlaying( &playing );
 								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 								{
@@ -318,6 +316,8 @@ namespace fmod_test
 								{
 									FMOD_ErrorString( fmod_result );
 								}
+
+								FMOD::Sound *currentsound = 0;
 
 								fmod_channel->getCurrentSound( &currentsound );
 								if( currentsound )
