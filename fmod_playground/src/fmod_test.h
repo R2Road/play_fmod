@@ -12,6 +12,13 @@ namespace fmod_test
 		DoFunc GetDoFunction() override;
 	};
 
+	class VersionCheck : public r2::iTest, public r2::SingleTon<VersionCheck>
+	{
+	public:
+		TitleFunc GetTitleFunction() const override;
+		DoFunc GetDoFunction() override;
+	};
+
 	class PlaySound : public r2::iTest, public r2::SingleTon<PlaySound>
 	{
 	public:

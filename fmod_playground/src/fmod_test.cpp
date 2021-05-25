@@ -93,6 +93,92 @@ namespace fmod_test
 
 
 
+	r2::iTest::TitleFunc VersionCheck::GetTitleFunction() const
+	{
+		return []()->const char*
+		{
+			return "FMOD : Version Check";
+		};
+	}
+	r2::iTest::DoFunc VersionCheck::GetDoFunction()
+	{
+		return []()->r2::eTestResult
+		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+
+			FMOD::System* fmod_system;
+			FMOD_RESULT fmod_result;
+
+			//
+			// Initialize
+			//
+			{
+				// Create FMOD
+				fmod_result = FMOD::System_Create( &fmod_system );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
+
+				// Init FMOD
+				fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
+			}
+
+			std::cout << r2::split;
+
+			//
+			// Version Check
+			//
+			{
+				unsigned int version;
+				fmod_result = fmod_system->getVersion( &version );
+				FMOD_ErrorString( fmod_result );
+
+				std::cout << "FMOD lib version " << std::hex << version;
+
+				if( version < FMOD_VERSION )
+				{
+					std::cout << "doesn't match header version " << FMOD_VERSION;
+				}
+
+				std::cout << r2::linefeed;
+			}
+
+			std::cout << r2::split;
+
+			//
+			// Shut Down
+			//
+			{
+				// Close
+				fmod_result = fmod_system->close();
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
+
+				// Release
+				fmod_result = fmod_system->release();
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
+			}
+
+			return r2::eTestResult::RunTest;
+		};
+	}
+
+
+
 	r2::iTest::TitleFunc PlaySound::GetTitleFunction() const
 	{
 		return []()->const char*
