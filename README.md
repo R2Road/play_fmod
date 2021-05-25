@@ -15,5 +15,5 @@
   - Visual Studio Community 2017 15.9.27
 
 - external library
-  - fmod
+  - fmod 2.01.09
   - vld
