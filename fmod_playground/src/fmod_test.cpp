@@ -29,9 +29,9 @@ namespace fmod_test
 			FMOD::System* fmod_system;
 			FMOD_RESULT fmod_result;
 
-			std::cout << "\t" << "+ Variable" << r2::linefeed << r2::linefeed;
-			std::cout << "\t\t" << "FMOD::System* fmod_system;" << r2::linefeed;
-			std::cout << "\t\t" << "FMOD_RESULT fmod_result;" << r2::linefeed;
+			std::cout << r2::tab << "+ Variable" << r2::linefeed << r2::linefeed;
+			std::cout << r2::tab2 << "FMOD::System* fmod_system;" << r2::linefeed;
+			std::cout << r2::tab2 << "FMOD_RESULT fmod_result;" << r2::linefeed;
 			std::cout << r2::linefeed;
 
 			//
@@ -55,9 +55,9 @@ namespace fmod_test
 				}
 
 				//
-				std::cout << "\t" << "+ Initialize" << r2::linefeed << r2::linefeed;
-				std::cout << "\t\t" << "fmod_result = FMOD::System_Create( &fmod_system );" << r2::linefeed;
-				std::cout << "\t\t" << "fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );" << r2::linefeed;
+				std::cout << r2::tab << "+ Initialize" << r2::linefeed << r2::linefeed;
+				std::cout << r2::tab2 << "fmod_result = FMOD::System_Create( &fmod_system );" << r2::linefeed;
+				std::cout << r2::tab2 << "fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );" << r2::linefeed;
 			}
 
 			std::cout << r2::split;
@@ -83,9 +83,9 @@ namespace fmod_test
 				}
 
 				//
-				std::cout << "\t" << "+ Shut Down" << r2::linefeed << r2::linefeed;
-				std::cout << "\t\t" << "fmod_result = fmod_system->close();" << r2::linefeed;
-				std::cout << "\t\t" << "fmod_result = fmod_system->release();" << r2::linefeed;
+				std::cout << r2::tab << "+ Shut Down" << r2::linefeed << r2::linefeed;
+				std::cout << r2::tab2 << "fmod_result = fmod_system->close();" << r2::linefeed;
+				std::cout << r2::tab2 << "fmod_result = fmod_system->release();" << r2::linefeed;
 			}
 
 			std::cout << r2::split;
