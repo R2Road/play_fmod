@@ -143,7 +143,7 @@ namespace fmod_test
 				fmod_result = fmod_system->getVersion( &version );
 				FMOD_ErrorString( fmod_result );
 
-				std::cout << "FMOD lib version " << std::hex << version;
+				std::cout << "\t" << "FMOD lib version " << std::hex << version;
 
 				if( version < FMOD_VERSION )
 				{
