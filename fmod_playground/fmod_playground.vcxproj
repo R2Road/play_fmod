@@ -28,6 +28,7 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\r2_Director.cpp" />
+    <ClCompile Include="src\r2_FrameManager.cpp" />
     <ClCompile Include="src\r2_RootMenu.cpp" />
     <ClCompile Include="src\r2_Menu.cpp" />
   </ItemGroup>
@@ -36,6 +37,7 @@
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\r2_Director.h" />
     <ClInclude Include="src\r2_eTestResult.h" />
+    <ClInclude Include="src\r2_FrameManager.h" />
     <ClInclude Include="src\r2_iTest.h" />
     <ClInclude Include="src\r2_Menu.h" />
     <ClInclude Include="src\r2_RootMenu.h" />

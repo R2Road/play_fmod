@@ -3,10 +3,11 @@
 
 #include <conio.h>
 
-#include "r2_eTestResult.h"
-
 #include "fmod.hpp"
 #include "fmod_errors.h"
+
+#include "r2_FrameManager.h"
+#include "r2_eTestResult.h"
 
 namespace fmod_test
 {
@@ -61,20 +62,13 @@ namespace fmod_test
 				FMOD_ErrorString( fmod_result );                           /* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 			}
 
+			r2::FrameManager frame_manager;
+			frame_manager.SetFPS( 30 );
+			frame_manager.Reset();
+
 			bool process = true;
 			while( process )
 			{
-				system( "cls" );
-
-				std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-				std::cout << "[1] " << "Play" << r2::linefeed;
-				std::cout << "[2] " << "Stop" << r2::linefeed;
-
-				std::cout << r2::split;
-
-				fmod_result = fmod_system->update();
-				FMOD_ErrorString( fmod_result );
-
 				if( _kbhit() )
 				{
 					switch( _getch() )
@@ -97,52 +91,66 @@ namespace fmod_test
 					}
 				}
 
+				if( frame_manager.Update() )
 				{
-					unsigned int ms = 0;
-					unsigned int lenms = 0;
-					bool         playing = 0;
-					bool         paused = 0;
-					int          channelsplaying = 0;
+					system( "cls" );
 
-					if( fmod_channel )
+					std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+					std::cout << "[1] " << "Play" << r2::linefeed;
+					std::cout << "[2] " << "Stop" << r2::linefeed;
+
+					std::cout << r2::split;
+
+					fmod_result = fmod_system->update();
+					FMOD_ErrorString( fmod_result );
+
 					{
-						FMOD::Sound *currentsound = 0;
+						unsigned int ms = 0;
+						unsigned int lenms = 0;
+						bool         playing = 0;
+						bool         paused = 0;
+						int          channelsplaying = 0;
 
-						fmod_result = fmod_channel->isPlaying( &playing );
-						if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+						if( fmod_channel )
 						{
-							FMOD_ErrorString( fmod_result );
-						}
+							FMOD::Sound *currentsound = 0;
 
-						fmod_result = fmod_channel->getPaused( &paused );
-						if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-						{
-							FMOD_ErrorString( fmod_result );
-						}
-
-						fmod_result = fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS );
-						if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-						{
-							FMOD_ErrorString( fmod_result );
-						}
-
-						fmod_channel->getCurrentSound( &currentsound );
-						if( currentsound )
-						{
-							fmod_result = currentsound->getLength( &lenms, FMOD_TIMEUNIT_MS );
+							fmod_result = fmod_channel->isPlaying( &playing );
 							if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 							{
 								FMOD_ErrorString( fmod_result );
 							}
+
+							fmod_result = fmod_channel->getPaused( &paused );
+							if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+							{
+								FMOD_ErrorString( fmod_result );
+							}
+
+							fmod_result = fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS );
+							if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+							{
+								FMOD_ErrorString( fmod_result );
+							}
+
+							fmod_channel->getCurrentSound( &currentsound );
+							if( currentsound )
+							{
+								fmod_result = currentsound->getLength( &lenms, FMOD_TIMEUNIT_MS );
+								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+								{
+									FMOD_ErrorString( fmod_result );
+								}
+							}
+
+							fmod_system->getChannelsPlaying( &channelsplaying, NULL );
+
+							std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
+							std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
+							std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
+							std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 						}
 					}
-
-					fmod_system->getChannelsPlaying( &channelsplaying, NULL );
-
-					std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
-					std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
-					std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
-					std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 				}
 			}
 
