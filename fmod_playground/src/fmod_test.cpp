@@ -145,8 +145,8 @@ namespace fmod_test
 
 							fmod_system->getChannelsPlaying( &channelsplaying, NULL );
 
-							std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
 							std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
+							std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
 							std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
 							std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 						}
