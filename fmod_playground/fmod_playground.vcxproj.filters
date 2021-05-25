@@ -10,7 +10,7 @@
     <Filter Include="menu">
       <UniqueIdentifier>{b9566801-30ec-4d55-bd6d-040901fc06e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="test_cpp">
+    <Filter Include="test">
       <UniqueIdentifier>{77a45f2c-1f22-46b3-9c35-5ee34c38a7b9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -31,7 +31,7 @@
       <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="src\fmod_test.cpp">
-      <Filter>test_cpp</Filter>
+      <Filter>test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,7 +57,7 @@
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="src\fmod_test.h">
-      <Filter>test_cpp</Filter>
+      <Filter>test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
