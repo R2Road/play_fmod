@@ -204,112 +204,142 @@ namespace fmod_test
 			{
 				// Create FMOD
 				fmod_result = FMOD::System_Create( &fmod_system );
-				FMOD_ErrorString( fmod_result );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
 
 				// Init FMOD
 				fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );
-				FMOD_ErrorString( fmod_result );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
+			}
 
+			//
+			// Preload Audio + Setup
+			//
+			{
 				// Preload Audio
 				fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound );
-				FMOD_ErrorString( fmod_result );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
 
 				// Loop Flag
 				fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
-				FMOD_ErrorString( fmod_result );                           /* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+				if( FMOD_RESULT::FMOD_OK != fmod_result )	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
 			}
 
-			r2::FrameManager frame_manager;
-			frame_manager.SetFPS( 30 );
-			frame_manager.Reset();
-
-			bool process = true;
-			while( process )
+			//
+			// Update Loop
+			//
 			{
-				if( _kbhit() )
-				{
-					switch( _getch() )
-					{
-					case '1':
-						fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
-						FMOD_ErrorString( fmod_result );
-						break;
+				r2::FrameManager frame_manager;
+				frame_manager.SetFPS( 30 );
+				frame_manager.Reset();
 
-					case '2':
-						if( fmod_channel )
+				bool process = true;
+				while( process )
+				{
+					if( _kbhit() )
+					{
+						switch( _getch() )
 						{
-							fmod_channel->stop();
+						case '1':
+							fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
+							if( FMOD_RESULT::FMOD_OK != fmod_result )
+							{
+								FMOD_ErrorString( fmod_result );
+								return r2::eTestResult::RunTest;
+							}
+							break;
+
+						case '2':
+							if( fmod_channel )
+							{
+								fmod_channel->stop();
+							}
+							break;
+
+						case 27: // ESC
+							process = false;
+							break;
 						}
-						break;
-
-					case 27: // ESC
-						process = false;
-						break;
 					}
-				}
 
-				if( frame_manager.Update() )
-				{
-					system( "cls" );
-
-					std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-					std::cout << "[1] " << "Play" << r2::linefeed;
-					std::cout << "[2] " << "Stop" << r2::linefeed;
-
-					std::cout << r2::split;
-
-					fmod_result = fmod_system->update();
-					FMOD_ErrorString( fmod_result );
-
+					if( frame_manager.Update() )
 					{
-						unsigned int ms = 0;
-						unsigned int lenms = 0;
-						bool         playing = 0;
-						bool         paused = 0;
-						int          channelsplaying = 0;
+						system( "cls" );
 
-						if( fmod_channel )
+						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+						std::cout << "[1] " << "Play" << r2::linefeed;
+						std::cout << "[2] " << "Stop" << r2::linefeed;
+
+						std::cout << r2::split;
+
+						fmod_result = fmod_system->update();
+						FMOD_ErrorString( fmod_result );
+
 						{
-							FMOD::Sound *currentsound = 0;
+							unsigned int ms = 0;
+							unsigned int lenms = 0;
+							bool         playing = 0;
+							bool         paused = 0;
+							int          channelsplaying = 0;
 
-							fmod_result = fmod_channel->isPlaying( &playing );
-							if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+							if( fmod_channel )
 							{
-								FMOD_ErrorString( fmod_result );
-							}
+								FMOD::Sound *currentsound = 0;
 
-							fmod_result = fmod_channel->getPaused( &paused );
-							if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-							{
-								FMOD_ErrorString( fmod_result );
-							}
-
-							fmod_result = fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS );
-							if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-							{
-								FMOD_ErrorString( fmod_result );
-							}
-
-							fmod_channel->getCurrentSound( &currentsound );
-							if( currentsound )
-							{
-								fmod_result = currentsound->getLength( &lenms, FMOD_TIMEUNIT_MS );
+								fmod_result = fmod_channel->isPlaying( &playing );
 								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 								{
 									FMOD_ErrorString( fmod_result );
 								}
+
+								fmod_result = fmod_channel->getPaused( &paused );
+								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+								{
+									FMOD_ErrorString( fmod_result );
+								}
+
+								fmod_result = fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS );
+								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+								{
+									FMOD_ErrorString( fmod_result );
+								}
+
+								fmod_channel->getCurrentSound( &currentsound );
+								if( currentsound )
+								{
+									fmod_result = currentsound->getLength( &lenms, FMOD_TIMEUNIT_MS );
+									if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+									{
+										FMOD_ErrorString( fmod_result );
+									}
+								}
+
+								fmod_system->getChannelsPlaying( &channelsplaying, NULL );
 							}
 
-							fmod_system->getChannelsPlaying( &channelsplaying, NULL );
+							std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
+							std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
+							std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
+							std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 						}
 
-						std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
-						std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
-						std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
-						std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
+						std::cout << r2::split;
 					}
-
-					std::cout << r2::split;
 				}
 			}
 
@@ -318,13 +348,25 @@ namespace fmod_test
 			//
 			{
 				fmod_result = fmod_sound->release();
-				FMOD_ErrorString( fmod_result );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
 
 				fmod_result = fmod_system->close();
-				FMOD_ErrorString( fmod_result );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
 
 				fmod_result = fmod_system->release();
-				FMOD_ErrorString( fmod_result );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					FMOD_ErrorString( fmod_result );
+					return r2::eTestResult::RunTest;
+				}
 			}
 
 			return r2::eTestResult::RunTest_Without_Pause;
