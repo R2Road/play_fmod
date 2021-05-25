@@ -206,20 +206,6 @@ namespace fmod_test
 				fmod_result = FMOD::System_Create( &fmod_system );
 				FMOD_ErrorString( fmod_result );
 
-				// Version Check
-				{
-					unsigned int version;
-					fmod_result = fmod_system->getVersion( &version );
-					FMOD_ErrorString( fmod_result );
-
-					std::cout << "FMOD lib version " << std::hex << version;
-
-					if( version < FMOD_VERSION )
-					{
-						std::cout << "doesn't match header version " << FMOD_VERSION;
-					}
-				}
-
 				// Init FMOD
 				fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );
 				FMOD_ErrorString( fmod_result );
@@ -315,17 +301,17 @@ namespace fmod_test
 							}
 
 							fmod_system->getChannelsPlaying( &channelsplaying, NULL );
-
-							std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
-							std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
-							std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
-							std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 						}
+
+						std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
+						std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
+						std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
+						std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 					}
+
+					std::cout << r2::split;
 				}
 			}
-
-			std::cout << r2::split;
 
 			//
 			// Shut Down
