@@ -22,6 +22,72 @@ namespace fmod_test
 	{
 		return []()->r2::eTestResult
 		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			
+			std::cout << r2::split;
+
+			FMOD::System* fmod_system;
+			FMOD_RESULT fmod_result;
+
+			std::cout << "\t" << "FMOD::System* fmod_system;" << r2::linefeed;
+			std::cout << "\t" << "FMOD_RESULT fmod_result;" << r2::linefeed;
+			std::cout << r2::linefeed;
+
+			//
+			// Initialize
+			//
+			{
+				// Create FMOD
+				fmod_result = FMOD::System_Create( &fmod_system );
+				FMOD_ErrorString( fmod_result );
+
+				// Init FMOD
+				fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );
+				FMOD_ErrorString( fmod_result );
+
+				//
+				std::cout << "\t" << "fmod_result = FMOD::System_Create( &fmod_system );" << r2::linefeed;
+				std::cout << "\t" << "fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );" << r2::linefeed;
+			}
+
+			std::cout << r2::split;
+
+			//
+			// Shut Down
+			//
+			{
+				// Close
+				fmod_result = fmod_system->close();
+				FMOD_ErrorString( fmod_result );
+
+				// Release
+				fmod_result = fmod_system->release();
+				FMOD_ErrorString( fmod_result );
+
+				//
+				std::cout << "\t" << "fmod_result = fmod_system->close();" << r2::linefeed;
+				std::cout << "\t" << "fmod_result = fmod_system->release();" << r2::linefeed;
+			}
+
+			std::cout << r2::split;
+
+			return r2::eTestResult::RunTest;
+		};
+	}
+
+
+
+	r2::iTest::TitleFunc PlaySound::GetTitleFunction() const
+	{
+		return []()->const char*
+		{
+			return "FMOD : Play Sound";
+		};
+	}
+	r2::iTest::DoFunc PlaySound::GetDoFunction()
+	{
+		return []()->r2::eTestResult
+		{
 			FMOD::System* fmod_system;
 			FMOD::Sound* fmod_sound;
 			FMOD::Channel* fmod_channel = 0;

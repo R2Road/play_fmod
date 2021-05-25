@@ -18,6 +18,7 @@ namespace r2
 
 		{
 			ret->AddChild( '1', fmod_test::Basic::GetInstance() );
+			ret->AddChild( '2', fmod_test::PlaySound::GetInstance() );
 
 			ret->AddSplit();
 
