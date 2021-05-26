@@ -295,12 +295,7 @@ namespace fmod_test
 
 						std::cout << r2::split;
 
-						{
-							int channelsplaying = 0;
-							fmod_system->getChannelsPlaying( &channelsplaying, NULL );
-
-							std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
-						}
+						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
 						std::cout << r2::split;
 					}

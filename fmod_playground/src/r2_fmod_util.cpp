@@ -56,4 +56,12 @@ namespace r2_fmod_util
 		std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
 		std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 	}
+
+	void PrintChannelsPlayingInfo( FMOD::System* const fmod_system )
+	{
+		int channelsplaying = 0;
+		fmod_system->getChannelsPlaying( &channelsplaying, NULL );
+
+		std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
+	}
 }
