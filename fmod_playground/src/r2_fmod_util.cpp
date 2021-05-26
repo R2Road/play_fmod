@@ -12,7 +12,7 @@ namespace r2_fmod_util
 {
 	void CreateSystem( FMOD::System** out_fmod_system )
 	{
-		FMOD_RESULT fmod_result;
+		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
 		// Create FMOD
 		fmod_result = FMOD::System_Create( out_fmod_system );
@@ -24,7 +24,7 @@ namespace r2_fmod_util
 	}
 	void ReleaseSystem( FMOD::System** const out_fmod_system )
 	{
-		FMOD_RESULT fmod_result;
+		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
 		// Close
 		fmod_result = ( *out_fmod_system )->close();
@@ -37,7 +37,7 @@ namespace r2_fmod_util
 
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel )
 	{
-		FMOD_RESULT fmod_result;
+		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
 		unsigned int ms = 0;
 		unsigned int lenms = 0;
@@ -65,12 +65,11 @@ namespace r2_fmod_util
 				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 			}
 
-			FMOD::Sound *currentsound = 0;
-
-			fmod_channel->getCurrentSound( &currentsound );
-			if( currentsound )
+			FMOD::Sound* current_sound = nullptr;
+			fmod_channel->getCurrentSound( &current_sound );
+			if( current_sound )
 			{
-				fmod_result = currentsound->getLength( &lenms, FMOD_TIMEUNIT_MS );
+				fmod_result = current_sound->getLength( &lenms, FMOD_TIMEUNIT_MS );
 				if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 				{
 					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
