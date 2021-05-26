@@ -36,6 +36,7 @@
   <ItemGroup>
     <ClInclude Include="src\fmod_test.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\r2_Assert.h" />
     <ClInclude Include="src\r2_Director.h" />
     <ClInclude Include="src\r2_eTestResult.h" />
     <ClInclude Include="src\r2_fmod_util.h" />

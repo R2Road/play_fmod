@@ -74,5 +74,8 @@
     <ClInclude Include="src\r2_fmod_util.h">
       <Filter>fmod_util</Filter>
     </ClInclude>
+    <ClInclude Include="src\r2_Assert.h">
+      <Filter>base</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

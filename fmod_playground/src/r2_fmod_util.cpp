@@ -6,6 +6,8 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
+#include "r2_Assert.h"
+
 namespace r2_fmod_util
 {
 	void CreateSystem( FMOD::System** out_fmod_system )
@@ -16,16 +18,14 @@ namespace r2_fmod_util
 		fmod_result = FMOD::System_Create( out_fmod_system );
 		if( FMOD_RESULT::FMOD_OK != fmod_result )
 		{
-			FMOD_ErrorString( fmod_result );
-			assert( false );
+			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 		}
 
 		// Init FMOD
 		fmod_result = ( *out_fmod_system )->init( 32, FMOD_INIT_NORMAL, 0 );
 		if( FMOD_RESULT::FMOD_OK != fmod_result )
 		{
-			FMOD_ErrorString( fmod_result );
-			assert( false );
+			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 		}
 	}
 	void ReleaseSystem( FMOD::System** const out_fmod_system )
@@ -36,8 +36,7 @@ namespace r2_fmod_util
 		fmod_result = ( *out_fmod_system )->close();
 		if( FMOD_RESULT::FMOD_OK != fmod_result )
 		{
-			FMOD_ErrorString( fmod_result );
-			assert( false );
+			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 		}
 
 		// Release
