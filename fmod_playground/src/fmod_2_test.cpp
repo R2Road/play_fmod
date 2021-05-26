@@ -48,8 +48,7 @@ namespace fmod_test
 			//
 			{
 				FMOD::Channel* fmod_channel = nullptr;
-				r2::FrameManager frame_manager;
-				frame_manager.SetFPS( 30 );
+				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
 				bool process = true;
