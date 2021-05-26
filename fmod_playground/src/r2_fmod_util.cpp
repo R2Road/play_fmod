@@ -16,17 +16,11 @@ namespace r2_fmod_util
 
 		// Create FMOD
 		fmod_result = FMOD::System_Create( out_fmod_system );
-		if( FMOD_RESULT::FMOD_OK != fmod_result )
-		{
-			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-		}
+		ERROR_CHECK( fmod_result );
 
 		// Init FMOD
 		fmod_result = ( *out_fmod_system )->init( 32, FMOD_INIT_NORMAL, 0 );
-		if( FMOD_RESULT::FMOD_OK != fmod_result )
-		{
-			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-		}
+		ERROR_CHECK( fmod_result );
 	}
 	void ReleaseSystem( FMOD::System** const out_fmod_system )
 	{
@@ -34,17 +28,11 @@ namespace r2_fmod_util
 
 		// Close
 		fmod_result = ( *out_fmod_system )->close();
-		if( FMOD_RESULT::FMOD_OK != fmod_result )
-		{
-			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-		}
+		ERROR_CHECK( fmod_result );
 
 		// Release
 		fmod_result = ( *out_fmod_system )->release();
-		if( FMOD_RESULT::FMOD_OK != fmod_result )
-		{
-			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-		}
+		ERROR_CHECK( fmod_result );
 	}
 
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel )
@@ -102,5 +90,14 @@ namespace r2_fmod_util
 		fmod_system->getChannelsPlaying( &channelsplaying, NULL );
 
 		std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
+	}
+
+
+	void ERROR_CHECK( const FMOD_RESULT fmod_result )
+	{
+		if( FMOD_OK != fmod_result )
+		{
+			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
+		}
 	}
 }

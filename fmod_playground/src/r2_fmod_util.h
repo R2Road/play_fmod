@@ -1,5 +1,7 @@
 #pragma once
 
+#include "fmod_common.h"
+
 namespace FMOD
 {
 	class Channel;
@@ -13,4 +15,8 @@ namespace r2_fmod_util
 
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel );
 	void PrintChannelsPlayingInfo( FMOD::System* const fmod_system );
+
+
+
+	void ERROR_CHECK( const FMOD_RESULT fmod_result );
 }
