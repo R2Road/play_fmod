@@ -83,8 +83,8 @@ namespace fmod_test
 
 						std::cout << r2::split;
 
-						fmod_result = fmod_system->update();
-						FMOD_ErrorString( fmod_result );
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 
@@ -206,8 +206,8 @@ namespace fmod_test
 
 						std::cout << r2::split;
 
-						fmod_result = fmod_system->update();
-						FMOD_ErrorString( fmod_result );
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 
