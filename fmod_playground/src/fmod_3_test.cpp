@@ -118,7 +118,7 @@ namespace fmod_test
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " << "Effect" << r2::linefeed;
+						std::cout << "[1] " << "Effect ON/OFF" << r2::linefeed;
 
 						std::cout << r2::split;
 
