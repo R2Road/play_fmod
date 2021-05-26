@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "r2_fmod_util.h"
 
-#include <cassert>
+#include <iostream>
 
 #include "fmod.hpp"
 #include "fmod_errors.h"
@@ -43,8 +43,7 @@ namespace r2_fmod_util
 		fmod_result = ( *out_fmod_system )->release();
 		if( FMOD_RESULT::FMOD_OK != fmod_result )
 		{
-			FMOD_ErrorString( fmod_result );
-			assert( false );
+			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 		}
 	}
 
@@ -63,19 +62,19 @@ namespace r2_fmod_util
 			fmod_result = fmod_channel->isPlaying( &playing );
 			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 			{
-				FMOD_ErrorString( fmod_result );
+				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 			}
 
 			fmod_result = fmod_channel->getPaused( &paused );
 			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 			{
-				FMOD_ErrorString( fmod_result );
+				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 			}
 
 			fmod_result = fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS );
 			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 			{
-				FMOD_ErrorString( fmod_result );
+				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 			}
 
 			FMOD::Sound *currentsound = 0;
@@ -86,7 +85,7 @@ namespace r2_fmod_util
 				fmod_result = currentsound->getLength( &lenms, FMOD_TIMEUNIT_MS );
 				if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 				{
-					FMOD_ErrorString( fmod_result );
+					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 				}
 			}
 
