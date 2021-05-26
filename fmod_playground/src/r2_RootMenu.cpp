@@ -26,10 +26,11 @@ namespace r2
 
 			ret->AddChild( '3', fmod_test::PlaySound::GetInstance() );
 			ret->AddChild( '4', fmod_test::PlayStream::GetInstance() );
+			ret->AddChild( '5', fmod_test::PlayAndCallback::GetInstance() );
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '5', fmod_test::Effect::GetInstance() );
+			ret->AddChild( '6', fmod_test::Effect::GetInstance() );
 
 			ret->AddSplit();
 

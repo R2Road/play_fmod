@@ -18,4 +18,11 @@ namespace fmod_test
 		TitleFunc GetTitleFunction() const override;
 		DoFunc GetDoFunction() override;
 	};
+
+	class PlayAndCallback: public r2::iTest, public r2::SingleTon<PlayAndCallback>
+	{
+	public:
+		TitleFunc GetTitleFunction() const override;
+		DoFunc GetDoFunction() override;
+	};
 }
