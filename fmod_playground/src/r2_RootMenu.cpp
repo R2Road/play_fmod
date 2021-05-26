@@ -5,6 +5,7 @@
 #include "r2_eTestResult.h"
 
 #include "fmod_1_test.h"
+#include "fmod_2_test.h"
 
 namespace r2
 {
