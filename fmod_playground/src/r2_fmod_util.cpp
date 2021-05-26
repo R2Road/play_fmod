@@ -28,6 +28,26 @@ namespace r2_fmod_util
 			assert( false );
 		}
 	}
+	void ReleaseSystem( FMOD::System** const out_fmod_system )
+	{
+		FMOD_RESULT fmod_result;
+
+		// Close
+		fmod_result = ( *out_fmod_system )->close();
+		if( FMOD_RESULT::FMOD_OK != fmod_result )
+		{
+			FMOD_ErrorString( fmod_result );
+			assert( false );
+		}
+
+		// Release
+		fmod_result = ( *out_fmod_system )->release();
+		if( FMOD_RESULT::FMOD_OK != fmod_result )
+		{
+			FMOD_ErrorString( fmod_result );
+			assert( false );
+		}
+	}
 
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel )
 	{

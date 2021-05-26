@@ -146,21 +146,7 @@ namespace fmod_test
 			// Shut Down
 			//
 			{
-				// Close
-				fmod_result = fmod_system->close();
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
-
-				// Release
-				fmod_result = fmod_system->release();
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
+				r2_fmod_util::ReleaseSystem( &fmod_system );
 			}
 
 			return r2::eTestResult::RunTest;
@@ -285,19 +271,7 @@ namespace fmod_test
 					return r2::eTestResult::RunTest;
 				}
 
-				fmod_result = fmod_system->close();
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
-
-				fmod_result = fmod_system->release();
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
+				r2_fmod_util::ReleaseSystem( &fmod_system );
 			}
 
 			return r2::eTestResult::RunTest_Without_Pause;
