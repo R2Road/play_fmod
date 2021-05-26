@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\fmod_1_test.cpp" />
     <ClCompile Include="src\fmod_2_test.cpp" />
+    <ClCompile Include="src\fmod_3_test.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -37,6 +38,7 @@
   <ItemGroup>
     <ClInclude Include="src\fmod_1_test.h" />
     <ClInclude Include="src\fmod_2_test.h" />
+    <ClInclude Include="src\fmod_3_test.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\r2_Assert.h" />
     <ClInclude Include="src\r2_Director.h" />

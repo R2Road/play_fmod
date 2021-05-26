@@ -45,6 +45,9 @@
     <ClCompile Include="src\fmod_2_test.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="src\fmod_3_test.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -81,6 +84,9 @@
       <Filter>test</Filter>
     </ClInclude>
     <ClInclude Include="src\fmod_2_test.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fmod_3_test.h">
       <Filter>test</Filter>
     </ClInclude>
   </ItemGroup>

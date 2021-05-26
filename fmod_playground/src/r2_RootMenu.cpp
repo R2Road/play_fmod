@@ -6,6 +6,7 @@
 
 #include "fmod_1_test.h"
 #include "fmod_2_test.h"
+#include "fmod_3_test.h"
 
 namespace r2
 {
@@ -22,6 +23,7 @@ namespace r2
 			ret->AddChild( '2', fmod_test::VersionCheck::GetInstance() );
 			ret->AddChild( '3', fmod_test::PlaySound::GetInstance() );
 			ret->AddChild( '4', fmod_test::PlayStream::GetInstance() );
+			ret->AddChild( '5', fmod_test::Effect::GetInstance() );
 
 			ret->AddSplit();
 
