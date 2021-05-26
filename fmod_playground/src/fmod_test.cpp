@@ -129,10 +129,7 @@ namespace fmod_test
 			{
 				unsigned int version;
 				fmod_result = fmod_system->getVersion( &version );
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-				}
+				r2_fmod_util::ERROR_CHECK( fmod_result );
 
 				std::cout << r2::tab << "FMOD lib version " << std::hex << version << std::dec;
 
@@ -188,17 +185,11 @@ namespace fmod_test
 			{
 				// Preload Audio
 				fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound );
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-				}
+				r2_fmod_util::ERROR_CHECK( fmod_result );
 
 				// Loop Flag
 				fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
-				if( FMOD_RESULT::FMOD_OK != fmod_result )	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
-				{
-					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-				}
+				r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 			}
 
 			//
@@ -218,10 +209,7 @@ namespace fmod_test
 						{
 						case '1':
 							fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
-							if( FMOD_RESULT::FMOD_OK != fmod_result )
-							{
-								R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-							}
+							r2_fmod_util::ERROR_CHECK( fmod_result );
 							break;
 
 						case '2':
@@ -266,10 +254,7 @@ namespace fmod_test
 			//
 			{
 				fmod_result = fmod_sound->release();
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
-				}
+				r2_fmod_util::ERROR_CHECK( fmod_result );
 
 				r2_fmod_util::ReleaseSystem( &fmod_system );
 			}
