@@ -134,7 +134,7 @@ namespace fmod_test
 					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 				}
 
-				std::cout << "\t" << "FMOD lib version " << std::hex << version << std::dec;
+				std::cout << r2::tab << "FMOD lib version " << std::hex << version << std::dec;
 
 				if( version < FMOD_VERSION )
 				{
