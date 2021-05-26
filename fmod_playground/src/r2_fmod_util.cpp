@@ -57,7 +57,7 @@ namespace r2_fmod_util
 		bool         paused = 0;
 		int          channelsplaying = 0;
 
-		while( fmod_channel )
+		if( fmod_channel )
 		{
 			fmod_result = fmod_channel->isPlaying( &playing );
 			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
@@ -88,8 +88,6 @@ namespace r2_fmod_util
 					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 				}
 			}
-
-			break;
 		}
 
 		std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
