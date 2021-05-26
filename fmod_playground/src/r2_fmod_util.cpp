@@ -41,9 +41,9 @@ namespace r2_fmod_util
 
 		unsigned int ms = 0;
 		unsigned int lenms = 0;
-		bool         playing = 0;
-		bool         paused = 0;
-		int          channelsplaying = 0;
+		bool playing = false;
+		bool paused = false;
+		bool bLoop = false;
 
 		if( fmod_channel )
 		{
@@ -75,12 +75,20 @@ namespace r2_fmod_util
 					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 				}
 			}
+
+			FMOD_MODE fmod_mode = 0u;
+			fmod_result = fmod_channel->getMode( &fmod_mode );
+			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+			{
+				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
+			}
+			bLoop = FMOD_LOOP_NORMAL & fmod_mode;
 		}
 
 		std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
 		std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
 		std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
-		std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
+		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2::linefeed;
 	}
 
 	void PrintChannelsPlayingInfo( FMOD::System* const fmod_system )
