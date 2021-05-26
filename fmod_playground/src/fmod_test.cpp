@@ -117,21 +117,7 @@ namespace fmod_test
 			// Initialize
 			//
 			{
-				// Create FMOD
-				fmod_result = FMOD::System_Create( &fmod_system );
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
-
-				// Init FMOD
-				fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
+				r2_fmod_util::CreateSystem( &fmod_system );
 			}
 
 			std::cout << r2::split;
@@ -203,21 +189,7 @@ namespace fmod_test
 			// Initialize
 			//
 			{
-				// Create FMOD
-				fmod_result = FMOD::System_Create( &fmod_system );
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
-
-				// Init FMOD
-				fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );
-				if( FMOD_RESULT::FMOD_OK != fmod_result )
-				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
-				}
+				r2_fmod_util::CreateSystem( &fmod_system );
 			}
 
 			//

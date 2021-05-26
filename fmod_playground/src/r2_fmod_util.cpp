@@ -1,11 +1,34 @@
 #include "pch.h"
 #include "r2_fmod_util.h"
 
+#include <cassert>
+
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
 namespace r2_fmod_util
 {
+	void CreateSystem( FMOD::System** out_fmod_system )
+	{
+		FMOD_RESULT fmod_result;
+
+		// Create FMOD
+		fmod_result = FMOD::System_Create( out_fmod_system );
+		if( FMOD_RESULT::FMOD_OK != fmod_result )
+		{
+			FMOD_ErrorString( fmod_result );
+			assert( false );
+		}
+
+		// Init FMOD
+		fmod_result = ( *out_fmod_system )->init( 32, FMOD_INIT_NORMAL, 0 );
+		if( FMOD_RESULT::FMOD_OK != fmod_result )
+		{
+			FMOD_ErrorString( fmod_result );
+			assert( false );
+		}
+	}
+
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel )
 	{
 		FMOD_RESULT fmod_result;
