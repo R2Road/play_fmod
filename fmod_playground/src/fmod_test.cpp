@@ -6,6 +6,7 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
+#include "r2_Assert.h"
 #include "r2_fmod_util.h"
 #include "r2_FrameManager.h"
 #include "r2_eTestResult.h"
@@ -43,16 +44,16 @@ namespace fmod_test
 				fmod_result = FMOD::System_Create( &fmod_system );
 				if( FMOD_RESULT::FMOD_OK != fmod_result )
 				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
+					std::cerr << FMOD_ErrorString( fmod_result );
+					assert( false );
 				}
 
 				// Init FMOD
 				fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 );
 				if( FMOD_RESULT::FMOD_OK != fmod_result )
 				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
+					std::cerr << FMOD_ErrorString( fmod_result );
+					assert( false );
 				}
 
 				//
@@ -71,16 +72,16 @@ namespace fmod_test
 				fmod_result = fmod_system->close();
 				if( FMOD_RESULT::FMOD_OK != fmod_result )
 				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
+					std::cerr << FMOD_ErrorString( fmod_result );
+					assert( false );
 				}
 
 				// Release
 				fmod_result = fmod_system->release();
 				if( FMOD_RESULT::FMOD_OK != fmod_result )
 				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
+					std::cerr << FMOD_ErrorString( fmod_result );
+					assert( false );
 				}
 
 				//
@@ -128,7 +129,10 @@ namespace fmod_test
 			{
 				unsigned int version;
 				fmod_result = fmod_system->getVersion( &version );
-				FMOD_ErrorString( fmod_result );
+				if( FMOD_RESULT::FMOD_OK != fmod_result )
+				{
+					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
+				}
 
 				std::cout << "\t" << "FMOD lib version " << std::hex << version;
 
@@ -186,16 +190,14 @@ namespace fmod_test
 				fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound );
 				if( FMOD_RESULT::FMOD_OK != fmod_result )
 				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
+					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 				}
 
 				// Loop Flag
 				fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
 				if( FMOD_RESULT::FMOD_OK != fmod_result )	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
+					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 				}
 			}
 
@@ -218,8 +220,7 @@ namespace fmod_test
 							fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
 							if( FMOD_RESULT::FMOD_OK != fmod_result )
 							{
-								FMOD_ErrorString( fmod_result );
-								return r2::eTestResult::RunTest;
+								R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 							}
 							break;
 
@@ -267,8 +268,7 @@ namespace fmod_test
 				fmod_result = fmod_sound->release();
 				if( FMOD_RESULT::FMOD_OK != fmod_result )
 				{
-					FMOD_ErrorString( fmod_result );
-					return r2::eTestResult::RunTest;
+					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 				}
 
 				r2_fmod_util::ReleaseSystem( &fmod_system );
