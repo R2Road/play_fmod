@@ -13,6 +13,9 @@
     <Filter Include="test">
       <UniqueIdentifier>{77a45f2c-1f22-46b3-9c35-5ee34c38a7b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="fmod_util">
+      <UniqueIdentifier>{abef3520-7cdf-44e1-9ede-8fafcfbe17cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -35,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="src\r2_FrameManager.cpp">
       <Filter>base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\r2_fmod_util.cpp">
+      <Filter>fmod_util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="src\r2_FrameManager.h">
       <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2_fmod_util.h">
+      <Filter>fmod_util</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

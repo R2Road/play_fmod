@@ -6,6 +6,7 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
+#include "r2_fmod_util.h"
 #include "r2_FrameManager.h"
 #include "r2_eTestResult.h"
 
@@ -290,51 +291,14 @@ namespace fmod_test
 						fmod_result = fmod_system->update();
 						FMOD_ErrorString( fmod_result );
 
+						r2_fmod_util::PrintChannelInfo( fmod_channel );
+
+						std::cout << r2::split;
+
 						{
-							unsigned int ms = 0;
-							unsigned int lenms = 0;
-							bool         playing = 0;
-							bool         paused = 0;
-							int          channelsplaying = 0;
+							int channelsplaying = 0;
+							fmod_system->getChannelsPlaying( &channelsplaying, NULL );
 
-							if( fmod_channel )
-							{
-								fmod_result = fmod_channel->isPlaying( &playing );
-								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-								{
-									FMOD_ErrorString( fmod_result );
-								}
-
-								fmod_result = fmod_channel->getPaused( &paused );
-								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-								{
-									FMOD_ErrorString( fmod_result );
-								}
-
-								fmod_result = fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS );
-								if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-								{
-									FMOD_ErrorString( fmod_result );
-								}
-
-								FMOD::Sound *currentsound = 0;
-
-								fmod_channel->getCurrentSound( &currentsound );
-								if( currentsound )
-								{
-									fmod_result = currentsound->getLength( &lenms, FMOD_TIMEUNIT_MS );
-									if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
-									{
-										FMOD_ErrorString( fmod_result );
-									}
-								}
-
-								fmod_system->getChannelsPlaying( &channelsplaying, NULL );
-							}
-
-							std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
-							std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
-							std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
 							std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
 						}
 
