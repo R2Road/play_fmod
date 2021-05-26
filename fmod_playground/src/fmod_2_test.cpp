@@ -24,21 +24,15 @@ namespace fmod_test
 	{
 		return []()->r2::eTestResult
 		{
-			FMOD::System* fmod_system;
-			FMOD::Sound* fmod_sound;
-			FMOD::Channel* fmod_channel = 0;
-			FMOD_RESULT fmod_result;
-
-			//
-			// Initialize
-			//
-			{
-				r2_fmod_util::CreateSystem( &fmod_system );
-			}
+			FMOD::System* fmod_system = nullptr;
+			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+			
+			r2_fmod_util::CreateSystem( &fmod_system );
 
 			//
 			// Preload Audio + Setup
 			//
+			FMOD::Sound* fmod_sound = nullptr;
 			{
 				// Preload Audio
 				fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound );
@@ -53,6 +47,7 @@ namespace fmod_test
 			// Update Loop
 			//
 			{
+				FMOD::Channel* fmod_channel = nullptr;
 				r2::FrameManager frame_manager;
 				frame_manager.SetFPS( 30 );
 				frame_manager.Reset();
@@ -107,14 +102,14 @@ namespace fmod_test
 			}
 
 			//
-			// Shut Down
+			// Audio Release
 			//
 			{
 				fmod_result = fmod_sound->release();
 				r2_fmod_util::ERROR_CHECK( fmod_result );
-
-				r2_fmod_util::ReleaseSystem( &fmod_system );
 			}
+
+			r2_fmod_util::ReleaseSystem( &fmod_system );
 
 			return r2::eTestResult::RunTest_Without_Pause;
 		};
