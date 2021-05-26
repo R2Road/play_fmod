@@ -26,8 +26,8 @@ namespace fmod_test
 			
 			std::cout << r2::split;
 
-			FMOD::System* fmod_system;
-			FMOD_RESULT fmod_result;
+			FMOD::System* fmod_system = nullptr;
+			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
 			std::cout << r2::tab << "+ Variable" << r2::linefeed << r2::linefeed;
 			std::cout << r2::tab2 << "FMOD::System* fmod_system;" << r2::linefeed;
@@ -109,15 +109,8 @@ namespace fmod_test
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
-			FMOD::System* fmod_system;
-			FMOD_RESULT fmod_result;
-
-			//
-			// Initialize
-			//
-			{
-				r2_fmod_util::CreateSystem( &fmod_system );
-			}
+			FMOD::System* fmod_system = nullptr;
+			r2_fmod_util::CreateSystem( &fmod_system );
 
 			std::cout << r2::split;
 
@@ -125,12 +118,11 @@ namespace fmod_test
 			// Version Check
 			//
 			{
-				unsigned int version;
-				fmod_result = fmod_system->getVersion( &version );
+				unsigned int version = 0;
+				const FMOD_RESULT fmod_result = fmod_system->getVersion( &version );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
 				std::cout << r2::tab << "FMOD lib version " << std::hex << version << std::dec;
-
 				if( version < FMOD_VERSION )
 				{
 					std::cout << "doesn't match header version " << FMOD_VERSION;
@@ -141,12 +133,7 @@ namespace fmod_test
 
 			std::cout << r2::split;
 
-			//
-			// Shut Down
-			//
-			{
-				r2_fmod_util::ReleaseSystem( &fmod_system );
-			}
+			r2_fmod_util::ReleaseSystem( &fmod_system );
 
 			return r2::eTestResult::RunTest;
 		};
