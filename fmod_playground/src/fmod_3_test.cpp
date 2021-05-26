@@ -122,6 +122,13 @@ namespace fmod_test
 
 						std::cout << r2::split;
 
+						bool is_by_pass = false;
+						fmod_result = fsm_dsp_echo->getBypass( &is_by_pass );
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+						std::cout << "Echo " << ( is_by_pass ? "OFF" : "ON" ) << r2::linefeed;
+
+						std::cout << r2::split;
+
 						fmod_result = fmod_result = fmod_system->update();
 						r2_fmod_util::ERROR_CHECK( fmod_result );
 
