@@ -25,4 +25,11 @@ namespace fmod_test
 		TitleFunc GetTitleFunction() const override;
 		DoFunc GetDoFunction() override;
 	};
+
+	class VolumeControl : public r2::iTest, public r2::SingleTon<VolumeControl>
+	{
+	public:
+		TitleFunc GetTitleFunction() const override;
+		DoFunc GetDoFunction() override;
+	};
 }
