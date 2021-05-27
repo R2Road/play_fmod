@@ -236,7 +236,7 @@ namespace fmod_test
 
 
 
-	FMOD_RESULT TempCallback( FMOD_CHANNELCONTROL *channelcontrol, FMOD_CHANNELCONTROL_TYPE controltype, FMOD_CHANNELCONTROL_CALLBACK_TYPE callbacktype, void *commanddata1, void *commanddata2 )
+	FMOD_RESULT TempCallback( FMOD_CHANNELCONTROL* /*channelcontrol*/, FMOD_CHANNELCONTROL_TYPE /*controltype*/, FMOD_CHANNELCONTROL_CALLBACK_TYPE /*callbacktype*/, void* /*commanddata1*/, void* /*commanddata2*/ )
 	{
 		std::cout << "Call - TempCallback" << r2::linefeed;
 
