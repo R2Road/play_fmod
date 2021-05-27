@@ -376,25 +376,10 @@ namespace fmod_test
 			// Preload Audio + Setup
 			//
 			FMOD::Sound* fmod_sound = nullptr;
-			FMOD::Sound* fmod_current_sound = nullptr;
 			{
 				// Preload Audio
 				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_NORMAL | FMOD_2D, 0, &fmod_sound );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
-
-				int sub_sound_count = 0;
-				fmod_result = fmod_sound->getNumSubSounds( &sub_sound_count );
-				r2_fmod_util::ERROR_CHECK( fmod_result );
-
-				if( 0 < sub_sound_count )
-				{
-					fmod_sound->getSubSound( 0, &fmod_current_sound );
-					r2_fmod_util::ERROR_CHECK( fmod_result );
-				}
-				else
-				{
-					fmod_current_sound = fmod_sound;
-				}
 			}
 
 			//
@@ -403,7 +388,7 @@ namespace fmod_test
 			FMOD::Channel* fmod_channel = nullptr;
 			float volume = 1.0f;
 			{
-				fmod_result = fmod_system->playSound( fmod_current_sound, 0, false, &fmod_channel );
+				fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
