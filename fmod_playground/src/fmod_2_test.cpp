@@ -379,7 +379,7 @@ namespace fmod_test
 			FMOD::Sound* fmod_current_sound = nullptr;
 			{
 				// Preload Audio
-				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound );
+				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_NORMAL | FMOD_2D, 0, &fmod_sound );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
 				int sub_sound_count = 0;
