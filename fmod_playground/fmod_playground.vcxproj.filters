@@ -30,9 +30,6 @@
     <ClCompile Include="src\r2_fmod_util.cpp">
       <Filter>fmod_util</Filter>
     </ClCompile>
-    <ClCompile Include="src\fmod_1_test.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
     <ClCompile Include="src\fmod_2_test.cpp">
       <Filter>test</Filter>
     </ClCompile>
@@ -41,6 +38,9 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\fmod_basic_test.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\r2_Director.h">
@@ -70,9 +70,6 @@
     <ClInclude Include="src\r2_Assert.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="src\fmod_1_test.h">
-      <Filter>test</Filter>
-    </ClInclude>
     <ClInclude Include="src\fmod_2_test.h">
       <Filter>test</Filter>
     </ClInclude>
@@ -80,5 +77,8 @@
       <Filter>test</Filter>
     </ClInclude>
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\fmod_basic_test.h">
+      <Filter>test</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,7 +4,7 @@
 #include "r2_Director.h"
 #include "r2_eTestResult.h"
 
-#include "fmod_1_test.h"
+#include "fmod_basic_test.h"
 #include "fmod_2_test.h"
 #include "fmod_3_test.h"
 
@@ -19,8 +19,8 @@ namespace r2
 		) );
 
 		{
-			ret->AddChild( '1', fmod_test::Basic::GetInstance() );
-			ret->AddChild( '2', fmod_test::VersionCheck::GetInstance() );
+			ret->AddChild( '1', fmod_basic_test::Basic::GetInstance() );
+			ret->AddChild( '2', fmod_basic_test::VersionCheck::GetInstance() );
 
 			ret->AddLineFeed();
 

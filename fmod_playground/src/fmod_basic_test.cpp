@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "fmod_1_test.h"
+#include "fmod_basic_test.h"
 
 #include "fmod.hpp"
 #include "fmod_errors.h"
@@ -9,7 +9,7 @@
 #include "r2_Assert.h"
 #include "r2_fmod_util.h"
 
-namespace fmod_test
+namespace fmod_basic_test
 {
 	r2::iTest::TitleFunc Basic::GetTitleFunction() const
 	{

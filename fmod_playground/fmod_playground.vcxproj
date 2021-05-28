@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\fmod_1_test.cpp" />
+    <ClCompile Include="src\fmod_basic_test.cpp" />
     <ClCompile Include="src\fmod_2_test.cpp" />
     <ClCompile Include="src\fmod_3_test.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -36,7 +36,7 @@
     <ClCompile Include="src\r2_Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\fmod_1_test.h" />
+    <ClInclude Include="src\fmod_basic_test.h" />
     <ClInclude Include="src\fmod_2_test.h" />
     <ClInclude Include="src\fmod_3_test.h" />
     <ClInclude Include="src\pch.h" />
