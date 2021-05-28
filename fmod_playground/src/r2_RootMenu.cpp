@@ -6,7 +6,7 @@
 
 #include "fmod_basic_test.h"
 #include "fmod_play_test.h"
-#include "fmod_3_test.h"
+#include "fmod_effect_test.h"
 
 namespace r2
 {
@@ -31,7 +31,7 @@ namespace r2
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '7', fmod_test::Effect::GetInstance() );
+			ret->AddChild( '7', fmod_effect_test::Echo::GetInstance() );
 
 			ret->AddSplit();
 

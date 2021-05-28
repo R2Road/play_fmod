@@ -3,9 +3,9 @@
 #include "r2_iTest.h"
 #include "r2_Singleton.h"
 
-namespace fmod_test
+namespace fmod_effect_test
 {
-	class Effect : public r2::iTest, public r2::SingleTon<Effect>
+	class Echo : public r2::iTest, public r2::SingleTon<Echo>
 	{
 	public:
 		TitleFunc GetTitleFunction() const override;

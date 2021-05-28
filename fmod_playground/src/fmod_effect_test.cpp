@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "fmod_3_test.h"
+#include "fmod_effect_test.h"
 
 #include <conio.h>
 
@@ -11,13 +11,13 @@
 #include "r2_FrameManager.h"
 #include "r2_eTestResult.h"
 
-namespace fmod_test
+namespace fmod_effect_test
 {
-	r2::iTest::TitleFunc Effect::GetTitleFunction() const
+	r2::iTest::TitleFunc Echo::GetTitleFunction() const
 	{
 		return []()->const char* { return "FMOD : Effect - Echo"; };
 	}
-	r2::iTest::DoFunc Effect::GetDoFunction()
+	r2::iTest::DoFunc Echo::GetDoFunction()
 	{
 		return []()->r2::eTestResult
 		{
