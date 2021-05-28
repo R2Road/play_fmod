@@ -94,9 +94,9 @@ namespace r2_fmod_util
 			
 		}
 
+		std::cout << ( paused ? "Paused " : ( playing ? "Playing" : "Stopped" ) ) << r2::linefeed;
 		std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
 		std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
-		std::cout << ( paused ? "Paused " : playing ? "Playing" : "Stopped" ) << r2::linefeed;
 		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2::linefeed;
 		std::cout << "Volume : " << volume << r2::linefeed;
 	}
