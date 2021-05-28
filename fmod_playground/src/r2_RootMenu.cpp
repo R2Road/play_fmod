@@ -19,7 +19,7 @@ namespace r2
 		) );
 
 		{
-			ret->AddChild( '1', fmod_basic_test::Basic::GetInstance() );
+			ret->AddChild( '1', fmod_basic_test::SystemCreateAndRelease::GetInstance() );
 			ret->AddChild( '2', fmod_basic_test::VersionCheck::GetInstance() );
 
 			ret->AddLineFeed();

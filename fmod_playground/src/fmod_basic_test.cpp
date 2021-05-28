@@ -11,14 +11,14 @@
 
 namespace fmod_basic_test
 {
-	r2::iTest::TitleFunc Basic::GetTitleFunction() const
+	r2::iTest::TitleFunc SystemCreateAndRelease::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
-			return "FMOD : Basic";
+			return "FMOD : System Create And Release";
 		};
 	}
-	r2::iTest::DoFunc Basic::GetDoFunction()
+	r2::iTest::DoFunc SystemCreateAndRelease::GetDoFunction()
 	{
 		return []()->r2::eTestResult
 		{

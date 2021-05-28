@@ -5,7 +5,7 @@
 
 namespace fmod_basic_test
 {
-	class Basic : public r2::iTest, public r2::SingleTon<Basic>
+	class SystemCreateAndRelease : public r2::iTest, public r2::SingleTon<SystemCreateAndRelease>
 	{
 	public:
 		TitleFunc GetTitleFunction() const override;
