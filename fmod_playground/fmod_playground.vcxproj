@@ -123,14 +123,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>vld\include;$(FMOD_ROOT)\api\core\inc;$(FMOD_ROOT)\api\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>vld\lib\Win32;$(FMOD_ROOT)\api\core\lib\x86;$(FMOD_ROOT)\api\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>vld\lib\Win32;fmod\core\lib\x86;fmod\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
@@ -140,7 +140,7 @@
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
 xcopy "$(ProjectDir)vld\bin\Win32\*.*" "$(OutDir)" /D /E /I /F /Y
-xcopy "$(FMOD_ROOT)\api\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -152,20 +152,20 @@ xcopy "$(FMOD_ROOT)\api\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>vld\include;$(FMOD_ROOT)\api\core\inc;$(FMOD_ROOT)\api\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>vld\lib\Win64;$(FMOD_ROOT)\api\core\lib\x64;$(FMOD_ROOT)\api\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>vld\lib\Win64;fmod\core\lib\x64;fmod\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
 xcopy "$(ProjectDir)vld\bin\Win64\*.*" "$(OutDir)" /D /E /I /F /Y
-xcopy "$(FMOD_ROOT)\api\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -181,7 +181,7 @@ xcopy "$(FMOD_ROOT)\api\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(FMOD_ROOT)\api\core\inc;$(FMOD_ROOT)\api\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -189,11 +189,11 @@ xcopy "$(FMOD_ROOT)\api\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(FMOD_ROOT)\api\core\lib\x86;$(FMOD_ROOT)\api\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>fmod\core\lib\x86;fmod\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(FMOD_ROOT)\api\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -209,7 +209,7 @@ xcopy "$(FMOD_ROOT)\api\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(FMOD_ROOT)\api\core\inc;$(FMOD_ROOT)\api\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -217,11 +217,11 @@ xcopy "$(FMOD_ROOT)\api\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(FMOD_ROOT)\api\core\lib\x64;$(FMOD_ROOT)\api\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>fmod\core\lib\x64;fmod\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(FMOD_ROOT)\api\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
