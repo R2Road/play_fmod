@@ -13,7 +13,7 @@ int main()
 	//
 	// Environment : Title
 	//
-	SetConsoleTitle( TEXT( "cpp_playground" ) );
+	SetConsoleTitle( TEXT( "fmod_playground" ) );
 
 	//
 	// Environment : Size
