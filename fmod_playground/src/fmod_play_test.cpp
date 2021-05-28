@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "fmod_2_test.h"
+#include "fmod_play_test.h"
 
 #include <algorithm>
 #include <conio.h>
@@ -12,7 +12,7 @@
 #include "r2_FrameManager.h"
 #include "r2_eTestResult.h"
 
-namespace fmod_test
+namespace fmod_play_test
 {
 	r2::iTest::TitleFunc PlaySound::GetTitleFunction() const
 	{

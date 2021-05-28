@@ -5,7 +5,7 @@
 #include "r2_eTestResult.h"
 
 #include "fmod_basic_test.h"
-#include "fmod_2_test.h"
+#include "fmod_play_test.h"
 #include "fmod_3_test.h"
 
 namespace r2
@@ -24,10 +24,10 @@ namespace r2
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '3', fmod_test::PlaySound::GetInstance() );
-			ret->AddChild( '4', fmod_test::PlayStream::GetInstance() );
-			ret->AddChild( '5', fmod_test::PlayAndCallback::GetInstance() );
-			ret->AddChild( '6', fmod_test::VolumeControl::GetInstance() );
+			ret->AddChild( '3', fmod_play_test::PlaySound::GetInstance() );
+			ret->AddChild( '4', fmod_play_test::PlayStream::GetInstance() );
+			ret->AddChild( '5', fmod_play_test::PlayAndCallback::GetInstance() );
+			ret->AddChild( '6', fmod_play_test::VolumeControl::GetInstance() );
 
 			ret->AddLineFeed();
 
