@@ -7,6 +7,7 @@
 #include "fmod_basic_test.h"
 #include "fmod_play_test.h"
 #include "fmod_effect_test.h"
+#include "fmod_channel_group_test.h"
 
 namespace r2
 {
@@ -32,6 +33,10 @@ namespace r2
 			ret->AddLineFeed();
 
 			ret->AddChild( '7', fmod_effect_test::Echo::GetInstance() );
+
+			ret->AddLineFeed();
+
+			ret->AddChild( 'q', fmod_channel_group_test::Basic::GetInstance() );
 
 			ret->AddSplit();
 

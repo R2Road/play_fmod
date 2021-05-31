@@ -41,6 +41,9 @@
     <ClCompile Include="src\fmod_effect_test.cpp">
       <Filter>test</Filter>
     </ClCompile>
+    <ClCompile Include="src\fmod_channel_group_test.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\r2_Director.h">
@@ -78,6 +81,9 @@
       <Filter>test</Filter>
     </ClInclude>
     <ClInclude Include="src\fmod_effect_test.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\fmod_channel_group_test.h">
       <Filter>test</Filter>
     </ClInclude>
   </ItemGroup>
