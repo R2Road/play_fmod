@@ -52,33 +52,26 @@ namespace fmod_effect_test
 			}
 
 			//
+			// DSP
 			//
-			//
-			FMOD::ChannelGroup* fmod_master_channelgroup = nullptr;
 			FMOD::DSP* fsm_dsp_echo = nullptr;
-			{
-				// Channel Group
-				fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup );
-				r2_fmod_util::ERROR_CHECK( fmod_result );
-
-				// DSP
+			{ 
 				fmod_result = fmod_system->createDSPByType( FMOD_DSP_TYPE_ECHO, &fsm_dsp_echo );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				// Add
-				fmod_result = fmod_master_channelgroup->addDSP( 0, fsm_dsp_echo );
-				r2_fmod_util::ERROR_CHECK( fmod_result );
-
-				fmod_result = fsm_dsp_echo->setBypass( true );
+				fmod_result = fsm_dsp_echo->setBypass( false );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
 			//
-			// Play Sound
+			// Play Sound + Apply Effect
 			//
 			FMOD::Channel* fmod_channel = nullptr;
 			{
 				fmod_result = fmod_system->playSound( fmod_current_sound, 0, false, &fmod_channel );
+				r2_fmod_util::ERROR_CHECK( fmod_result );
+
+				fmod_result = fmod_channel->addDSP( 0, fsm_dsp_echo );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
@@ -144,11 +137,10 @@ namespace fmod_effect_test
 			}
 
 			//
-			// Channel Group + DSP
+			// DSP release
 			//
 			{
-				fmod_result = fmod_master_channelgroup->removeDSP( fsm_dsp_echo );
-				r2_fmod_util::ERROR_CHECK( fmod_result );
+				fmod_channel->removeDSP( fsm_dsp_echo );
 
 				fmod_result = fsm_dsp_echo->release();
 				r2_fmod_util::ERROR_CHECK( fmod_result );
