@@ -382,7 +382,6 @@ namespace fmod_play_test
 			// Play Sound
 			//
 			FMOD::Channel* fmod_channel = nullptr;
-			float volume = 1.0f;
 			{
 				fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
@@ -392,9 +391,10 @@ namespace fmod_play_test
 			// Update Loop
 			//
 			{
-				
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
+
+				float volume = 1.0f;
 
 				bool process = true;
 				while( process )
