@@ -4,10 +4,10 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
-#include "r2_eTestResult.h"
+#include "base/r2_eTestResult.h"
 
-#include "r2_Assert.h"
-#include "r2_fmod_util.h"
+#include "base/r2_Assert.h"
+#include "utility/r2_fmod_util.h"
 
 namespace fmod_basic_test
 {

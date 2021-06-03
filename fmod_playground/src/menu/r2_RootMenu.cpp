@@ -1,13 +1,13 @@
 #include "pch.h"
 #include "r2_RootMenu.h"
 
-#include "r2_Director.h"
-#include "r2_eTestResult.h"
+#include "base/r2_Director.h"
+#include "base/r2_eTestResult.h"
 
-#include "fmod_basic_test.h"
-#include "fmod_play_test.h"
-#include "fmod_effect_test.h"
-#include "fmod_channel_group_test.h"
+#include "test_fmod/fmod_basic_test.h"
+#include "test_fmod/fmod_play_test.h"
+#include "test_fmod/fmod_effect_test.h"
+#include "test_fmod/fmod_channel_group_test.h"
 
 namespace r2
 {
