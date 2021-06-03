@@ -124,7 +124,7 @@ namespace fmod_channel_group_test
 			std::cout << r2::split;
 
 			//
-			// Add Channel Group
+			// Release Channel Group
 			//
 			{
 				fmod_result = groupA->release();
