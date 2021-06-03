@@ -28,15 +28,15 @@ namespace fmod_play_test
 			r2_fmod_util::CreateSystem( &fmod_system );
 
 			//
-			// Preload Audio + Setup
+			// Audio Load
 			//
 			FMOD::Sound* fmod_sound = nullptr;
 			{
-				// Preload Audio
+				// Load
 				fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				// Loop Flag
+				// Setup
 				fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
 				r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 			}
@@ -129,12 +129,12 @@ namespace fmod_play_test
 			r2_fmod_util::CreateSystem( &fmod_system );
 
 			//
-			// Preload Audio + Setup
+			// Audio Load
 			//
 			FMOD::Sound* fmod_sound = nullptr;
 			FMOD::Sound* fmod_current_sound = nullptr;
 			{
-				// Preload Audio
+				// Load
 				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
@@ -272,11 +272,10 @@ namespace fmod_play_test
 			r2_fmod_util::CreateSystem( &fmod_system );
 
 			//
-			// Preload Audio + Setup
+			// Audio Load
 			//
 			FMOD::Sound* fmod_sound = nullptr;
 			{
-				// Preload Audio
 				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
@@ -372,11 +371,10 @@ namespace fmod_play_test
 			r2_fmod_util::CreateSystem( &fmod_system );
 
 			//
-			// Preload Audio + Setup
+			// Audio Load
 			//
 			FMOD::Sound* fmod_sound = nullptr;
 			{
-				// Preload Audio
 				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_NORMAL | FMOD_2D, 0, &fmod_sound );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
