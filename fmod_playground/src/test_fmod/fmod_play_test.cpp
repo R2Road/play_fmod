@@ -88,6 +88,7 @@ namespace fmod_play_test
 						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
 						std::cout << r2::split;
 
@@ -211,6 +212,7 @@ namespace fmod_play_test
 						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
 						std::cout << r2::split;
 
@@ -329,6 +331,7 @@ namespace fmod_play_test
 						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
 						std::cout << r2::split;
 
@@ -439,6 +442,7 @@ namespace fmod_play_test
 						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
 						std::cout << r2::split;
 
