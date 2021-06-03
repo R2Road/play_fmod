@@ -27,23 +27,24 @@ namespace r2
 			ret->AddLineFeed();
 
 			ret->AddChild( '3', fmod_load_test::Basic::GetInstance() );
+			ret->AddChild( '4', fmod_load_test::Memory::GetInstance() );
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '4', fmod_play_test::PlaySound::GetInstance() );
-			ret->AddChild( '5', fmod_play_test::PlayStream::GetInstance() );
-			ret->AddChild( '6', fmod_play_test::PlayAndCallback::GetInstance() );
-			ret->AddChild( '7', fmod_play_test::VolumeControl::GetInstance() );
+			ret->AddChild( '5', fmod_play_test::PlaySound::GetInstance() );
+			ret->AddChild( '6', fmod_play_test::PlayStream::GetInstance() );
+			ret->AddChild( '7', fmod_play_test::PlayAndCallback::GetInstance() );
+			ret->AddChild( '8', fmod_play_test::VolumeControl::GetInstance() );
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '8', fmod_effect_test::Echo::GetInstance() );
+			ret->AddChild( 'q', fmod_effect_test::Echo::GetInstance() );
 
 			ret->AddLineFeed();
 
-			ret->AddChild( 'q', fmod_channel_group_test::Basic::GetInstance() );
-			ret->AddChild( 'w', fmod_channel_group_test::Group::GetInstance() );
-			ret->AddChild( 'e', fmod_channel_group_test::Volume::GetInstance() );
+			ret->AddChild( 'a', fmod_channel_group_test::Basic::GetInstance() );
+			ret->AddChild( 's', fmod_channel_group_test::Group::GetInstance() );
+			ret->AddChild( 'd', fmod_channel_group_test::Volume::GetInstance() );
 
 			ret->AddSplit();
 

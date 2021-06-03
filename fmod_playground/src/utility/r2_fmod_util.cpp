@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "r2_fmod_util.h"
 
+#include <cstdio>
 #include <iostream>
 
 #include "fmod.hpp"
@@ -34,6 +35,32 @@ namespace r2_fmod_util
 		fmod_result = ( *out_fmod_system )->release();
 		ERROR_CHECK( fmod_result );
 	}
+
+
+
+	void Common_LoadFileMemory( const char *name, void **buff, int *length )
+	{
+		FILE *file = NULL;
+		fopen_s( &file, name, "rb" );
+
+		fseek( file, 0, SEEK_END );
+		long len = ftell( file );
+		fseek( file, 0, SEEK_SET );
+
+		void *mem = malloc( len );
+		fread( mem, 1, len, file );
+
+		fclose( file );
+
+		*buff = mem;
+		*length = len;
+	}
+	void Common_UnloadFileMemory( void *buff )
+	{
+		free( buff );
+	}
+
+
 
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel )
 	{
