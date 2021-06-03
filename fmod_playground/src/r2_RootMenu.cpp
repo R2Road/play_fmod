@@ -37,6 +37,7 @@ namespace r2
 			ret->AddLineFeed();
 
 			ret->AddChild( 'q', fmod_channel_group_test::Basic::GetInstance() );
+			ret->AddChild( 'w', fmod_channel_group_test::Group::GetInstance() );
 
 			ret->AddSplit();
 
