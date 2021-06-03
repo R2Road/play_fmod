@@ -38,6 +38,7 @@ namespace r2
 
 			ret->AddChild( 'q', fmod_channel_group_test::Basic::GetInstance() );
 			ret->AddChild( 'w', fmod_channel_group_test::Group::GetInstance() );
+			ret->AddChild( 'e', fmod_channel_group_test::Volume::GetInstance() );
 
 			ret->AddSplit();
 
