@@ -108,6 +108,9 @@ namespace fmod_effect_test
 
 					if( frame_manager.Update() )
 					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
@@ -121,9 +124,6 @@ namespace fmod_effect_test
 						std::cout << "Echo " << ( is_by_pass ? "OFF" : "ON" ) << r2::linefeed;
 
 						std::cout << r2::split;
-
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );

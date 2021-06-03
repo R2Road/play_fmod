@@ -76,6 +76,9 @@ namespace fmod_play_test
 
 					if( frame_manager.Update() )
 					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
@@ -83,9 +86,6 @@ namespace fmod_play_test
 						std::cout << "[2] " << "Stop" << r2::linefeed;
 
 						std::cout << r2::split;
-
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
@@ -199,6 +199,9 @@ namespace fmod_play_test
 
 					if( frame_manager.Update() )
 					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
@@ -207,9 +210,6 @@ namespace fmod_play_test
 						std::cout << "[3] " << "Loop ON/OFF" << r2::linefeed;
 
 						std::cout << r2::split;
-
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
@@ -319,6 +319,9 @@ namespace fmod_play_test
 
 					if( frame_manager.Update() )
 					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
@@ -326,9 +329,6 @@ namespace fmod_play_test
 						std::cout << "[2] " << "Stop" << r2::linefeed;
 
 						std::cout << r2::split;
-
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
@@ -430,6 +430,9 @@ namespace fmod_play_test
 
 					if( frame_manager.Update() )
 					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
@@ -437,9 +440,6 @@ namespace fmod_play_test
 						std::cout << "[2] " << "Volume Down" << r2::linefeed;
 
 						std::cout << r2::split;
-
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
