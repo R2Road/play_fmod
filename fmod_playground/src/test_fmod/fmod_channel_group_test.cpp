@@ -280,6 +280,9 @@ namespace fmod_channel_group_test
 
 					if( frame_manager.Update() )
 					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
@@ -289,8 +292,23 @@ namespace fmod_channel_group_test
 
 						std::cout << r2::split;
 
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
+						std::cout << r2::tab << "Group A : ";
+						r2_fmod_util::PrintChannelVolumeInfo( groupA );
+						std::cout << r2::linefeed;
+
+						std::cout << r2::split;
+
+						std::cout << r2::tab << "Group B : ";
+						r2_fmod_util::PrintChannelVolumeInfo( groupB );
+						std::cout << r2::linefeed;
+
+						std::cout << r2::split;
+
+						std::cout << r2::tab << "Master : ";
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_master_channel_group );
+						std::cout << r2::linefeed;
+
+						std::cout << r2::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 

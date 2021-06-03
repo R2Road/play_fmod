@@ -90,7 +90,7 @@ namespace r2_fmod_util
 		std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
 		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2::linefeed;
 	}
-	void PrintChannelVolumeInfo( FMOD::Channel* const fmod_channel )
+	void PrintChannelVolumeInfo( FMOD::ChannelControl* const fmod_channel )
 	{
 		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 		float volume = 0.0f;
