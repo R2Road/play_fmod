@@ -27,14 +27,14 @@ namespace r2
 			ret->AddLineFeed();
 
 			ret->AddChild( '3', fmod_load_test::Basic::GetInstance() );
-			ret->AddChild( '4', fmod_load_test::Memory::GetInstance() );
+			ret->AddChild( '4', fmod_play_test::PlaySound::GetInstance() );
+			ret->AddChild( '5', fmod_play_test::PlayStream::GetInstance() );
+			ret->AddChild( '6', fmod_play_test::PlayAndCallback::GetInstance() );
+			ret->AddChild( '7', fmod_play_test::VolumeControl::GetInstance() );
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '5', fmod_play_test::PlaySound::GetInstance() );
-			ret->AddChild( '6', fmod_play_test::PlayStream::GetInstance() );
-			ret->AddChild( '7', fmod_play_test::PlayAndCallback::GetInstance() );
-			ret->AddChild( '8', fmod_play_test::VolumeControl::GetInstance() );
+			ret->AddChild( '8', fmod_load_test::Memory::GetInstance() );
 
 			ret->AddLineFeed();
 
