@@ -31,16 +31,15 @@ namespace fmod_channel_group_test
 
 			r2_fmod_util::CreateSystem( &fmod_system );
 
+			//
+			// Master Channel Group
+			//
 			{
-				//
-				// Channel Group
-				//
 				FMOD::ChannelGroup* fmod_master_channelgroup = nullptr;
 				fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				//
-				std::cout << r2::tab << "+ Initialize" << r2::linefeed << r2::linefeed;
+				std::cout << r2::tab << "+ Get Master Channel Group" << r2::linefeed << r2::linefeed;
 				std::cout << r2::tab2 << "FMOD::ChannelGroup* fmod_master_channelgroup = nullptr;" << r2::linefeed;
 				std::cout << r2::tab2 << "fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup );" << r2::linefeed;
 			}
@@ -78,7 +77,7 @@ namespace fmod_channel_group_test
 			r2_fmod_util::CreateSystem( &fmod_system );
 
 			//
-			// Channel Group
+			// Master Channel Group
 			//
 			{
 				fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup );
