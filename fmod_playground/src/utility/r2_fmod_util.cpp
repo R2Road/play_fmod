@@ -6,7 +6,7 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
-#include "r2_Assert.h"
+#include "base/r2_Assert.h"
 
 namespace r2_fmod_util
 {

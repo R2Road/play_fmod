@@ -7,84 +7,84 @@
     <Filter Include="menu">
       <UniqueIdentifier>{b9566801-30ec-4d55-bd6d-040901fc06e3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="test">
+    <Filter Include="test_fmod">
       <UniqueIdentifier>{77a45f2c-1f22-46b3-9c35-5ee34c38a7b9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="fmod_util">
+    <Filter Include="utility">
       <UniqueIdentifier>{abef3520-7cdf-44e1-9ede-8fafcfbe17cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\r2_Director.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2_RootMenu.cpp">
-      <Filter>menu</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2_Menu.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2_FrameManager.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2_fmod_util.cpp">
-      <Filter>fmod_util</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\fmod_basic_test.cpp">
-      <Filter>test</Filter>
+    <ClCompile Include="src\base\r2_Director.cpp">
+      <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="src\fmod_play_test.cpp">
-      <Filter>test</Filter>
+    <ClCompile Include="src\base\r2_FrameManager.cpp">
+      <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="src\fmod_effect_test.cpp">
-      <Filter>test</Filter>
+    <ClCompile Include="src\base\r2_Menu.cpp">
+      <Filter>base</Filter>
     </ClCompile>
-    <ClCompile Include="src\fmod_channel_group_test.cpp">
-      <Filter>test</Filter>
+    <ClCompile Include="src\menu\r2_RootMenu.cpp">
+      <Filter>menu</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test_fmod\fmod_basic_test.cpp">
+      <Filter>test_fmod</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test_fmod\fmod_channel_group_test.cpp">
+      <Filter>test_fmod</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test_fmod\fmod_effect_test.cpp">
+      <Filter>test_fmod</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test_fmod\fmod_play_test.cpp">
+      <Filter>test_fmod</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utility\r2_fmod_util.cpp">
+      <Filter>utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\r2_Director.h">
+    <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\base\r2_Assert.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_eTestResult.h">
+    <ClInclude Include="src\base\r2_Director.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_Singleton.h">
+    <ClInclude Include="src\base\r2_eTestResult.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_iTest.h">
+    <ClInclude Include="src\base\r2_FrameManager.h">
       <Filter>base</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_RootMenu.h">
+    <ClInclude Include="src\base\r2_iTest.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\r2_Menu.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\r2_Singleton.h">
+      <Filter>base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\menu\r2_RootMenu.h">
       <Filter>menu</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_Menu.h">
-      <Filter>base</Filter>
+    <ClInclude Include="src\test_fmod\fmod_basic_test.h">
+      <Filter>test_fmod</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_FrameManager.h">
-      <Filter>base</Filter>
+    <ClInclude Include="src\test_fmod\fmod_channel_group_test.h">
+      <Filter>test_fmod</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_fmod_util.h">
-      <Filter>fmod_util</Filter>
+    <ClInclude Include="src\test_fmod\fmod_effect_test.h">
+      <Filter>test_fmod</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2_Assert.h">
-      <Filter>base</Filter>
+    <ClInclude Include="src\test_fmod\fmod_play_test.h">
+      <Filter>test_fmod</Filter>
     </ClInclude>
-    <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\fmod_basic_test.h">
-      <Filter>test</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fmod_play_test.h">
-      <Filter>test</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fmod_effect_test.h">
-      <Filter>test</Filter>
-    </ClInclude>
-    <ClInclude Include="src\fmod_channel_group_test.h">
-      <Filter>test</Filter>
+    <ClInclude Include="src\utility\r2_fmod_util.h">
+      <Filter>utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

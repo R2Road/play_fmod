@@ -1,7 +1,7 @@
 #pragma once
 
-#include "r2_iTest.h"
-#include "r2_Singleton.h"
+#include "base/r2_iTest.h"
+#include "base/r2_Singleton.h"
 
 namespace fmod_channel_group_test
 {

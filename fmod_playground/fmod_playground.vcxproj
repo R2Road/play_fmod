@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\fmod_basic_test.cpp" />
-    <ClCompile Include="src\fmod_channel_group_test.cpp" />
-    <ClCompile Include="src\fmod_play_test.cpp" />
-    <ClCompile Include="src\fmod_effect_test.cpp" />
+    <ClCompile Include="src\base\r2_Director.cpp" />
+    <ClCompile Include="src\base\r2_FrameManager.cpp" />
+    <ClCompile Include="src\base\r2_Menu.cpp" />
+    <ClCompile Include="src\menu\r2_RootMenu.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -30,27 +30,27 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\r2_Director.cpp" />
-    <ClCompile Include="src\r2_fmod_util.cpp" />
-    <ClCompile Include="src\r2_FrameManager.cpp" />
-    <ClCompile Include="src\r2_RootMenu.cpp" />
-    <ClCompile Include="src\r2_Menu.cpp" />
+    <ClCompile Include="src\test_fmod\fmod_basic_test.cpp" />
+    <ClCompile Include="src\test_fmod\fmod_channel_group_test.cpp" />
+    <ClCompile Include="src\test_fmod\fmod_effect_test.cpp" />
+    <ClCompile Include="src\test_fmod\fmod_play_test.cpp" />
+    <ClCompile Include="src\utility\r2_fmod_util.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\fmod_basic_test.h" />
-    <ClInclude Include="src\fmod_channel_group_test.h" />
-    <ClInclude Include="src\fmod_play_test.h" />
-    <ClInclude Include="src\fmod_effect_test.h" />
+    <ClInclude Include="src\base\r2_Assert.h" />
+    <ClInclude Include="src\base\r2_Director.h" />
+    <ClInclude Include="src\base\r2_eTestResult.h" />
+    <ClInclude Include="src\base\r2_FrameManager.h" />
+    <ClInclude Include="src\base\r2_iTest.h" />
+    <ClInclude Include="src\base\r2_Menu.h" />
+    <ClInclude Include="src\base\r2_Singleton.h" />
+    <ClInclude Include="src\menu\r2_RootMenu.h" />
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\r2_Assert.h" />
-    <ClInclude Include="src\r2_Director.h" />
-    <ClInclude Include="src\r2_eTestResult.h" />
-    <ClInclude Include="src\r2_fmod_util.h" />
-    <ClInclude Include="src\r2_FrameManager.h" />
-    <ClInclude Include="src\r2_iTest.h" />
-    <ClInclude Include="src\r2_Menu.h" />
-    <ClInclude Include="src\r2_RootMenu.h" />
-    <ClInclude Include="src\r2_Singleton.h" />
+    <ClInclude Include="src\test_fmod\fmod_basic_test.h" />
+    <ClInclude Include="src\test_fmod\fmod_channel_group_test.h" />
+    <ClInclude Include="src\test_fmod\fmod_effect_test.h" />
+    <ClInclude Include="src\test_fmod\fmod_play_test.h" />
+    <ClInclude Include="src\utility\r2_fmod_util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -125,7 +125,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -154,7 +154,7 @@ xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -183,7 +183,7 @@ xcopy "$(ProjectDir)fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -211,7 +211,7 @@ xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
