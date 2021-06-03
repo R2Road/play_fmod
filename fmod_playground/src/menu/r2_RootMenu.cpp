@@ -5,6 +5,7 @@
 #include "base/r2_eTestResult.h"
 
 #include "test_fmod/fmod_basic_test.h"
+#include "test_fmod/fmod_load_test.h"
 #include "test_fmod/fmod_play_test.h"
 #include "test_fmod/fmod_effect_test.h"
 #include "test_fmod/fmod_channel_group_test.h"
@@ -25,14 +26,18 @@ namespace r2
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '3', fmod_play_test::PlaySound::GetInstance() );
-			ret->AddChild( '4', fmod_play_test::PlayStream::GetInstance() );
-			ret->AddChild( '5', fmod_play_test::PlayAndCallback::GetInstance() );
-			ret->AddChild( '6', fmod_play_test::VolumeControl::GetInstance() );
+			ret->AddChild( '3', fmod_load_test::Basic::GetInstance() );
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '7', fmod_effect_test::Echo::GetInstance() );
+			ret->AddChild( '4', fmod_play_test::PlaySound::GetInstance() );
+			ret->AddChild( '5', fmod_play_test::PlayStream::GetInstance() );
+			ret->AddChild( '6', fmod_play_test::PlayAndCallback::GetInstance() );
+			ret->AddChild( '7', fmod_play_test::VolumeControl::GetInstance() );
+
+			ret->AddLineFeed();
+
+			ret->AddChild( '8', fmod_effect_test::Echo::GetInstance() );
 
 			ret->AddLineFeed();
 
