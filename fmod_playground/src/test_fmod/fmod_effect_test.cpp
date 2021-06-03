@@ -127,6 +127,7 @@ namespace fmod_effect_test
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
+						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
 
 						std::cout << r2::split;
 
