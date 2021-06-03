@@ -62,6 +62,44 @@ namespace r2_fmod_util
 
 
 
+	void PrintSoundInfo( FMOD::Channel* const fmod_channel )
+	{
+		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+
+		FMOD_SOUND_TYPE sound_type;
+		FMOD_SOUND_FORMAT sound_format;
+		int channels;
+		int bits;
+
+		FMOD::Sound* current_sound = nullptr;
+		fmod_result = fmod_channel->getCurrentSound( &current_sound );
+		r2_fmod_util::ERROR_CHECK( fmod_result );
+
+		PrintSoundInfo( current_sound );
+	}
+	void PrintSoundInfo( FMOD::Sound* const fmod_sound )
+	{
+		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+
+		FMOD_SOUND_TYPE sound_type = FMOD_SOUND_TYPE::FMOD_SOUND_TYPE_UNKNOWN;
+		FMOD_SOUND_FORMAT sound_format = FMOD_SOUND_FORMAT::FMOD_SOUND_FORMAT_NONE;
+		int channels = 0;
+		int bits = 0;
+
+		if( fmod_sound )
+		{
+			fmod_result = fmod_sound->getFormat( &sound_type, &sound_format, &channels, &bits );
+			r2_fmod_util::ERROR_CHECK( fmod_result );
+		}
+
+		std::cout << "Sound Type : " << sound_type << r2::linefeed;
+		std::cout << "Sound Format : " << sound_format << r2::linefeed;
+		std::cout << "Channels : " << channels << r2::linefeed;
+		std::cout << "Bits : " << bits << r2::linefeed;
+	}
+
+
+
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel )
 	{
 		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
