@@ -201,7 +201,7 @@ namespace r2_fmod_util
 
 	void ERROR_CHECK( const FMOD_RESULT fmod_result )
 	{
-		if( FMOD_OK != fmod_result )
+		if( ( FMOD_OK != fmod_result ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 		{
 			R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
 		}
