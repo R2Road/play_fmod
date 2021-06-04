@@ -16,7 +16,7 @@ namespace fmod_channel_group_test
 {
 	r2::iTest::TitleFunc Basic::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Channel Group - Basic"; };
+		return []()->const char* { return "Channel Group - Basic"; };
 	}
 	r2::iTest::DoFunc Basic::GetDoFunction()
 	{
@@ -56,7 +56,7 @@ namespace fmod_channel_group_test
 
 	r2::iTest::TitleFunc Group::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Channel Group - Group"; };
+		return []()->const char* { return "Channel Group - Group"; };
 	}
 	r2::iTest::DoFunc Group::GetDoFunction()
 	{
@@ -150,7 +150,7 @@ namespace fmod_channel_group_test
 
 	r2::iTest::TitleFunc Volume::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Channel Group - Volume"; };
+		return []()->const char* { return "Channel Group - Volume"; };
 	}
 	r2::iTest::DoFunc Volume::GetDoFunction()
 	{

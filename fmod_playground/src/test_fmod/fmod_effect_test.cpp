@@ -15,7 +15,7 @@ namespace fmod_effect_test
 {
 	r2::iTest::TitleFunc Echo::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Effect - Echo"; };
+		return []()->const char* { return "Effect - Echo"; };
 	}
 	r2::iTest::DoFunc Echo::GetDoFunction()
 	{
@@ -182,7 +182,7 @@ namespace fmod_effect_test
 
 	r2::iTest::TitleFunc Fade::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Effect - Fade"; };
+		return []()->const char* { return "Effect - Fade"; };
 	}
 	r2::iTest::DoFunc Fade::GetDoFunction()
 	{

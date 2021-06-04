@@ -18,7 +18,7 @@ namespace fmod_load_test
 	{
 		return []()->const char*
 		{
-			return "FMOD : Sound Load - Basic";
+			return "Sound Load - Basic";
 		};
 	}
 	r2::iTest::DoFunc Basic::GetDoFunction()
@@ -79,7 +79,7 @@ namespace fmod_load_test
 	{
 		return []()->const char*
 		{
-			return "FMOD : Sound Load - Memory";
+			return "Sound Load - Memory";
 		};
 	}
 	r2::iTest::DoFunc Memory::GetDoFunction()

@@ -15,7 +15,7 @@ namespace fmod_basic_test
 	{
 		return []()->const char*
 		{
-			return "FMOD : System Create And Release";
+			return "System Create And Release";
 		};
 	}
 	r2::iTest::DoFunc SystemCreateAndRelease::GetDoFunction()
@@ -100,7 +100,7 @@ namespace fmod_basic_test
 	{
 		return []()->const char*
 		{
-			return "FMOD : Version Check";
+			return "Version Check";
 		};
 	}
 	r2::iTest::DoFunc VersionCheck::GetDoFunction()

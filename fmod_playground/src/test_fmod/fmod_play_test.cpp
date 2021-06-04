@@ -16,7 +16,7 @@ namespace fmod_play_test
 {
 	r2::iTest::TitleFunc PlaySound::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Play Sound"; };
+		return []()->const char* { return "Play Sound"; };
 	}
 	r2::iTest::DoFunc PlaySound::GetDoFunction()
 	{
@@ -117,7 +117,7 @@ namespace fmod_play_test
 
 	r2::iTest::TitleFunc PlayStream::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Play Stream"; };
+		return []()->const char* { return "Play Stream"; };
 	}
 	r2::iTest::DoFunc PlayStream::GetDoFunction()
 	{
@@ -260,7 +260,7 @@ namespace fmod_play_test
 	}
 	r2::iTest::TitleFunc PlayAndCallback::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Play And Callback"; };
+		return []()->const char* { return "Play And Callback"; };
 	}
 	r2::iTest::DoFunc PlayAndCallback::GetDoFunction()
 	{
@@ -359,7 +359,7 @@ namespace fmod_play_test
 
 	r2::iTest::TitleFunc VolumeControl::GetTitleFunction() const
 	{
-		return []()->const char* { return "FMOD : Volume Control"; };
+		return []()->const char* { return "Volume Control"; };
 	}
 	r2::iTest::DoFunc VolumeControl::GetDoFunction()
 	{
