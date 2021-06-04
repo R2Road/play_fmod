@@ -10,6 +10,8 @@
 #include "test_fmod/fmod_effect_test.h"
 #include "test_fmod/fmod_channel_group_test.h"
 
+#include "test_fmod/etc_test.h"
+
 namespace r2
 {
 	MenuUp RootMenu::Create( Director& director )
@@ -31,6 +33,7 @@ namespace r2
 			ret->AddChild( '5', fmod_play_test::PlayStream::GetInstance() );
 			ret->AddChild( '6', fmod_play_test::PlayAndCallback::GetInstance() );
 			ret->AddChild( '7', fmod_play_test::VolumeControl::GetInstance() );
+			ret->AddChild( '8', fmod_play_test::PositionControl::GetInstance() );
 
 			ret->AddLineFeed();
 

@@ -32,4 +32,11 @@ namespace fmod_play_test
 		TitleFunc GetTitleFunction() const override;
 		DoFunc GetDoFunction() override;
 	};
+
+	class PositionControl : public r2::iTest, public r2::SingleTon<PositionControl>
+	{
+	public:
+		TitleFunc GetTitleFunction() const override;
+		DoFunc GetDoFunction() override;
+	};
 }
