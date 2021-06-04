@@ -100,6 +100,17 @@ namespace fmod_effect_test
 						}
 						break;
 
+						case 32:
+						{
+							bool bPaused = false;
+							fmod_result = fmod_channel->getPaused( &bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+
+							fmod_result = fmod_channel->setPaused( !bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+						}
+						break;
+
 						case 27: // ESC
 							process = false;
 							break;
@@ -114,7 +125,8 @@ namespace fmod_effect_test
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " << "Effect ON/OFF" << r2::linefeed;
+						std::cout << "[1] Effect ON/OFF" << r2::linefeed;
+						std::cout << "[SPACE] : Pause" << r2::linefeed;
 
 						std::cout << r2::split;
 
@@ -241,6 +253,17 @@ namespace fmod_effect_test
 						}
 						break;
 
+						case 32:
+						{
+							bool bPaused = false;
+							fmod_result = fmod_channel->getPaused( &bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+
+							fmod_result = fmod_channel->setPaused( !bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+						}
+						break;
+
 						case 27: // ESC
 							process = false;
 							break;
@@ -255,8 +278,9 @@ namespace fmod_effect_test
 						system( "cls" );
 
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " "Fade Out" << r2::linefeed;
-						std::cout << "[2] " "Fade In" << r2::linefeed;
+						std::cout << "[1] Fade Out" << r2::linefeed;
+						std::cout << "[2] Fade In" << r2::linefeed;
+						std::cout << "[SPACE] : Pause" << r2::linefeed;
 
 						std::cout << r2::split;
 
