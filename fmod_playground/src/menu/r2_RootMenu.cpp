@@ -37,7 +37,7 @@ namespace r2
 
 			ret->AddLineFeed();
 
-			ret->AddChild( '8', fmod_load_test::Memory::GetInstance() );
+			ret->AddChild( '9', fmod_load_test::Memory::GetInstance() );
 
 			ret->AddLineFeed();
 
@@ -49,6 +49,10 @@ namespace r2
 			ret->AddChild( 'a', fmod_channel_group_test::Basic::GetInstance() );
 			ret->AddChild( 's', fmod_channel_group_test::Group::GetInstance() );
 			ret->AddChild( 'd', fmod_channel_group_test::Volume::GetInstance() );
+
+			ret->AddSplit();
+
+			ret->AddChild( 32, etc_test::Test1::GetInstance() );
 
 			ret->AddSplit();
 

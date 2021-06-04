@@ -47,6 +47,9 @@
     <ClCompile Include="src\test_fmod\fmod_load_test.cpp">
       <Filter>test_fmod</Filter>
     </ClCompile>
+    <ClCompile Include="src\test_fmod\etc_test.cpp">
+      <Filter>test_fmod</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
@@ -90,6 +93,9 @@
       <Filter>utility</Filter>
     </ClInclude>
     <ClInclude Include="src\test_fmod\fmod_load_test.h">
+      <Filter>test_fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test_fmod\etc_test.h">
       <Filter>test_fmod</Filter>
     </ClInclude>
   </ItemGroup>
