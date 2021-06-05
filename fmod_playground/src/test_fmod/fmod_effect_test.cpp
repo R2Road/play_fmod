@@ -323,4 +323,101 @@ namespace fmod_effect_test
 			return r2::eTestResult::RunTest_Without_Pause;
 		};
 	}
+
+
+
+	r2::iTest::TitleFunc FadeStartFadeEnd::GetTitleFunction() const
+	{
+		return []()->const char* { return "Effect - Fade Start and Fade End"; };
+	}
+	r2::iTest::DoFunc FadeStartFadeEnd::GetDoFunction()
+	{
+		return []()->r2::eTestResult
+		{
+			FMOD::System* fmod_system = nullptr;
+			r2_fmod_util::CreateSystem( &fmod_system );
+
+			FMOD::Sound* fmod_sound = nullptr;
+			r2_fmod_util::ERROR_CHECK( fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound ) );
+
+			{
+				r2::FrameManager frame_manager( 30u );
+				frame_manager.Reset();
+
+				FMOD::Channel* fmod_channel = nullptr;
+
+				bool process = true;
+				while( process )
+				{
+					if( _kbhit() )
+					{
+						switch( _getch() )
+						{
+						case 32:
+						{
+							r2_fmod_util::ERROR_CHECK( fmod_system->playSound( fmod_sound, 0, false, &fmod_channel ) );
+
+							unsigned long long dspclock = 0u;
+							r2_fmod_util::ERROR_CHECK( fmod_channel->getDSPClock( &dspclock, nullptr ) );
+
+							int sample_rate = 0u;
+							r2_fmod_util::ERROR_CHECK( fmod_system->getSoftwareFormat( &sample_rate, nullptr, nullptr ) );
+
+							// Head
+							{
+								fmod_channel->addFadePoint( dspclock, 0.f );
+								fmod_channel->addFadePoint( dspclock + ( sample_rate * 5.f ), 1.f );
+							}
+
+							// Tail
+							{
+								unsigned int lenms = 0;
+								r2_fmod_util::ERROR_CHECK( fmod_sound->getLength( &lenms, FMOD_TIMEUNIT_MS ) );
+
+
+								unsigned int ms = 0;
+								r2_fmod_util::ERROR_CHECK( fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS ) );
+
+								const auto remain_sec = ( lenms - ms ) * 0.001f;
+								const auto target_sec = remain_sec - 5.f;
+
+								fmod_channel->addFadePoint( dspclock + ( sample_rate * target_sec ), 1.f );
+								fmod_channel->addFadePoint( dspclock + ( sample_rate * remain_sec ), 0.f );
+							}
+						}
+						break;
+
+						case 27: // ESC
+							process = false;
+							break;
+						}
+					}
+
+					if( frame_manager.Update() )
+					{
+						r2_fmod_util::ERROR_CHECK( fmod_system->update() );
+
+						system( "cls" );
+
+						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+						std::cout << "[SPACE] Play" << r2::linefeed;
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelInfo( fmod_channel );
+
+						std::cout << r2::split;
+					}
+				}
+			}
+
+			{
+				r2_fmod_util::ERROR_CHECK( fmod_sound->release() );
+			}
+
+			r2_fmod_util::ReleaseSystem( &fmod_system );
+
+			return r2::eTestResult::RunTest_Without_Pause;
+		};
+	}
 }
