@@ -87,6 +87,10 @@ namespace fmod_play_test
 
 						std::cout << r2::split;
 
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
+
+						std::cout << r2::split;
+
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
@@ -211,6 +215,10 @@ namespace fmod_play_test
 
 						std::cout << r2::split;
 
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
+
+						std::cout << r2::split;
+
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
@@ -329,6 +337,10 @@ namespace fmod_play_test
 
 						std::cout << r2::split;
 
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
+
+						std::cout << r2::split;
+
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
@@ -439,6 +451,10 @@ namespace fmod_play_test
 
 						std::cout << r2::split;
 
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
+
+						std::cout << r2::split;
+
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
@@ -539,6 +555,10 @@ namespace fmod_play_test
 						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 						std::cout << "[1] " << "Move First" << r2::linefeed;
 						std::cout << "[2] " << "Move Half" << r2::linefeed;
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
 						std::cout << r2::split;
 
