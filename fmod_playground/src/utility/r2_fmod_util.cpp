@@ -189,10 +189,11 @@ namespace r2_fmod_util
 	{
 		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 		unsigned long long dspclock = 0u;
+		unsigned long long parent_dspclock = 0u;
 
 		if( fmod_channel )
 		{
-			fmod_result = fmod_channel->getDSPClock( &dspclock, nullptr );
+			fmod_result = fmod_channel->getDSPClock( &dspclock, &parent_dspclock );
 			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
 			{
 				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
@@ -200,6 +201,7 @@ namespace r2_fmod_util
 		}
 
 		std::cout << "DSP Clock : " << dspclock << r2::linefeed;
+		std::cout << "Parent DSP Clock : " << parent_dspclock << r2::linefeed;
 	}
 
 
