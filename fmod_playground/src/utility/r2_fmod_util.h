@@ -19,6 +19,8 @@ namespace r2_fmod_util
 	void Common_LoadFileMemory( const char *name, void **buff, int *length );
 	void Common_UnloadFileMemory( void *buff );
 
+	void PrintSampleRateInfo( FMOD::System* const fmod_system );
+
 	void PrintSoundInfo( FMOD::Channel* const fmod_channel );
 	void PrintSoundInfo( FMOD::Sound* const fmod_sound );
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel );

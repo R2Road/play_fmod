@@ -121,6 +121,10 @@ namespace etc_test
 
 						std::cout << r2::split;
 
+						r2_fmod_util::PrintSampleRateInfo( fmod_system );
+
+						std::cout << r2::split;
+
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
 						std::cout << r2::split;

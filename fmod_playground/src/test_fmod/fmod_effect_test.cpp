@@ -137,6 +137,10 @@ namespace fmod_effect_test
 
 						std::cout << r2::split;
 
+						r2_fmod_util::PrintSampleRateInfo( fmod_system );
+
+						std::cout << r2::split;
+
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
 						std::cout << r2::split;
@@ -281,6 +285,10 @@ namespace fmod_effect_test
 						std::cout << "[1] Fade Out" << r2::linefeed;
 						std::cout << "[2] Fade In" << r2::linefeed;
 						std::cout << "[SPACE] : Pause" << r2::linefeed;
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
 						std::cout << r2::split;
 

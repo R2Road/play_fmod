@@ -62,6 +62,20 @@ namespace r2_fmod_util
 
 
 
+	void PrintSampleRateInfo( FMOD::System* const fmod_system )
+	{
+		int sample_rate = 0u;
+
+		if( fmod_system )
+		{
+			r2_fmod_util::ERROR_CHECK( fmod_system->getSoftwareFormat( &sample_rate, nullptr, nullptr ) );
+		}
+
+		std::cout << "Sample Rate : " << sample_rate << r2::linefeed;
+	}
+
+
+
 	void PrintSoundInfo( FMOD::Channel* const fmod_channel )
 	{
 		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
