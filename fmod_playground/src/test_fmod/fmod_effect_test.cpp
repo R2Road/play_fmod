@@ -2,6 +2,7 @@
 #include "fmod_effect_test.h"
 
 #include <conio.h>
+#include <numeric>
 
 #include "fmod.hpp"
 #include "fmod_errors.h"
@@ -346,6 +347,10 @@ namespace fmod_effect_test
 
 				FMOD::Channel* fmod_channel = nullptr;
 
+				unsigned int n = 0;
+				unsigned long long* d = 0ll;
+				float* v = nullptr;
+
 				bool process = true;
 				while( process )
 				{
@@ -355,10 +360,15 @@ namespace fmod_effect_test
 						{
 						case 32:
 						{
+							if( fmod_channel )
+							{			
+								fmod_channel->stop();
+							}
+
 							r2_fmod_util::ERROR_CHECK( fmod_system->playSound( fmod_sound, 0, false, &fmod_channel ) );
 
 							unsigned long long dspclock = 0u;
-							r2_fmod_util::ERROR_CHECK( fmod_channel->getDSPClock( &dspclock, nullptr ) );
+							r2_fmod_util::ERROR_CHECK( fmod_channel->getDSPClock( nullptr, &dspclock ) );
 
 							int sample_rate = 0u;
 							r2_fmod_util::ERROR_CHECK( fmod_system->getSoftwareFormat( &sample_rate, nullptr, nullptr ) );
@@ -405,6 +415,18 @@ namespace fmod_effect_test
 						std::cout << r2::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
+
+						std::cout << r2::split;
+
+						if( fmod_channel )
+						{
+							fmod_channel->getFadePoints( &n, d, v );
+						}
+						std::cout << "P : " << n << r2::linefeed;
 
 						std::cout << r2::split;
 					}
