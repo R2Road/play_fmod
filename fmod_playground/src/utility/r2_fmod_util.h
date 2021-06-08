@@ -25,6 +25,7 @@ namespace r2_fmod_util
 	void PrintSoundInfo( FMOD::Sound* const fmod_sound );
 	void PrintChannelInfo( FMOD::Channel* const fmod_channel );
 	void PrintChannelVolumeInfo( FMOD::ChannelControl* const fmod_channel );
+	void PrintChannelPitchInfo( FMOD::ChannelControl* const fmod_channel );
 	void PrintChannelDSPClock( FMOD::ChannelControl* const fmod_channel );
 
 	void PrintChannelsPlayingInfo( FMOD::System* const fmod_system );

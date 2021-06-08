@@ -25,4 +25,11 @@ namespace fmod_effect_test
 		TitleFunc GetTitleFunction() const override;
 		DoFunc GetDoFunction() override;
 	};
+
+	class PitchControl : public r2::iTest, public r2::SingleTon<PitchControl>
+	{
+	public:
+		TitleFunc GetTitleFunction() const override;
+		DoFunc GetDoFunction() override;
+	};
 }

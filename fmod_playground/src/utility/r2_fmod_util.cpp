@@ -185,6 +185,22 @@ namespace r2_fmod_util
 
 		std::cout << "Volume : " << volume << r2::linefeed;
 	}
+	void PrintChannelPitchInfo( FMOD::ChannelControl* const fmod_channel )
+	{
+		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+		float pitch = 0.0f;
+
+		if( fmod_channel )
+		{
+			fmod_result = fmod_channel->getPitch( &pitch );
+			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+			{
+				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
+			}
+		}
+
+		std::cout << "Pitch : " << pitch << r2::linefeed;
+	}
 	void PrintChannelDSPClock( FMOD::ChannelControl* const fmod_channel )
 	{
 		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;

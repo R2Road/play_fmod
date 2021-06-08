@@ -442,4 +442,124 @@ namespace fmod_effect_test
 			return r2::eTestResult::RunTest_Without_Pause;
 		};
 	}
+
+
+
+
+	r2::iTest::TitleFunc PitchControl::GetTitleFunction() const
+	{
+		return []()->const char* { return "Effect - Pitch Control"; };
+	}
+	r2::iTest::DoFunc PitchControl::GetDoFunction()
+	{
+		return []()->r2::eTestResult
+		{
+			FMOD::System* fmod_system = nullptr;
+			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+
+			r2_fmod_util::CreateSystem( &fmod_system );
+
+			FMOD::Sound* fmod_sound = nullptr;
+			r2_fmod_util::ERROR_CHECK( fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_NORMAL | FMOD_2D, 0, &fmod_sound ) );
+
+			FMOD::Channel* fmod_channel = nullptr;
+			r2_fmod_util::ERROR_CHECK( fmod_system->playSound( fmod_sound, 0, false, &fmod_channel ) );
+
+			//
+			// Update Loop
+			//
+			{
+				const float change_amount = 0.1f;
+
+				r2::FrameManager frame_manager( 30u );
+				frame_manager.Reset();
+
+				bool process = true;
+				while( process )
+				{
+					if( _kbhit() )
+					{
+						switch( _getch() )
+						{
+						case '1':
+						{
+							float pitch = 0.f;
+							r2_fmod_util::ERROR_CHECK( fmod_channel->getPitch( &pitch ) );
+
+							pitch += change_amount;
+
+							r2_fmod_util::ERROR_CHECK( fmod_channel->setPitch( pitch ) );
+						}
+						break;
+						case '2':
+						{
+							float pitch = 0.f;
+							r2_fmod_util::ERROR_CHECK( fmod_channel->getPitch( &pitch ) );
+
+							pitch -= change_amount;
+							if( pitch < 0.f )
+							{
+								pitch = 0.f;
+							}
+
+							r2_fmod_util::ERROR_CHECK( fmod_channel->setPitch( pitch ) );
+						}
+						break;
+
+						case 32:
+						{
+							bool bPaused = false;
+							fmod_result = fmod_channel->getPaused( &bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+
+							fmod_result = fmod_channel->setPaused( !bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+						}
+						break;
+
+						case 27: // ESC
+							process = false;
+							break;
+						}
+					}
+
+					if( frame_manager.Update() )
+					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
+						system( "cls" );
+
+						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+						std::cout << "[1/2] Pitch Up/Down" << r2::linefeed;
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelPitchInfo( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
+						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
+
+						std::cout << r2::split;
+					}
+				}
+			}
+
+			{
+				fmod_result = fmod_sound->release();
+				r2_fmod_util::ERROR_CHECK( fmod_result );
+			}
+
+			r2_fmod_util::ReleaseSystem( &fmod_system );
+
+			return r2::eTestResult::RunTest_Without_Pause;
+		};
+	}
 }

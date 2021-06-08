@@ -44,6 +44,7 @@ namespace r2
 			ret->AddChild( 'q', fmod_effect_test::Echo::GetInstance() );
 			ret->AddChild( 'w', fmod_effect_test::Fade::GetInstance() );
 			ret->AddChild( 'e', fmod_effect_test::FadeStartFadeEnd::GetInstance() );
+			ret->AddChild( 'r', fmod_effect_test::PitchControl::GetInstance() );
 
 			ret->AddLineFeed();
 
