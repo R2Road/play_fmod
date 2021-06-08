@@ -255,18 +255,18 @@ namespace fmod_play_test
 
 
 
-	FMOD_RESULT F_CALLBACK TempCallback( FMOD_CHANNELCONTROL* channelcontrol, FMOD_CHANNELCONTROL_TYPE controltype, FMOD_CHANNELCONTROL_CALLBACK_TYPE /*callbacktype*/, void* /*commanddata1*/, void* /*commanddata2*/ )
+	FMOD_RESULT F_CALLBACK TempCallback( FMOD_CHANNELCONTROL* /*channelcontrol*/, FMOD_CHANNELCONTROL_TYPE controltype, FMOD_CHANNELCONTROL_CALLBACK_TYPE /*callbacktype*/, void* /*commanddata1*/, void* /*commanddata2*/ )
 	{
 		std::cout << "Call - TempCallback" << r2::linefeed;
 
 		if( controltype == FMOD_CHANNELCONTROL_TYPE::FMOD_CHANNELCONTROL_CHANNEL )
 		{
-			FMOD::Channel *channel = ( FMOD::Channel * )channelcontrol;
+			//FMOD::Channel *channel = ( FMOD::Channel * )channelcontrol;
 			// Channel specific functions here...
 		}
 		else
 		{
-			FMOD::ChannelGroup *group = ( FMOD::ChannelGroup * )channelcontrol;
+			//FMOD::ChannelGroup *group = ( FMOD::ChannelGroup * )channelcontrol;
 			// ChannelGroup specific functions here...
 		}
 
@@ -536,8 +536,6 @@ namespace fmod_play_test
 			{
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
-
-				float volume = 1.0f;
 
 				bool process = true;
 				while( process )
