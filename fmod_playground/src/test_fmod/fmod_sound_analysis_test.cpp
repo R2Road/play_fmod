@@ -43,6 +43,11 @@ namespace fmod_sound_analysis_test
 			FMOD::DSP* fsm_dsp_fft = nullptr;
 			{ 
 				r2_fmod_util::ERROR_CHECK( fmod_system->createDSPByType( FMOD_DSP_TYPE_FFT, &fsm_dsp_fft ) );
+
+				r2_fmod_util::ERROR_CHECK( fsm_dsp_fft->setParameterInt( FMOD_DSP_FFT_WINDOWTYPE, FMOD_DSP_FFT_WINDOW_TRIANGLE ) );
+
+				int windowsize = 1024;
+				r2_fmod_util::ERROR_CHECK( fsm_dsp_fft->setParameterInt( FMOD_DSP_FFT_WINDOWSIZE, windowsize ) );
 			}
 
 			//
@@ -104,6 +109,17 @@ namespace fmod_sound_analysis_test
 									std::cout << freqVal << r2::linefeed;
 								}
 							}
+						}
+
+						std::cout << r2::split;
+
+						{
+							const auto backup_precision = std::cout.precision();
+
+							float dfft = 0.f;
+
+							fsm_dsp_fft->getParameterFloat( FMOD_DSP_FFT_DOMINANT_FREQ, &dfft, 0, 0 );
+							std::cout << dfft << r2::linefeed;
 						}
 
 						std::cout << r2::split;
