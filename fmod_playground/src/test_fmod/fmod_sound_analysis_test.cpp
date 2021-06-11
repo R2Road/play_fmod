@@ -14,6 +14,7 @@
 //
 // # Ref
 // 1. https://qa.fmod.com/t/problem-getting-spectrum-in-newer-fmod-versions/11624
+// 2. https://qa.fmod.com/t/how-to-get-spectrum-data-including-amplitudes-with-fmod-dsp-parameter-fft/12183
 //
 
 namespace fmod_sound_analysis_test
@@ -92,12 +93,8 @@ namespace fmod_sound_analysis_test
 						std::cout << r2::split;
 
 						{
-							const auto backup_precision = std::cout.precision();
-
-							std::setprecision( 4 );
-
 							FMOD_DSP_PARAMETER_FFT* fft = nullptr;
-							unsigned int binlength;
+
 							fsm_dsp_fft->getParameterData( FMOD_DSP_FFT_SPECTRUMDATA, (void **)&fft, 0, 0, 0 );
 							for( int channel = 0; /*fft->numchannels*/ 1 > channel; channel++ )
 							{
@@ -107,8 +104,6 @@ namespace fmod_sound_analysis_test
 									std::cout << freqVal << r2::linefeed;
 								}
 							}
-
-							std::setprecision( backup_precision );
 						}
 
 						std::cout << r2::split;
