@@ -48,7 +48,7 @@ namespace fmod_sound_analysis_test
 
 				r2_fmod_util::ERROR_CHECK( fsm_dsp_fft->setParameterInt( FMOD_DSP_FFT_WINDOWTYPE, FMOD_DSP_FFT_WINDOW_TRIANGLE ) );
 
-				int windowsize = 1024;
+				int windowsize = 256;
 				r2_fmod_util::ERROR_CHECK( fsm_dsp_fft->setParameterInt( FMOD_DSP_FFT_WINDOWSIZE, windowsize ) );
 			}
 
@@ -103,17 +103,22 @@ namespace fmod_sound_analysis_test
 							FMOD_DSP_PARAMETER_FFT* fft = nullptr;
 
 							fsm_dsp_fft->getParameterData( FMOD_DSP_FFT_SPECTRUMDATA, (void **)&fft, 0, 0, 0 );
-							for( int channel = 0; /*fft->numchannels*/ 1 > channel; channel++ )
+							for( int channel = 0; fft->numchannels > channel; channel++ )
 							{
-								for( int bin = 0; /*fft->length*/ 10 > bin; ++bin )
+								for( int bin = 0; fft->length > bin; ++bin )
 								{
 									float freqVal = fft->spectrum[channel][bin];
-									std::cout << freqVal << r2::linefeed;
+									std::cout << static_cast<int>( freqVal * 10000 ) << r2::tab;
+
+									if( 0 == ( bin + 1 ) % 14 )
+									{
+										std::cout << r2::linefeed;
+									}
 								}
+
+								std::cout << r2::split;
 							}
 						}
-
-						std::cout << r2::split;
 
 						{
 							const auto backup_precision = std::cout.precision();
@@ -126,7 +131,7 @@ namespace fmod_sound_analysis_test
 
 						std::cout << r2::split;
 
-						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelTimeInfo( fmod_channel );
 
 						std::cout << r2::split;
 					}

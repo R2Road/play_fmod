@@ -165,9 +165,40 @@ namespace r2_fmod_util
 		}
 
 		std::cout << ( paused ? "Paused " : ( playing ? "Playing" : "Stopped" ) ) << r2::linefeed;
+		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2::linefeed;
+		
+		PrintChannelInfo( fmod_channel );
+	}
+
+	void PrintChannelTimeInfo( FMOD::Channel* const fmod_channel )
+	{
+		FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+
+		unsigned int ms = 0;
+		unsigned int lenms = 0;
+
+		if( fmod_channel )
+		{
+			fmod_result = fmod_channel->getPosition( &ms, FMOD_TIMEUNIT_MS );
+			if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+			{
+				R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
+			}
+
+			FMOD::Sound* current_sound = nullptr;
+			fmod_channel->getCurrentSound( &current_sound );
+			if( current_sound )
+			{
+				fmod_result = current_sound->getLength( &lenms, FMOD_TIMEUNIT_MS );
+				if( ( fmod_result != FMOD_OK ) && ( fmod_result != FMOD_ERR_INVALID_HANDLE ) && ( fmod_result != FMOD_ERR_CHANNEL_STOLEN ) )
+				{
+					R2ASSERT( false, FMOD_ErrorString( fmod_result ) );
+				}
+			}
+		}
+
 		std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
 		std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
-		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2::linefeed;
 	}
 	void PrintChannelVolumeInfo( FMOD::ChannelControl* const fmod_channel )
 	{
