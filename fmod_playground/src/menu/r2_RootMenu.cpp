@@ -9,6 +9,7 @@
 #include "test_fmod/fmod_play_test.h"
 #include "test_fmod/fmod_effect_test.h"
 #include "test_fmod/fmod_channel_group_test.h"
+#include "test_fmod/fmod_sound_analysis_test.h"
 
 #include "test_fmod/etc_test.h"
 
@@ -51,6 +52,10 @@ namespace r2
 			ret->AddChild( 'a', fmod_channel_group_test::Basic::GetInstance() );
 			ret->AddChild( 's', fmod_channel_group_test::Group::GetInstance() );
 			ret->AddChild( 'd', fmod_channel_group_test::Volume::GetInstance() );
+
+			ret->AddLineFeed();
+
+			ret->AddChild( 'z', fmod_sound_analysis_test::Frequency::GetInstance() );
 
 			ret->AddSplit();
 
