@@ -15,6 +15,7 @@
 // # Ref
 // 1. https://qa.fmod.com/t/problem-getting-spectrum-in-newer-fmod-versions/11624
 // 2. https://qa.fmod.com/t/how-to-get-spectrum-data-including-amplitudes-with-fmod-dsp-parameter-fft/12183
+// 3. https://katyscode.wordpress.com/2013/01/16/cutting-your-teeth-on-fmod-part-4-frequency-analysis-graphic-equalizer-beat-detection-and-bpm-estimation/
 //
 
 namespace fmod_sound_analysis_test
