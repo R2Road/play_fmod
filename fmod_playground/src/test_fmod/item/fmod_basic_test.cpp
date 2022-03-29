@@ -82,8 +82,10 @@ namespace fmod_basic_test
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
-			FMOD::System* fmod_system = nullptr;
-			r2_fmod_util::CreateSystem( &fmod_system );
+			std::cout << r2::split;
+
+			DECLARATION_MAIN( FMOD::System* fmod_system = nullptr );
+			PROCESS_MAIN( r2_fmod_util::CreateSystem( &fmod_system ) );
 
 			std::cout << r2::split;
 
@@ -91,22 +93,26 @@ namespace fmod_basic_test
 			// Version Check
 			//
 			{
-				unsigned int version = 0;
-				const FMOD_RESULT fmod_result = fmod_system->getVersion( &version );
+				std::cout << r2::tab << "+ Version Check" << r2::linefeed2;
+
+				DECLARATION_MAIN( unsigned int version = 0 );
+				DECLARATION_MAIN( const FMOD_RESULT fmod_result = fmod_system->getVersion( &version ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				std::cout << r2::tab << "FMOD lib version " << std::hex << version << std::dec;
-				if( version < FMOD_VERSION )
-				{
-					std::cout << "doesn't match header version " << FMOD_VERSION;
-				}
+				std::cout << r2::linefeed;
+
+				std::cout << "FMOD lib version " << std::hex << version << std::dec << r2::linefeed;
 
 				std::cout << r2::linefeed;
+
+				EXPECT_TRUE( version == FMOD_VERSION );
 			}
 
 			std::cout << r2::split;
 
-			r2_fmod_util::ReleaseSystem( &fmod_system );
+			PROCESS_MAIN( r2_fmod_util::ReleaseSystem( &fmod_system ) );
+
+			std::cout << r2::split;
 
 			return r2cm::eTestEndAction::Pause;
 		};
