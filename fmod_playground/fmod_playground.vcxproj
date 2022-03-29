@@ -29,13 +29,13 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\r2\r2_FrameManager.cpp" />
-    <ClCompile Include="src\test_fmod\etc_test.cpp" />
-    <ClCompile Include="src\test_fmod\fmod_basic_test.cpp" />
-    <ClCompile Include="src\test_fmod\fmod_channel_group_test.cpp" />
-    <ClCompile Include="src\test_fmod\fmod_effect_test.cpp" />
-    <ClCompile Include="src\test_fmod\fmod_sound_analysis_test.cpp" />
-    <ClCompile Include="src\test_fmod\fmod_load_test.cpp" />
-    <ClCompile Include="src\test_fmod\fmod_play_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\etc_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\fmod_basic_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\fmod_channel_group_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\fmod_effect_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\fmod_load_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\fmod_play_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\fmod_sound_analysis_test.cpp" />
     <ClCompile Include="src\test_fmod\menu\RootMenu.cpp" />
     <ClCompile Include="src\utility\r2_fmod_util.cpp" />
   </ItemGroup>
@@ -48,13 +48,13 @@
     <ClInclude Include="src\base\r2_Singleton.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\r2\r2_FrameManager.h" />
-    <ClInclude Include="src\test_fmod\etc_test.h" />
-    <ClInclude Include="src\test_fmod\fmod_basic_test.h" />
-    <ClInclude Include="src\test_fmod\fmod_channel_group_test.h" />
-    <ClInclude Include="src\test_fmod\fmod_effect_test.h" />
-    <ClInclude Include="src\test_fmod\fmod_sound_analysis_test.h" />
-    <ClInclude Include="src\test_fmod\fmod_load_test.h" />
-    <ClInclude Include="src\test_fmod\fmod_play_test.h" />
+    <ClInclude Include="src\test_fmod\item\etc_test.h" />
+    <ClInclude Include="src\test_fmod\item\fmod_basic_test.h" />
+    <ClInclude Include="src\test_fmod\item\fmod_channel_group_test.h" />
+    <ClInclude Include="src\test_fmod\item\fmod_effect_test.h" />
+    <ClInclude Include="src\test_fmod\item\fmod_load_test.h" />
+    <ClInclude Include="src\test_fmod\item\fmod_play_test.h" />
+    <ClInclude Include="src\test_fmod\item\fmod_sound_analysis_test.h" />
     <ClInclude Include="src\test_fmod\menu\RootMenu.h" />
     <ClInclude Include="src\utility\r2_fmod_util.h" />
   </ItemGroup>

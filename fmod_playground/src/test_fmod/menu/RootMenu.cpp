@@ -4,14 +4,13 @@
 #include "base/r2_Director.h"
 #include "base/r2_eTestResult.h"
 
-#include "test_fmod/fmod_basic_test.h"
-#include "test_fmod/fmod_load_test.h"
-#include "test_fmod/fmod_play_test.h"
-#include "test_fmod/fmod_effect_test.h"
-#include "test_fmod/fmod_channel_group_test.h"
-#include "test_fmod/fmod_sound_analysis_test.h"
-
-#include "test_fmod/etc_test.h"
+#include "test_fmod/item/fmod_basic_test.h"
+#include "test_fmod/item/fmod_load_test.h"
+#include "test_fmod/item/fmod_play_test.h"
+#include "test_fmod/item/fmod_effect_test.h"
+#include "test_fmod/item/fmod_channel_group_test.h"
+#include "test_fmod/item/fmod_sound_analysis_test.h"
+#include "test_fmod/item/etc_test.h"
 
 r2::MenuUp RootMenu::Create( r2::Director& director )
 {
