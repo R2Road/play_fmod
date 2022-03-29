@@ -48,7 +48,7 @@ namespace fmod_channel_group_test
 
 			std::cout << r2::split;
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eTestEndAction::Pause;
 		};
 	}
 
@@ -142,7 +142,7 @@ namespace fmod_channel_group_test
 
 			std::cout << r2::split;
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eTestEndAction::Pause;
 		};
 	}
 
