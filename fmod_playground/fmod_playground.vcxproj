@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="src\base\r2_Director.cpp" />
     <ClCompile Include="src\base\r2_Menu.cpp" />
-    <ClCompile Include="src\menu\r2_RootMenu.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -37,6 +36,7 @@
     <ClCompile Include="src\test_fmod\fmod_sound_analysis_test.cpp" />
     <ClCompile Include="src\test_fmod\fmod_load_test.cpp" />
     <ClCompile Include="src\test_fmod\fmod_play_test.cpp" />
+    <ClCompile Include="src\test_fmod\menu\RootMenu.cpp" />
     <ClCompile Include="src\utility\r2_fmod_util.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -46,7 +46,6 @@
     <ClInclude Include="src\base\r2_iTest.h" />
     <ClInclude Include="src\base\r2_Menu.h" />
     <ClInclude Include="src\base\r2_Singleton.h" />
-    <ClInclude Include="src\menu\r2_RootMenu.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\r2\r2_FrameManager.h" />
     <ClInclude Include="src\test_fmod\etc_test.h" />
@@ -56,6 +55,7 @@
     <ClInclude Include="src\test_fmod\fmod_sound_analysis_test.h" />
     <ClInclude Include="src\test_fmod\fmod_load_test.h" />
     <ClInclude Include="src\test_fmod\fmod_play_test.h" />
+    <ClInclude Include="src\test_fmod\menu\RootMenu.h" />
     <ClInclude Include="src\utility\r2_fmod_util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

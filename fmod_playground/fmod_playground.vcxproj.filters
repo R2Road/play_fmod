@@ -4,9 +4,6 @@
     <Filter Include="base">
       <UniqueIdentifier>{81ab3847-2894-4251-856b-66f39b090229}</UniqueIdentifier>
     </Filter>
-    <Filter Include="menu">
-      <UniqueIdentifier>{b9566801-30ec-4d55-bd6d-040901fc06e3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="test_fmod">
       <UniqueIdentifier>{77a45f2c-1f22-46b3-9c35-5ee34c38a7b9}</UniqueIdentifier>
     </Filter>
@@ -15,6 +12,9 @@
     </Filter>
     <Filter Include="r2">
       <UniqueIdentifier>{7f8e3881-6ccf-4203-a030-363f487d65bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test_fmod\menu">
+      <UniqueIdentifier>{4093bd03-4cb2-493d-b960-ad93b7dcd157}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,9 +25,6 @@
     </ClCompile>
     <ClCompile Include="src\base\r2_Menu.cpp">
       <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\menu\r2_RootMenu.cpp">
-      <Filter>menu</Filter>
     </ClCompile>
     <ClCompile Include="src\test_fmod\fmod_basic_test.cpp">
       <Filter>test_fmod</Filter>
@@ -56,6 +53,9 @@
     <ClCompile Include="src\r2\r2_FrameManager.cpp">
       <Filter>r2</Filter>
     </ClCompile>
+    <ClCompile Include="src\test_fmod\menu\RootMenu.cpp">
+      <Filter>test_fmod\menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
@@ -76,9 +76,6 @@
     </ClInclude>
     <ClInclude Include="src\base\r2_Singleton.h">
       <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="src\menu\r2_RootMenu.h">
-      <Filter>menu</Filter>
     </ClInclude>
     <ClInclude Include="src\test_fmod\fmod_basic_test.h">
       <Filter>test_fmod</Filter>
@@ -106,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="src\r2\r2_FrameManager.h">
       <Filter>r2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test_fmod\menu\RootMenu.h">
+      <Filter>test_fmod\menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
