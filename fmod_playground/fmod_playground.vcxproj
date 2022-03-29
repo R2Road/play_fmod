@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\base\r2_Director.cpp" />
-    <ClCompile Include="src\base\r2_FrameManager.cpp" />
     <ClCompile Include="src\base\r2_Menu.cpp" />
     <ClCompile Include="src\menu\r2_RootMenu.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -30,6 +29,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\r2\r2_FrameManager.cpp" />
     <ClCompile Include="src\test_fmod\etc_test.cpp" />
     <ClCompile Include="src\test_fmod\fmod_basic_test.cpp" />
     <ClCompile Include="src\test_fmod\fmod_channel_group_test.cpp" />
@@ -43,12 +43,12 @@
     <ClInclude Include="src\base\r2_Assert.h" />
     <ClInclude Include="src\base\r2_Director.h" />
     <ClInclude Include="src\base\r2_eTestResult.h" />
-    <ClInclude Include="src\base\r2_FrameManager.h" />
     <ClInclude Include="src\base\r2_iTest.h" />
     <ClInclude Include="src\base\r2_Menu.h" />
     <ClInclude Include="src\base\r2_Singleton.h" />
     <ClInclude Include="src\menu\r2_RootMenu.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\r2\r2_FrameManager.h" />
     <ClInclude Include="src\test_fmod\etc_test.h" />
     <ClInclude Include="src\test_fmod\fmod_basic_test.h" />
     <ClInclude Include="src\test_fmod\fmod_channel_group_test.h" />

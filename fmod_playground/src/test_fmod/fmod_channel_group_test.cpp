@@ -8,7 +8,7 @@
 #include "fmod_errors.h"
 
 #include "base/r2_Assert.h"
-#include "base/r2_FrameManager.h"
+#include "r2/r2_FrameManager.h"
 #include "base/r2_eTestResult.h"
 #include "utility/r2_fmod_util.h"
 

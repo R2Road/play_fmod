@@ -13,14 +13,14 @@
     <Filter Include="utility">
       <UniqueIdentifier>{abef3520-7cdf-44e1-9ede-8fafcfbe17cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="r2">
+      <UniqueIdentifier>{7f8e3881-6ccf-4203-a030-363f487d65bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\base\r2_Director.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\r2_FrameManager.cpp">
       <Filter>base</Filter>
     </ClCompile>
     <ClCompile Include="src\base\r2_Menu.cpp">
@@ -53,6 +53,9 @@
     <ClCompile Include="src\test_fmod\fmod_sound_analysis_test.cpp">
       <Filter>test_fmod</Filter>
     </ClCompile>
+    <ClCompile Include="src\r2\r2_FrameManager.cpp">
+      <Filter>r2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
@@ -63,9 +66,6 @@
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="src\base\r2_eTestResult.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\r2_FrameManager.h">
       <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="src\base\r2_iTest.h">
@@ -103,6 +103,9 @@
     </ClInclude>
     <ClInclude Include="src\test_fmod\fmod_sound_analysis_test.h">
       <Filter>test_fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2\r2_FrameManager.h">
+      <Filter>r2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@
 #include "base/r2_eTestResult.h"
 
 #include "base/r2_Assert.h"
-#include "base/r2_FrameManager.h"
+#include "r2/r2_FrameManager.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_load_test
