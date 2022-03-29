@@ -162,7 +162,7 @@ namespace r2_fmod_util
 		std::cout << ( paused ? "Paused " : ( playing ? "Playing" : "Stopped" ) ) << r2::linefeed;
 		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2::linefeed;
 		
-		PrintChannelInfo( fmod_channel );
+		PrintChannelTimeInfo( fmod_channel );
 	}
 
 	void PrintChannelTimeInfo( FMOD::Channel* const fmod_channel )

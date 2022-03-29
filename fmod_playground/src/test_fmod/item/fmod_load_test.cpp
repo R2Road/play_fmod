@@ -69,7 +69,7 @@ namespace fmod_load_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eTestEndAction::Pause;
 		};
 	}
 
@@ -187,7 +187,7 @@ namespace fmod_load_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eTestEndAction::Pause;
 		};
 	}
 }
