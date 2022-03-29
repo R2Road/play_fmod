@@ -110,5 +110,8 @@
     <ClInclude Include="src\r2cm\r2cm_Menu.h">
       <Filter>r2cm</Filter>
     </ClInclude>
+    <ClInclude Include="src\r2\r2_Inspector.h">
+      <Filter>r2</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
