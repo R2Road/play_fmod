@@ -8,18 +8,18 @@
 
 #include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
-#include "base/r2_eTestResult.h"
+#include "r2cm/r2cm_eTestEndAction.h"
 #include "utility/r2_fmod_util.h"
 
 namespace etc_test
 {
-	r2::iTest::TitleFunc Test1::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT Test1::GetTitleFunction() const
 	{
 		return []()->const char* { return "ETC : Test 1"; };
 	}
-	r2::iTest::DoFunc Test1::GetDoFunction()
+	r2cm::iItem::DoFuncT Test1::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -153,7 +153,7 @@ namespace etc_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 }

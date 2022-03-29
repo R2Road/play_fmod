@@ -6,7 +6,7 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
-#include "base/r2_eTestResult.h"
+#include "r2cm/r2cm_eTestEndAction.h"
 
 #include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
@@ -14,16 +14,16 @@
 
 namespace fmod_load_test
 {
-	r2::iTest::TitleFunc Basic::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT Basic::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Sound Load - Basic";
 		};
 	}
-	r2::iTest::DoFunc Basic::GetDoFunction()
+	r2cm::iItem::DoFuncT Basic::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -69,22 +69,22 @@ namespace fmod_load_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
 
 
-	r2::iTest::TitleFunc Memory::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT Memory::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Sound Load - Memory";
 		};
 	}
-	r2::iTest::DoFunc Memory::GetDoFunction()
+	r2cm::iItem::DoFuncT Memory::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -187,7 +187,7 @@ namespace fmod_load_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 }

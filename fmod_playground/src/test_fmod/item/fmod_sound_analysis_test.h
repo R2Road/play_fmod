@@ -1,14 +1,14 @@
 #pragma once
 
-#include "base/r2_iTest.h"
+#include "r2cm/r2cm_iItem.h"
 #include "r2/r2_Singleton.h"
 
 namespace fmod_sound_analysis_test
 {
-	class Frequency : public r2::iTest, public r2::SingleTon<Frequency>
+	class Frequency : public r2cm::iItem, public r2::SingleTon<Frequency>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 }

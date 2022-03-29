@@ -5,7 +5,7 @@
 	#include <vld.h>
 #endif
 
-#include "base/r2_Director.h"
+#include "r2cm/r2cm_Director.h"
 #include "test_fmod/menu/RootMenu.h"
 
 int main()
@@ -33,13 +33,13 @@ int main()
 	//
 	// Setup
 	//
-	r2::Director director;
+	r2cm::Director director;
 	director.Setup( RootMenu::Create( director ) );
 
 	//
 	// Process
 	//
-	director.Update();
+	director.Run();
 
 	return 0;
 }

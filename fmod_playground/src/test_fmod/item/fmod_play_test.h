@@ -1,42 +1,42 @@
 #pragma once
 
-#include "base/r2_iTest.h"
+#include "r2cm/r2cm_iItem.h"
 #include "r2/r2_Singleton.h"
 
 namespace fmod_play_test
 {
-	class PlaySound : public r2::iTest, public r2::SingleTon<PlaySound>
+	class PlaySound : public r2cm::iItem, public r2::SingleTon<PlaySound>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 
-	class PlayStream: public r2::iTest, public r2::SingleTon<PlayStream>
+	class PlayStream: public r2cm::iItem, public r2::SingleTon<PlayStream>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 
-	class PlayAndCallback: public r2::iTest, public r2::SingleTon<PlayAndCallback>
+	class PlayAndCallback: public r2cm::iItem, public r2::SingleTon<PlayAndCallback>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 
-	class VolumeControl : public r2::iTest, public r2::SingleTon<VolumeControl>
+	class VolumeControl : public r2cm::iItem, public r2::SingleTon<VolumeControl>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 
-	class PositionControl : public r2::iTest, public r2::SingleTon<PositionControl>
+	class PositionControl : public r2cm::iItem, public r2::SingleTon<PositionControl>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 }

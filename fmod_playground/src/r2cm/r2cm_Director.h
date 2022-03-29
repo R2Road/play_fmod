@@ -1,8 +1,8 @@
 #pragma once
 
-#include "r2_Menu.h"
+#include "r2cm_Menu.h"
 
-namespace r2
+namespace r2cm
 {
 	class Director
 	{
@@ -11,7 +11,7 @@ namespace r2
 
 		void Setup( MenuUp menu );
 
-		void Update();
+		void Run();
 
 	private:
 		MenuUp mMenu;

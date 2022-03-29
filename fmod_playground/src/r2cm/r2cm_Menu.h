@@ -5,52 +5,48 @@
 #include <string_view>
 #include <vector>
 
-namespace r2
+namespace r2cm
 {
-	enum class eTestResult; 
+	enum class eTestEndAction; 
 
-	class iTest;
+	class iItem;
 	class Director;
 
 	using MenuUp = std::unique_ptr<class Menu>;
 	class Menu
 	{
 	private:
-		struct TestInfo
+		struct ItemInfo
 		{
-			TestInfo(
+			ItemInfo(
 				const char key_code
 				, const std::function<const char*( )> name_function
-				, const std::function<const r2::eTestResult()> test_function
+				, const std::function<const r2cm::eTestEndAction()> do_function
 			) :
 				KeyCode( key_code )
 				, NameFunction( name_function )
-				, TestFunction( test_function )
+				, DoFunction( do_function )
 			{}
 
 			char KeyCode;
 			std::function<const char*()> NameFunction;
-			std::function<const r2::eTestResult()> TestFunction;
+			std::function<const r2cm::eTestEndAction()> DoFunction;
 		};
 
-		using TestContainerT = std::vector<TestInfo>;
+		using ItemContainerT = std::vector<ItemInfo>;
 
 	public:
 		Menu( Director& director, const char* title_string, const char* description_string = "" );
 		virtual ~Menu() {}
 
-		void ShowMenu() const;
-
-	private:
 		void ShowTitle() const;
 		void ShowDescription() const;
-		void ShowItem() const;
+		void ShowMenu() const;
 
-	public:
-		eTestResult Do( const int key_code );
+		eTestEndAction Do( const int key_code );
 
-		void AddChild( const char key_code, iTest& test_obj );
-		void AddChild( const char key_code, const std::function<const char*( )> func_title, const std::function<const r2::eTestResult()> func_test );
+		void AddItem( const char key_code, iItem& item_obj );
+		void AddItem( const char key_code, const std::function<const char*()> func_title, const std::function<const r2cm::eTestEndAction()> func_do );
 		void AddLineFeed();
 		void AddSplit();
 
@@ -59,6 +55,6 @@ namespace r2
 		std::string_view mTitleString;
 		std::string_view mDescriptionString;
 
-		TestContainerT mTests;
+		ItemContainerT mItemContainer;
 	};
 }

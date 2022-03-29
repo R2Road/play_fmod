@@ -1,35 +1,35 @@
 #pragma once
 
-#include "base/r2_iTest.h"
+#include "r2cm/r2cm_iItem.h"
 #include "r2/r2_Singleton.h"
 
 namespace fmod_effect_test
 {
-	class Echo : public r2::iTest, public r2::SingleTon<Echo>
+	class Echo : public r2cm::iItem, public r2::SingleTon<Echo>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 
-	class Fade : public r2::iTest, public r2::SingleTon<Fade>
+	class Fade : public r2cm::iItem, public r2::SingleTon<Fade>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 
-	class FadeStartFadeEnd : public r2::iTest, public r2::SingleTon<FadeStartFadeEnd>
+	class FadeStartFadeEnd : public r2cm::iItem, public r2::SingleTon<FadeStartFadeEnd>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 
-	class PitchControl : public r2::iTest, public r2::SingleTon<PitchControl>
+	class PitchControl : public r2cm::iItem, public r2::SingleTon<PitchControl>
 	{
 	public:
-		TitleFunc GetTitleFunction() const override;
-		DoFunc GetDoFunction() override;
+		TitleFuncT GetTitleFunction() const override;
+		DoFuncT GetDoFunction() override;
 	};
 }

@@ -8,7 +8,7 @@
 #include "fmod_errors.h"
 
 #include "r2/r2_FrameManager.h"
-#include "base/r2_eTestResult.h"
+#include "r2cm/r2cm_eTestEndAction.h"
 #include "utility/r2_fmod_util.h"
 
 //
@@ -21,13 +21,13 @@
 
 namespace fmod_sound_analysis_test
 {
-	r2::iTest::TitleFunc Frequency::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT Frequency::GetTitleFunction() const
 	{
 		return []()->const char* { return "Sound Analysis - Frequency"; };
 	}
-	r2::iTest::DoFunc Frequency::GetDoFunction()
+	r2cm::iItem::DoFuncT Frequency::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -156,7 +156,7 @@ namespace fmod_sound_analysis_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 
 
 			//{

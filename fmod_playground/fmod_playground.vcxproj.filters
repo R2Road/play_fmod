@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="base">
-      <UniqueIdentifier>{81ab3847-2894-4251-856b-66f39b090229}</UniqueIdentifier>
-    </Filter>
     <Filter Include="test_fmod">
       <UniqueIdentifier>{77a45f2c-1f22-46b3-9c35-5ee34c38a7b9}</UniqueIdentifier>
     </Filter>
@@ -19,16 +16,13 @@
     <Filter Include="test_fmod\item">
       <UniqueIdentifier>{00b0807e-d477-422e-b460-a49e91af26a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="r2cm">
+      <UniqueIdentifier>{81ab3847-2894-4251-856b-66f39b090229}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp" />
-    <ClCompile Include="src\base\r2_Director.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\r2_Menu.cpp">
-      <Filter>base</Filter>
-    </ClCompile>
     <ClCompile Include="src\utility\r2_fmod_util.cpp">
       <Filter>utility</Filter>
     </ClCompile>
@@ -59,21 +53,15 @@
     <ClCompile Include="src\test_fmod\item\fmod_sound_analysis_test.cpp">
       <Filter>test_fmod\item</Filter>
     </ClCompile>
+    <ClCompile Include="src\r2cm\r2cm_Director.cpp">
+      <Filter>r2cm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\r2cm\r2cm_Menu.cpp">
+      <Filter>r2cm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\base\r2_Director.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\r2_eTestResult.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\r2_iTest.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\r2_Menu.h">
-      <Filter>base</Filter>
-    </ClInclude>
     <ClInclude Include="src\utility\r2_fmod_util.h">
       <Filter>utility</Filter>
     </ClInclude>
@@ -109,6 +97,18 @@
     </ClInclude>
     <ClInclude Include="src\r2\r2_Assert.h">
       <Filter>r2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_Director.h">
+      <Filter>r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_eTestEndAction.h">
+      <Filter>r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_iItem.h">
+      <Filter>r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_Menu.h">
+      <Filter>r2cm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

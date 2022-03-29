@@ -9,18 +9,18 @@
 
 #include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
-#include "base/r2_eTestResult.h"
+#include "r2cm/r2cm_eTestEndAction.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_play_test
 {
-	r2::iTest::TitleFunc PlaySound::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT PlaySound::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Sound"; };
 	}
-	r2::iTest::DoFunc PlaySound::GetDoFunction()
+	r2cm::iItem::DoFuncT PlaySound::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -117,19 +117,19 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
 
 
-	r2::iTest::TitleFunc PlayStream::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT PlayStream::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Stream"; };
 	}
-	r2::iTest::DoFunc PlayStream::GetDoFunction()
+	r2cm::iItem::DoFuncT PlayStream::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -249,7 +249,7 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
@@ -274,13 +274,13 @@ namespace fmod_play_test
 
 		return FMOD_RESULT::FMOD_OK;
 	}
-	r2::iTest::TitleFunc PlayAndCallback::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT PlayAndCallback::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play And Callback"; };
 	}
-	r2::iTest::DoFunc PlayAndCallback::GetDoFunction()
+	r2cm::iItem::DoFuncT PlayAndCallback::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -375,19 +375,19 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
 
 
-	r2::iTest::TitleFunc VolumeControl::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT VolumeControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Volume Control"; };
 	}
-	r2::iTest::DoFunc VolumeControl::GetDoFunction()
+	r2cm::iItem::DoFuncT VolumeControl::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -493,19 +493,19 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
 
 
-	r2::iTest::TitleFunc PositionControl::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT PositionControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Position Control"; };
 	}
-	r2::iTest::DoFunc PositionControl::GetDoFunction()
+	r2cm::iItem::DoFuncT PositionControl::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -602,7 +602,7 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 }

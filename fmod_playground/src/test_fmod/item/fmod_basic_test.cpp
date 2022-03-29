@@ -4,23 +4,23 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
-#include "base/r2_eTestResult.h"
+#include "r2cm/r2cm_eTestEndAction.h"
 
 #include "r2/r2_Assert.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_basic_test
 {
-	r2::iTest::TitleFunc SystemCreateAndRelease::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT SystemCreateAndRelease::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "System Create And Release";
 		};
 	}
-	r2::iTest::DoFunc SystemCreateAndRelease::GetDoFunction()
+	r2cm::iItem::DoFuncT SystemCreateAndRelease::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 			
@@ -90,22 +90,22 @@ namespace fmod_basic_test
 
 			std::cout << r2::split;
 
-			return r2::eTestResult::RunTest;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
 
 
-	r2::iTest::TitleFunc VersionCheck::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT VersionCheck::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Version Check";
 		};
 	}
-	r2::iTest::DoFunc VersionCheck::GetDoFunction()
+	r2cm::iItem::DoFuncT VersionCheck::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -135,7 +135,7 @@ namespace fmod_basic_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 }

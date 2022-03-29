@@ -9,18 +9,18 @@
 
 #include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
-#include "base/r2_eTestResult.h"
+#include "r2cm/r2cm_eTestEndAction.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_channel_group_test
 {
-	r2::iTest::TitleFunc Basic::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT Basic::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Basic"; };
 	}
-	r2::iTest::DoFunc Basic::GetDoFunction()
+	r2cm::iItem::DoFuncT Basic::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -48,19 +48,19 @@ namespace fmod_channel_group_test
 
 			std::cout << r2::split;
 
-			return r2::eTestResult::RunTest;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
 
 
-	r2::iTest::TitleFunc Group::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT Group::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Group"; };
 	}
-	r2::iTest::DoFunc Group::GetDoFunction()
+	r2cm::iItem::DoFuncT Group::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -142,19 +142,19 @@ namespace fmod_channel_group_test
 
 			std::cout << r2::split;
 
-			return r2::eTestResult::RunTest;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 
 
 
-	r2::iTest::TitleFunc Volume::GetTitleFunction() const
+	r2cm::iItem::TitleFuncT Volume::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Volume"; };
 	}
-	r2::iTest::DoFunc Volume::GetDoFunction()
+	r2cm::iItem::DoFuncT Volume::GetDoFunction()
 	{
-		return []()->r2::eTestResult
+		return []()->r2cm::eTestEndAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -338,7 +338,7 @@ namespace fmod_channel_group_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2::eTestResult::RunTest_Without_Pause;
+			return r2cm::eTestEndAction::None;
 		};
 	}
 }
