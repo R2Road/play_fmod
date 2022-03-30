@@ -33,5 +33,5 @@ namespace r2_fmod_util
 
 
 
-	void ERROR_CHECK( const FMOD_RESULT fmod_result );
+	bool ERROR_CHECK( const FMOD_RESULT fmod_result );
 }
