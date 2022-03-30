@@ -4,20 +4,6 @@
 #include <iostream>
 #include <stdio.h>
 
-
-
-#define	R2ASSERT( cond, message )					\
-do {												\
-	if( !( cond ) )									\
-	{												\
-		printf( "+ R2ASSERT" "\nMessage : %s" "\nFile : %s" "\nLine : %d" "\nFunction : %s", message, __FILE__, __LINE__, __FUNCTION__ ); \
-		__debugbreak();								\
-		throw std::runtime_error( message );		\
-	}												\
-} while( false )
-
-
-
 namespace r2
 {
 	template<class _Elem, class _Traits>
