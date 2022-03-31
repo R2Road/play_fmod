@@ -104,15 +104,12 @@ namespace fmod_basic_test
 
 				DECLARATION_MAIN( unsigned int version = 0 );
 				DECLARATION_MAIN( const FMOD_RESULT fmod_result = fmod_system->getVersion( &version ) );
-				r2_fmod_util::ERROR_CHECK( fmod_result );
-
-				std::cout << r2::linefeed;
-
-				std::cout << "FMOD lib version " << std::hex << version << std::dec << r2::linefeed;
-
-				std::cout << r2::linefeed;
-
+				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 				EXPECT_TRUE( version == FMOD_VERSION );
+
+				std::cout << r2::linefeed2;
+
+				std::cout << "FMOD lib version : " << std::hex << version << std::dec << r2::linefeed;
 			}
 
 			std::cout << r2::split;
