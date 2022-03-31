@@ -31,13 +31,17 @@ namespace fmod_basic_test
 			std::cout << r2::split;
 
 			{
-				std::cout << r2::tab << "+ Initialize" << r2::linefeed2;
+				std::cout << r2::tab << "+ Create" << r2::linefeed2;
 
 				// Create FMOD
 				PROCESS_MAIN( fmod_result = FMOD::System_Create( &fmod_system ) );
 				EXPECT_TRUE( FMOD_RESULT::FMOD_OK == fmod_result );
+			}
 
-				std::cout << r2::linefeed;
+			std::cout << r2::split;
+
+			{
+				std::cout << r2::tab << "+ Init" << r2::linefeed2;
 
 				// Init FMOD
 				PROCESS_MAIN( fmod_result = fmod_system->init( 32, FMOD_INIT_NORMAL, 0 ) );
@@ -47,14 +51,17 @@ namespace fmod_basic_test
 			std::cout << r2::split;
 
 			{
-
-				std::cout << r2::tab << "+ Shut Down" << r2::linefeed2;
+				std::cout << r2::tab << "+ Close" << r2::linefeed2;
 
 				// Close
 				PROCESS_MAIN( fmod_result = fmod_system->close() );
 				EXPECT_TRUE( FMOD_RESULT::FMOD_OK == fmod_result );
+			}
 
-				std::cout << r2::linefeed;
+			std::cout << r2::split;
+
+			{
+				std::cout << r2::tab << "+ Release" << r2::linefeed2;
 
 				// Release
 				PROCESS_MAIN( fmod_result = fmod_system->release() );
