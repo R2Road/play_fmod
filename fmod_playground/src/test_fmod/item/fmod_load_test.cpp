@@ -45,12 +45,16 @@ namespace fmod_load_test
 			//
 			{
 				std::cout << r2::tab << "+ Load" << r2::linefeed2;
+
 				PROCESS_MAIN( fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound ) );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
+			}
 
-				std::cout << r2::linefeed;
+			std::cout << r2::split;
 
+			{
 				std::cout << r2::tab << "+ Setup" << r2::linefeed2;
+
 				PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
@@ -61,6 +65,8 @@ namespace fmod_load_test
 			// Audio Release
 			//
 			{
+				std::cout << r2::tab << "+ Release" << r2::linefeed2;
+
 				PROCESS_MAIN( fmod_result = fmod_sound->release() );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
