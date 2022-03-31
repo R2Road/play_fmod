@@ -35,9 +35,6 @@
     <ClCompile Include="src\test_fmod\item\etc_test.cpp">
       <Filter>test_fmod\item</Filter>
     </ClCompile>
-    <ClCompile Include="src\test_fmod\item\fmod_basic_test.cpp">
-      <Filter>test_fmod\item</Filter>
-    </ClCompile>
     <ClCompile Include="src\test_fmod\item\fmod_channel_group_test.cpp">
       <Filter>test_fmod\item</Filter>
     </ClCompile>
@@ -59,6 +56,9 @@
     <ClCompile Include="src\r2cm\r2cm_Menu.cpp">
       <Filter>r2cm</Filter>
     </ClCompile>
+    <ClCompile Include="src\test_fmod\item\test_basic.cpp">
+      <Filter>test_fmod\item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
@@ -72,9 +72,6 @@
       <Filter>test_fmod\menu</Filter>
     </ClInclude>
     <ClInclude Include="src\test_fmod\item\etc_test.h">
-      <Filter>test_fmod\item</Filter>
-    </ClInclude>
-    <ClInclude Include="src\test_fmod\item\fmod_basic_test.h">
       <Filter>test_fmod\item</Filter>
     </ClInclude>
     <ClInclude Include="src\test_fmod\item\fmod_channel_group_test.h">
@@ -112,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="src\r2\r2_Inspector.h">
       <Filter>r2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test_fmod\item\test_basic.h">
+      <Filter>test_fmod\item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

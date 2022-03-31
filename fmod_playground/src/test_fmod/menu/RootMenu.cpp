@@ -4,7 +4,7 @@
 #include "r2cm/r2cm_Director.h"
 #include "r2cm/r2cm_eTestEndAction.h"
 
-#include "test_fmod/item/fmod_basic_test.h"
+#include "test_fmod/item/test_basic.h"
 #include "test_fmod/item/fmod_load_test.h"
 #include "test_fmod/item/fmod_play_test.h"
 #include "test_fmod/item/fmod_effect_test.h"

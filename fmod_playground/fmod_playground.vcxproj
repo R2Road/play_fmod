@@ -30,7 +30,7 @@
     <ClCompile Include="src\r2cm\r2cm_Menu.cpp" />
     <ClCompile Include="src\r2\r2_FrameManager.cpp" />
     <ClCompile Include="src\test_fmod\item\etc_test.cpp" />
-    <ClCompile Include="src\test_fmod\item\fmod_basic_test.cpp" />
+    <ClCompile Include="src\test_fmod\item\test_basic.cpp" />
     <ClCompile Include="src\test_fmod\item\fmod_channel_group_test.cpp" />
     <ClCompile Include="src\test_fmod\item\fmod_effect_test.cpp" />
     <ClCompile Include="src\test_fmod\item\fmod_load_test.cpp" />
@@ -50,7 +50,7 @@
     <ClInclude Include="src\r2\r2_Inspector.h" />
     <ClInclude Include="src\r2\r2_Singleton.h" />
     <ClInclude Include="src\test_fmod\item\etc_test.h" />
-    <ClInclude Include="src\test_fmod\item\fmod_basic_test.h" />
+    <ClInclude Include="src\test_fmod\item\test_basic.h" />
     <ClInclude Include="src\test_fmod\item\fmod_channel_group_test.h" />
     <ClInclude Include="src\test_fmod\item\fmod_effect_test.h" />
     <ClInclude Include="src\test_fmod\item\fmod_load_test.h" />
