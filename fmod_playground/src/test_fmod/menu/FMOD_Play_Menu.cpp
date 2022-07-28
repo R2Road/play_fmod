@@ -26,10 +26,18 @@ r2cm::MenuUp FMOD_Play_Menu::Create( r2cm::Director& director )
 
 
 
-		ret->AddItem( '2', fmod_play_test::PlayStream::GetInstance() );
-		ret->AddItem( '3', fmod_play_test::PlayAndCallback::GetInstance() );
-		ret->AddItem( '4', fmod_play_test::VolumeControl::GetInstance() );
-		ret->AddItem( '5', fmod_play_test::PositionControl::GetInstance() );
+		ret->AddItem( '3', fmod_play_test::PlayStream_Basic::GetInstance() );
+		ret->AddItem( '4', fmod_play_test::PlayStream::GetInstance() );
+
+
+
+		ret->AddLineFeed();
+
+
+
+		ret->AddItem( 'q', fmod_play_test::PlayAndCallback::GetInstance() );
+		ret->AddItem( 'w', fmod_play_test::VolumeControl::GetInstance() );
+		ret->AddItem( 'e', fmod_play_test::PositionControl::GetInstance() );
 
 
 
