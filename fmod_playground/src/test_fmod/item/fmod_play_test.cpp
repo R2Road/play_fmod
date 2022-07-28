@@ -9,6 +9,7 @@
 
 #include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
+#include "r2cm/r2cm_Inspector.h"
 #include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
@@ -26,31 +27,34 @@ namespace fmod_play_test
 
 			std::cout << r2::split;
 
+			DECLARATION_MAIN( FMOD::System* fmod_system = nullptr );
+			DECLARATION_MAIN( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
+			PROCESS_MAIN( r2_fmod_util::CreateSystem( &fmod_system ) );
+
+			std::cout << r2::split;
+
+			//
+			// Audio Load
+			//
+			DECLARATION_MAIN( FMOD::Sound* fmod_sound = nullptr );
+			{
+				// Load
+				PROCESS_MAIN( fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound ) );
+				PROCESS_MAIN( r2_fmod_util::ERROR_CHECK( fmod_result ) );
+
+				// Setup
+				PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
+				PROCESS_MAIN( r2_fmod_util::ERROR_CHECK( fmod_result ) );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+			}
+
+			std::cout << r2::split;
+
 			{
 				std::cout << "[1] " << "Play" << r2::linefeed;
 				std::cout << "[2] " << "Stop" << r2::linefeed;
 			}
 
 			std::cout << r2::split;
-
-			FMOD::System* fmod_system = nullptr;
-			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
-			
-			r2_fmod_util::CreateSystem( &fmod_system );
-
-			//
-			// Audio Load
-			//
-			FMOD::Sound* fmod_sound = nullptr;
-			{
-				// Load
-				fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound );
-				r2_fmod_util::ERROR_CHECK( fmod_result );
-
-				// Setup
-				fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
-				r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
-			}
 
 			//
 			// Update Loop
@@ -67,12 +71,10 @@ namespace fmod_play_test
 
 					if( frame_manager.Update() )
 					{
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-
 						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
 
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
