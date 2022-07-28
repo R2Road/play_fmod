@@ -293,8 +293,6 @@ namespace fmod_play_test
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
-			std::cout << r2::split;
-
 			//
 			// System
 			//
