@@ -6,7 +6,7 @@
 
 #include "fmod_common.h"
 
-#include "r2cm/r2cm_Director.h"
+#include "r2cm/r2cm_Menu.h"
 #include "r2cm/r2cm_VersionInfo.h"
 
 #include "test_fmod/item/test_basic.h"
