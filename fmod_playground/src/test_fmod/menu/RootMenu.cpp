@@ -44,7 +44,8 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 		ret->AddItem( '1', fmod_basic_test::SystemCreateAndRelease::GetInstance() );
 		ret->AddItem( '2', fmod_basic_test::VersionCheck::GetInstance() );
 		ret->AddItem( '3', fmod_load_test::LoadSound::GetInstance() );
-		ret->AddMenu<FMOD_Play_Menu>( '4' );
+		ret->AddItem( '4', fmod_load_test::LoadStream::GetInstance() );
+		ret->AddMenu<FMOD_Play_Menu>( '5' );
 
 
 		ret->AddLineFeed();

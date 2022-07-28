@@ -12,7 +12,12 @@ namespace fmod_load_test
 		DoFunctionT GetDoFunction() override;
 	};
 
-
+	class LoadStream : public r2cm::iItem, public r2cm::SingleTon<LoadStream>
+	{
+	public:
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
+	};
 
 	class Memory : public r2cm::iItem, public r2cm::SingleTon<Memory>
 	{

@@ -82,6 +82,74 @@ namespace fmod_load_test
 
 
 
+	r2cm::iItem::TitleFunctionT LoadStream::GetTitleFunction() const
+	{
+		return []()->const char*
+		{
+			return "Load Stream";
+		};
+	}
+	r2cm::iItem::DoFunctionT LoadStream::GetDoFunction()
+	{
+		return []()->r2cm::eItemLeaveAction
+		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
+			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
+			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
+			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
+
+			std::cout << r2::split;
+
+			DECLARATION_MAIN( FMOD::Sound* fmod_sound = nullptr );
+
+			std::cout << r2::split;
+
+			//
+			// Audio Load
+			//
+			{
+				std::cout << r2::tab << "+ Load" << r2::linefeed2;
+
+				PROCESS_MAIN( fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound ) );
+				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
+			}
+
+			std::cout << r2::split;
+
+			{
+				std::cout << r2::tab << "+ Setup" << r2::linefeed2;
+
+				PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );
+				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
+			}
+
+			std::cout << r2::split;
+
+			//
+			// Audio Release
+			//
+			{
+				std::cout << r2::tab << "+ Release" << r2::linefeed2;
+
+				PROCESS_MAIN( fmod_result = fmod_sound->release() );
+				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
+			}
+
+			std::cout << r2::split;
+
+			PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
+
+			std::cout << r2::split;
+
+			return r2cm::eItemLeaveAction::Pause;
+		};
+	}
+
+
+
 	r2cm::iItem::TitleFunctionT Memory::GetTitleFunction() const
 	{
 		return []()->const char*
