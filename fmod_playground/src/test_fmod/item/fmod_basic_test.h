@@ -3,7 +3,7 @@
 #include "r2cm/r2cm_iItem.h"
 #include "r2cm/r2cm_Singleton.h"
 
-namespace test_basic
+namespace fmod_basic_test
 {
 	class SystemCreateAndRelease : public r2cm::iItem, public r2cm::SingleTon<SystemCreateAndRelease>
 	{

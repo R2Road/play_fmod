@@ -8,7 +8,7 @@
 
 #include "utility/r2_fmod_util.h"
 
-namespace test_basic
+namespace fmod_basic_test
 {
 	r2cm::iItem::TitleFunctionT SystemCreateAndRelease::GetTitleFunction() const
 	{

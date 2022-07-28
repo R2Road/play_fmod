@@ -38,8 +38,8 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 	) );
 
 	{
-		ret->AddItem( '1', test_basic::SystemCreateAndRelease::GetInstance() );
-		ret->AddItem( '2', test_basic::VersionCheck::GetInstance() );
+		ret->AddItem( '1', fmod_basic_test::SystemCreateAndRelease::GetInstance() );
+		ret->AddItem( '2', fmod_basic_test::VersionCheck::GetInstance() );
 
 
 		ret->AddLineFeed();
