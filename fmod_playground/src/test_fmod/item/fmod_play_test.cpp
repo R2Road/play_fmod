@@ -452,99 +452,72 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			FMOD::System* fmod_system = nullptr;
-			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
-			r2_fmod_util::CreateSystem( &fmod_system );
+			std::cout << r2::split;
+
+			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
+			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
+			DECLARATION_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
+
+			std::cout << r2::split;
 
 			//
 			// Audio Load
 			//
-			FMOD::Sound* fmod_sound = nullptr;
+			DECLARATION_SUB( FMOD::Sound* fmod_sound = nullptr );
 			{
-				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound );
+				PROCESS_SUB( fmod_result = fmod_system->createSound( "resources/gmae.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
+			std::cout << r2::split;
+
 			//
-			// Update Loop
+			// Process
 			//
 			{
-				FMOD::Channel* fmod_channel = nullptr;
-				r2::FrameManager frame_manager( 30u );
-				frame_manager.Reset();
+				DECLARATION_MAIN( FMOD::Channel* fmod_channel = nullptr );
+				PROCESS_MAIN( fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel ) );
+				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				int input = 0;
-				do
-				{
-
-					if( _kbhit() )
-					{
-						input = _getch();
-						switch( input )
-						{
-						case '1':
-							fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-
-							fmod_channel->setCallback( TempCallback );
-
-							break;
-
-						case '2':
-							if( fmod_channel )
-							{
-								fmod_channel->stop();
-							}
-							break;
-						}
-					}
-
-					if( frame_manager.Update() )
-					{
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " << "Play" << r2::linefeed;
-						std::cout << "[2] " << "Stop" << r2::linefeed;
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSampleRateInfo( fmod_system );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSoundInfo( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelInfo( fmod_channel );
-						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
-
-						std::cout << r2::split;
-					}
-
-				} while( 27 != input );
+				PROCESS_MAIN( fmod_channel->setCallback( TempCallback ) );
 			}
+
+			std::cout << r2::split;
+
+			std::cout << r2::tab << "Wait 4 Callback : [Any Key] End" << r2::linefeed2;
+			bool input = false;
+			do
+			{
+
+				fmod_result = fmod_result = fmod_system->update();
+				r2_fmod_util::ERROR_CHECK( fmod_result );
+
+				input = _kbhit();
+
+			} while( !input );
+
+			std::cout << r2::split;
 
 			//
 			// Audio Release
 			//
 			{
-				fmod_result = fmod_sound->release();
+				PROCESS_SUB( fmod_result = fmod_sound->release() );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			r2_fmod_util::ReleaseSystem( &fmod_system );
+			std::cout << r2::split;
 
-			return r2cm::eItemLeaveAction::None;
+			//
+			// System : Release
+			//
+			PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
+
+			std::cout << r2::split;
+
+			return r2cm::eItemLeaveAction::Pause;
 		};
 	}
 
