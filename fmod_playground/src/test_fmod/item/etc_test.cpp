@@ -12,13 +12,13 @@
 
 namespace etc_test
 {
-	r2cm::iItem::TitleFuncT Test1::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT Test1::GetTitleFunction() const
 	{
 		return []()->const char* { return "ETC : Test 1"; };
 	}
-	r2cm::iItem::DoFuncT Test1::GetDoFunction()
+	r2cm::iItem::DoFunctionT Test1::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -152,7 +152,7 @@ namespace etc_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 }

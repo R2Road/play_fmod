@@ -1,32 +1,32 @@
 #pragma once
 
 #include "r2cm/r2cm_iItem.h"
-#include "r2/r2_Singleton.h"
+#include "r2cm/r2cm_Singleton.h"
 
 namespace fmod_channel_group_test
 {
-	class Basic : public r2cm::iItem, public r2::SingleTon<Basic>
+	class Basic : public r2cm::iItem, public r2cm::SingleTon<Basic>
 	{
 	public:
-		TitleFuncT GetTitleFunction() const override;
-		DoFuncT GetDoFunction() override;
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
 	};
 
 
 
-	class Group : public r2cm::iItem, public r2::SingleTon<Group>
+	class Group : public r2cm::iItem, public r2cm::SingleTon<Group>
 	{
 	public:
-		TitleFuncT GetTitleFunction() const override;
-		DoFuncT GetDoFunction() override;
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
 	};
 
 
 
-	class Volume : public r2cm::iItem, public r2::SingleTon<Volume>
+	class Volume : public r2cm::iItem, public r2cm::SingleTon<Volume>
 	{
 	public:
-		TitleFuncT GetTitleFunction() const override;
-		DoFuncT GetDoFunction() override;
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
 	};
 }

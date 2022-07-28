@@ -13,13 +13,13 @@
 
 namespace fmod_play_test
 {
-	r2cm::iItem::TitleFuncT PlaySound::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT PlaySound::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Sound"; };
 	}
-	r2cm::iItem::DoFuncT PlaySound::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlaySound::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -116,19 +116,19 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT PlayStream::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT PlayStream::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Stream"; };
 	}
-	r2cm::iItem::DoFuncT PlayStream::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlayStream::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -248,7 +248,7 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 
@@ -273,13 +273,13 @@ namespace fmod_play_test
 
 		return FMOD_RESULT::FMOD_OK;
 	}
-	r2cm::iItem::TitleFuncT PlayAndCallback::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT PlayAndCallback::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play And Callback"; };
 	}
-	r2cm::iItem::DoFuncT PlayAndCallback::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlayAndCallback::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -374,19 +374,19 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT VolumeControl::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT VolumeControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Volume Control"; };
 	}
-	r2cm::iItem::DoFuncT VolumeControl::GetDoFunction()
+	r2cm::iItem::DoFunctionT VolumeControl::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -492,19 +492,19 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT PositionControl::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT PositionControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Position Control"; };
 	}
-	r2cm::iItem::DoFuncT PositionControl::GetDoFunction()
+	r2cm::iItem::DoFunctionT PositionControl::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -601,7 +601,7 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 }

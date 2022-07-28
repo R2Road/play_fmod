@@ -50,14 +50,23 @@
     <ClCompile Include="src\test_fmod\item\fmod_sound_analysis_test.cpp">
       <Filter>test_fmod\item</Filter>
     </ClCompile>
+    <ClCompile Include="src\test_fmod\item\test_basic.cpp">
+      <Filter>test_fmod\item</Filter>
+    </ClCompile>
     <ClCompile Include="src\r2cm\r2cm_Director.cpp">
+      <Filter>r2cm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\r2cm\r2cm_Inspector.cpp">
       <Filter>r2cm</Filter>
     </ClCompile>
     <ClCompile Include="src\r2cm\r2cm_Menu.cpp">
       <Filter>r2cm</Filter>
     </ClCompile>
-    <ClCompile Include="src\test_fmod\item\test_basic.cpp">
-      <Filter>test_fmod\item</Filter>
+    <ClCompile Include="src\r2cm\r2cm_StopWatch.cpp">
+      <Filter>r2cm</Filter>
+    </ClCompile>
+    <ClCompile Include="src\r2cm\r2cm_WindowUtility.cpp">
+      <Filter>r2cm</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,11 +98,11 @@
     <ClInclude Include="src\test_fmod\item\fmod_sound_analysis_test.h">
       <Filter>test_fmod\item</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2\r2_Singleton.h">
-      <Filter>r2</Filter>
-    </ClInclude>
     <ClInclude Include="src\r2\r2_Assert.h">
       <Filter>r2</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test_fmod\item\test_basic.h">
+      <Filter>test_fmod\item</Filter>
     </ClInclude>
     <ClInclude Include="src\r2cm\r2cm_Director.h">
       <Filter>r2cm</Filter>
@@ -101,14 +110,26 @@
     <ClInclude Include="src\r2cm\r2cm_iItem.h">
       <Filter>r2cm</Filter>
     </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_Inspector.h">
+      <Filter>r2cm</Filter>
+    </ClInclude>
     <ClInclude Include="src\r2cm\r2cm_Menu.h">
       <Filter>r2cm</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2\r2_Inspector.h">
-      <Filter>r2</Filter>
+    <ClInclude Include="src\r2cm\r2cm_ostream.h">
+      <Filter>r2cm</Filter>
     </ClInclude>
-    <ClInclude Include="src\test_fmod\item\test_basic.h">
-      <Filter>test_fmod\item</Filter>
+    <ClInclude Include="src\r2cm\r2cm_Singleton.h">
+      <Filter>r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_StopWatch.h">
+      <Filter>r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_VersionInfo.h">
+      <Filter>r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="src\r2cm\r2cm_WindowUtility.h">
+      <Filter>r2cm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

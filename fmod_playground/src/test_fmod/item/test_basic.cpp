@@ -4,21 +4,22 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
-#include "r2/r2_Inspector.h"
+#include "r2cm/r2cm_Inspector.h"
+
 #include "utility/r2_fmod_util.h"
 
 namespace test_basic
 {
-	r2cm::iItem::TitleFuncT SystemCreateAndRelease::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT SystemCreateAndRelease::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "System Create And Release";
 		};
 	}
-	r2cm::iItem::DoFuncT SystemCreateAndRelease::GetDoFunction()
+	r2cm::iItem::DoFunctionT SystemCreateAndRelease::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 			
@@ -69,22 +70,22 @@ namespace test_basic
 
 			std::cout << r2::split;
 
-			return r2cm::eTestEndAction::Pause;
+			return r2cm::eItemLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT VersionCheck::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT VersionCheck::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Version Check";
 		};
 	}
-	r2cm::iItem::DoFuncT VersionCheck::GetDoFunction()
+	r2cm::iItem::DoFunctionT VersionCheck::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -117,7 +118,7 @@ namespace test_basic
 
 			std::cout << r2::split;
 
-			return r2cm::eTestEndAction::Pause;
+			return r2cm::eItemLeaveAction::Pause;
 		};
 	}
 }

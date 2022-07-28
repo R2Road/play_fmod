@@ -20,13 +20,13 @@
 
 namespace fmod_sound_analysis_test
 {
-	r2cm::iItem::TitleFuncT Frequency::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT Frequency::GetTitleFunction() const
 	{
 		return []()->const char* { return "Sound Analysis - Frequency"; };
 	}
-	r2cm::iItem::DoFuncT Frequency::GetDoFunction()
+	r2cm::iItem::DoFunctionT Frequency::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -155,7 +155,7 @@ namespace fmod_sound_analysis_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 
 
 			//{

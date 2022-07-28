@@ -13,13 +13,13 @@
 
 namespace fmod_channel_group_test
 {
-	r2cm::iItem::TitleFuncT Basic::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT Basic::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Basic"; };
 	}
-	r2cm::iItem::DoFuncT Basic::GetDoFunction()
+	r2cm::iItem::DoFunctionT Basic::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -47,19 +47,19 @@ namespace fmod_channel_group_test
 
 			std::cout << r2::split;
 
-			return r2cm::eTestEndAction::Pause;
+			return r2cm::eItemLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT Group::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT Group::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Group"; };
 	}
-	r2cm::iItem::DoFuncT Group::GetDoFunction()
+	r2cm::iItem::DoFunctionT Group::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
@@ -141,19 +141,19 @@ namespace fmod_channel_group_test
 
 			std::cout << r2::split;
 
-			return r2cm::eTestEndAction::Pause;
+			return r2cm::eItemLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT Volume::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT Volume::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Volume"; };
 	}
-	r2cm::iItem::DoFuncT Volume::GetDoFunction()
+	r2cm::iItem::DoFunctionT Volume::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -337,7 +337,7 @@ namespace fmod_channel_group_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 }

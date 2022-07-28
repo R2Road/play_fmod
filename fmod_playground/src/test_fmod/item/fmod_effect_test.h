@@ -1,35 +1,35 @@
 #pragma once
 
 #include "r2cm/r2cm_iItem.h"
-#include "r2/r2_Singleton.h"
+#include "r2cm/r2cm_Singleton.h"
 
 namespace fmod_effect_test
 {
-	class Echo : public r2cm::iItem, public r2::SingleTon<Echo>
+	class Echo : public r2cm::iItem, public r2cm::SingleTon<Echo>
 	{
 	public:
-		TitleFuncT GetTitleFunction() const override;
-		DoFuncT GetDoFunction() override;
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
 	};
 
-	class Fade : public r2cm::iItem, public r2::SingleTon<Fade>
+	class Fade : public r2cm::iItem, public r2cm::SingleTon<Fade>
 	{
 	public:
-		TitleFuncT GetTitleFunction() const override;
-		DoFuncT GetDoFunction() override;
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
 	};
 
-	class FadeStartFadeEnd : public r2cm::iItem, public r2::SingleTon<FadeStartFadeEnd>
+	class FadeStartFadeEnd : public r2cm::iItem, public r2cm::SingleTon<FadeStartFadeEnd>
 	{
 	public:
-		TitleFuncT GetTitleFunction() const override;
-		DoFuncT GetDoFunction() override;
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
 	};
 
-	class PitchControl : public r2cm::iItem, public r2::SingleTon<PitchControl>
+	class PitchControl : public r2cm::iItem, public r2cm::SingleTon<PitchControl>
 	{
 	public:
-		TitleFuncT GetTitleFunction() const override;
-		DoFuncT GetDoFunction() override;
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
 	};
 }

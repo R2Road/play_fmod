@@ -13,13 +13,13 @@
 
 namespace fmod_effect_test
 {
-	r2cm::iItem::TitleFuncT Echo::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT Echo::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Echo"; };
 	}
-	r2cm::iItem::DoFuncT Echo::GetDoFunction()
+	r2cm::iItem::DoFunctionT Echo::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -178,19 +178,19 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT Fade::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT Fade::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Fade"; };
 	}
-	r2cm::iItem::DoFuncT Fade::GetDoFunction()
+	r2cm::iItem::DoFunctionT Fade::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -320,19 +320,19 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFuncT FadeStartFadeEnd::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT FadeStartFadeEnd::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Fade Start and Fade End"; };
 	}
-	r2cm::iItem::DoFuncT FadeStartFadeEnd::GetDoFunction()
+	r2cm::iItem::DoFunctionT FadeStartFadeEnd::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			r2_fmod_util::CreateSystem( &fmod_system );
@@ -438,20 +438,20 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 
 
 
 
-	r2cm::iItem::TitleFuncT PitchControl::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT PitchControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Pitch Control"; };
 	}
-	r2cm::iItem::DoFuncT PitchControl::GetDoFunction()
+	r2cm::iItem::DoFunctionT PitchControl::GetDoFunction()
 	{
-		return []()->r2cm::eTestEndAction
+		return []()->r2cm::eItemLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -558,7 +558,7 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eTestEndAction::None;
+			return r2cm::eItemLeaveAction::None;
 		};
 	}
 }

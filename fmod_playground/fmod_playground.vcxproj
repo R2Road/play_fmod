@@ -27,7 +27,10 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\r2cm\r2cm_Director.cpp" />
+    <ClCompile Include="src\r2cm\r2cm_Inspector.cpp" />
     <ClCompile Include="src\r2cm\r2cm_Menu.cpp" />
+    <ClCompile Include="src\r2cm\r2cm_StopWatch.cpp" />
+    <ClCompile Include="src\r2cm\r2cm_WindowUtility.cpp" />
     <ClCompile Include="src\r2\r2_FrameManager.cpp" />
     <ClCompile Include="src\test_fmod\item\etc_test.cpp" />
     <ClCompile Include="src\test_fmod\item\test_basic.cpp" />
@@ -43,11 +46,15 @@
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\r2cm\r2cm_Director.h" />
     <ClInclude Include="src\r2cm\r2cm_iItem.h" />
+    <ClInclude Include="src\r2cm\r2cm_Inspector.h" />
     <ClInclude Include="src\r2cm\r2cm_Menu.h" />
+    <ClInclude Include="src\r2cm\r2cm_ostream.h" />
+    <ClInclude Include="src\r2cm\r2cm_Singleton.h" />
+    <ClInclude Include="src\r2cm\r2cm_StopWatch.h" />
+    <ClInclude Include="src\r2cm\r2cm_VersionInfo.h" />
+    <ClInclude Include="src\r2cm\r2cm_WindowUtility.h" />
     <ClInclude Include="src\r2\r2_Assert.h" />
     <ClInclude Include="src\r2\r2_FrameManager.h" />
-    <ClInclude Include="src\r2\r2_Inspector.h" />
-    <ClInclude Include="src\r2\r2_Singleton.h" />
     <ClInclude Include="src\test_fmod\item\etc_test.h" />
     <ClInclude Include="src\test_fmod\item\test_basic.h" />
     <ClInclude Include="src\test_fmod\item\fmod_channel_group_test.h" />

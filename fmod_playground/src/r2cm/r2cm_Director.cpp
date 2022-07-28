@@ -1,10 +1,10 @@
-#include "pch.h"
 #include "r2cm_Director.h"
 
 #include <conio.h>
 #include <utility>
 
-#include "r2cm/r2cm_iItem.h"
+#include "r2cm_iItem.h"
+#include "r2cm_ostream.h"
 
 namespace r2cm
 {
@@ -32,14 +32,14 @@ namespace r2cm
 
 			switch( mMenu->Do( input ) )
 			{
-			//case eTestEndAction::None: break;
+			//case eItemLeaveAction::None: break;
 
-			case eTestEndAction::Pause:
-				std::cout << r2::linefeed;
+			case eItemLeaveAction::Pause:
+				std::cout << r2cm::linefeed;
 				system( "pause" );				
 				break;
 
-			case eTestEndAction::Exit:
+			case eItemLeaveAction::Exit:
 				return;
 			}
 		}

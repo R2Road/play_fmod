@@ -76,7 +76,7 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 		ret->AddItem(
 			27
 			, []()->const char* { return "Exit"; }
-			, []()->r2cm::eTestEndAction { return r2cm::eTestEndAction::Exit; }
+			, []()->r2cm::eItemLeaveAction { return r2cm::eItemLeaveAction::Exit; }
 		);
 	}
 

@@ -1,5 +1,17 @@
 #pragma once
 
+#include <iostream>
+#include <stdint.h>
+
+#define R2_ENABLE_DEBUG_BREAK 1
+
+#if defined( R2_ENABLE_DEBUG_BREAK ) && R2_ENABLE_DEBUG_BREAK == 1
+	#define R2_DEBUG_BREAK ( __debugbreak() )
+#else
+	#define R2_DEBUG_BREAK
+#endif // R2_ENABLE_DEBUG_BREAK
+
+
 #define	EXPECT_TRUE( condition )																\
 do {																							\
 	if( ( condition ) )																			\
@@ -8,7 +20,7 @@ do {																							\
 	}																							\
 	else																						\
 	{																							\
-		__debugbreak();																			\
+		R2_DEBUG_BREAK;																			\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_TRUE( %s )\n", #condition );			\
 	}																							\
 } while( false )
@@ -17,11 +29,11 @@ do {																							\
 do {																							\
 	if( !( condition ) )																		\
 	{																							\
-		printf( "\x1B[92m" "[PASS]" "\033[0m" " EXPECT_FALSE( %s )\n", #condition );			\
+		printf( "\x1B[34m" "[PASS]" "\033[0m" " EXPECT_FALSE( %s )\n", #condition );			\
 	}																							\
 	else																						\
 	{																							\
-		__debugbreak();																			\
+		R2_DEBUG_BREAK;																			\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_FALSE( %s )\n", #condition );			\
 	}																							\
 } while( false )
@@ -34,7 +46,7 @@ do {																											\
 	}																											\
 	else																										\
 	{																											\
-		__debugbreak();																							\
+		R2_DEBUG_BREAK;																							\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_EQ( %s == %s )\n", #condition_1, #condition_2 );		\
 	}																											\
 } while( false )
@@ -43,11 +55,11 @@ do {																											\
 do {																											\
 	if( ( condition_1 ) != ( condition_2 ) )																	\
 	{																											\
-		printf( "\x1B[92m" "[PASS]" "\033[0m" " EXPECT_NE( %s != %s )\n", #condition_1, #condition_2 );			\
+		printf( "\x1B[34m" "[PASS]" "\033[0m" " EXPECT_NE( %s != %s )\n", #condition_1, #condition_2 );			\
 	}																											\
 	else																										\
 	{																											\
-		__debugbreak();																							\
+		R2_DEBUG_BREAK;																							\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_NE( %s != %s )\n", #condition_1, #condition_2 );		\
 	}																											\
 } while( false )
@@ -60,7 +72,7 @@ do {																											\
 	}																											\
 	else																										\
 	{																											\
-		__debugbreak();																							\
+		R2_DEBUG_BREAK;																							\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_GT( %s > %s )\n", #condition_1, #condition_2 );		\
 	}																											\
 } while( false )
@@ -73,7 +85,7 @@ do {																											\
 	}																											\
 	else																										\
 	{																											\
-		__debugbreak();																							\
+		R2_DEBUG_BREAK;																							\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_LT( %s < %s )\n", #condition_1, #condition_2 );		\
 	}																											\
 } while( false )
@@ -86,7 +98,7 @@ do {																											\
 	}																											\
 	else																										\
 	{																											\
-		__debugbreak();																							\
+		R2_DEBUG_BREAK;																							\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_GE( %s >= %s )\n", #condition_1, #condition_2 );		\
 	}																											\
 } while( false )
@@ -99,7 +111,7 @@ do {																											\
 	}																											\
 	else																										\
 	{																											\
-		__debugbreak();																							\
+		R2_DEBUG_BREAK;																							\
 		printf( "\x1B[91m" "[FAILED]" "\033[0m" " EXPECT_LE( %s <= %s )\n", #condition_1, #condition_2 );		\
 	}																											\
 } while( false )
@@ -135,9 +147,104 @@ condition;																					\
 printf( "\x1B[90m" "[DECLARATION]" " %s" "\033[0m" "\n", #condition );
 
 //
+// Output Value
 //
+#define	OUTPUT_VALUE( condition )															\
+do {																						\
+	printf( "[VALUE]" " %s" "\n", #condition );											\
+	std::cout << "\t> " << condition << "\n";												\
+} while( false )
 //
-#define	SHOW_CODE( condition )																\
+// Output Binary
+//
+#define	OUTPUT_BINARY( condition )															\
+do {																						\
+	printf( "[BINARY]" " %s" "\n", #condition );											\
+	std::cout << "\t> "						;												\
+	SHOW_BINARY( ( condition ) );															\
+	std::cout << "\n";																		\
+} while( false )
+
+template<typename T>
+void SHOW_BINARY( const T value );
+
+template<typename T>
+void SHOW_BINARY( const T value )
+{
+	int32_t limit = sizeof( value ) * 8;
+
+	if( 8 < limit )
+	{
+		for( int32_t position = limit - 1; 0 <= position; --position )
+		{
+			const T temp_1 = ( value >> position );
+			const T temp_2 = temp_1 & 1;
+
+			std::cout << temp_2;
+		}
+	}
+	else
+	{
+		const int32_t fixed_value = static_cast<int32_t>( value );
+		for( int32_t position = limit - 1; 0 <= position; --position )
+		{
+			const int32_t temp_1 = ( fixed_value >> position );
+			const int32_t temp_2 = temp_1 & 1;
+
+			std::cout << temp_2;
+		}
+	}
+}
+
+//
+// + exalple : int a[4];
+// pointer : int*
+// size : 4
+//
+#define	OUTPUT_BINARIES( pointer, size )													\
+do {																						\
+	printf( "[BINARIES]" " %s" ", %s" "\n", #pointer, #size );								\
+	SHOW_BINARY( ( pointer ), ( size ) );													\
+	std::cout << "\n";																		\
+} while( false )
+template<typename T>
+void SHOW_BINARY( const T* p, const uint64_t size )
+{
+	const uint64_t fixed_limit = sizeof( T ) * size;
+	const uint8_t* fixed_p = reinterpret_cast<const uint8_t*>( p );
+
+	uint64_t lf_cnt = 0;
+	for( uint64_t i = 0; fixed_limit > i; ++i )
+	{
+		if( 0 == lf_cnt )
+		{
+			printf( "\t> " );
+		}
+
+		SHOW_BINARY( fixed_p[i] );
+
+		++lf_cnt;
+		if( 8 == lf_cnt && fixed_limit > ( i + 1 ) )
+		{
+			lf_cnt = 0;
+			printf( "\n" );
+		}
+		else
+		{
+			printf( " " );
+		}
+	}
+}
+
+//
+// Output Code
+//
+#define	OUTPUT_CODE( condition )																\
 do {																						\
 	printf( "[CODE]" " %s" "\n", #condition );												\
 } while( false )
+
+//
+//
+//
+void SHOW_FILE( const char* const path );
