@@ -60,6 +60,35 @@ namespace fmod_play_test
 				bool process = true;
 				while( process )
 				{
+					if( frame_manager.Update() )
+					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
+
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintSampleRateInfo( fmod_system );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
+
+						std::cout << r2::split;
+					}
+
 					if( _kbhit() )
 					{
 						switch( _getch() )
@@ -80,34 +109,6 @@ namespace fmod_play_test
 							process = false;
 							break;
 						}
-					}
-
-					if( frame_manager.Update() )
-					{
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
-						
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSampleRateInfo( fmod_system );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSoundInfo( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelInfo( fmod_channel );
-						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
-
-						std::cout << r2::split;
 					}
 				}
 			}
