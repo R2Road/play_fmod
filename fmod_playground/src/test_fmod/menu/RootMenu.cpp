@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "RootMenu.h"
 
+#include <sstream>
+#include <string>
+
+#include "fmod_common.h"
+
 #include "r2cm/r2cm_Director.h"
 #include "r2cm/r2cm_VersionInfo.h"
 
@@ -15,8 +20,12 @@
 const char* RootMenu::GetTitle()
 {
 	static const std::string ret =
-		std::string( "Root Menu" )
-		+ " : <" + r2cm::VersionInfo.String4Version + ">";
+	(
+		std::stringstream()
+		<< "Root Menu"
+		<< " : <FMOD : v" << std::hex << FMOD_VERSION << ">"
+		<< " : <" << r2cm::VersionInfo.String4Version << ">"
+	).str();
 	return ret.c_str();
 }
 
