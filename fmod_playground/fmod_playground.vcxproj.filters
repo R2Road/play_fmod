@@ -98,9 +98,6 @@
     <ClInclude Include="src\r2cm\r2cm_Director.h">
       <Filter>r2cm</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_eTestEndAction.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
     <ClInclude Include="src\r2cm\r2cm_iItem.h">
       <Filter>r2cm</Filter>
     </ClInclude>

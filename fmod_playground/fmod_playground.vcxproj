@@ -42,7 +42,6 @@
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\r2cm\r2cm_Director.h" />
-    <ClInclude Include="src\r2cm\r2cm_eTestEndAction.h" />
     <ClInclude Include="src\r2cm\r2cm_iItem.h" />
     <ClInclude Include="src\r2cm\r2cm_Menu.h" />
     <ClInclude Include="src\r2\r2_Assert.h" />
