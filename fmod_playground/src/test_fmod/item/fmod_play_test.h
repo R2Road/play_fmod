@@ -28,7 +28,7 @@ namespace fmod_play_test
 		DoFunctionT GetDoFunction() override;
 	};
 
-	class PlayStream: public r2cm::iItem, public r2cm::SingleTon<PlayStream>
+	class PlayStream_Demo: public r2cm::iItem, public r2cm::SingleTon<PlayStream_Demo>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;

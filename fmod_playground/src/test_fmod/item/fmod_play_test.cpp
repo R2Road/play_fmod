@@ -266,11 +266,11 @@ namespace fmod_play_test
 
 
 
-	r2cm::iItem::TitleFunctionT PlayStream::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT PlayStream_Demo::GetTitleFunction() const
 	{
-		return []()->const char* { return "Play Stream"; };
+		return []()->const char* { return "Play Stream : Demo"; };
 	}
-	r2cm::iItem::DoFunctionT PlayStream::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlayStream_Demo::GetDoFunction()
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

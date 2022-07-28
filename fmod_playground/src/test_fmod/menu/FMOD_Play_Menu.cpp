@@ -27,7 +27,7 @@ r2cm::MenuUp FMOD_Play_Menu::Create( r2cm::Director& director )
 
 
 		ret->AddItem( '3', fmod_play_test::PlayStream_Basic::GetInstance() );
-		ret->AddItem( '4', fmod_play_test::PlayStream::GetInstance() );
+		ret->AddItem( '4', fmod_play_test::PlayStream_Demo::GetInstance() );
 
 
 
