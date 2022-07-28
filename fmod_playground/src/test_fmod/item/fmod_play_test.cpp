@@ -117,6 +117,10 @@ namespace fmod_play_test
 			{
 				std::cout << "[1] " << "Play" << r2::linefeed;
 				std::cout << "[2] " << "Stop" << r2::linefeed;
+				std::cout << "[3] " << "Loop ON/OFF" << r2::linefeed2;
+
+				std::cout << r2::tab << "createSound 로 만들어진 Sound 는 Play 이후에는 Loop 속성이 변경되지 않는다." << r2::linefeed;
+				std::cout << r2::tab << "createStream 으로 만들어진 Sound 는 Loop 속성이 즉각 반영된다." << r2::linefeed;
 			}
 
 			std::cout << r2::split;
@@ -173,6 +177,16 @@ namespace fmod_play_test
 							if( fmod_channel )
 							{
 								fmod_channel->stop();
+							}
+							break;
+						case '3':
+							{
+								FMOD_MODE fmod_mode = 0u;
+								fmod_result = fmod_sound->getMode( &fmod_mode );
+								r2_fmod_util::ERROR_CHECK( fmod_result );
+
+								fmod_result = fmod_sound->setMode( FMOD_LOOP_NORMAL & fmod_mode ? FMOD_LOOP_OFF : FMOD_LOOP_NORMAL );
+								r2_fmod_util::ERROR_CHECK( fmod_result );
 							}
 							break;
 						}
