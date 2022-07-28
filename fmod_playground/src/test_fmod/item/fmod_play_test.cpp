@@ -40,11 +40,11 @@ namespace fmod_play_test
 			{
 				// Load
 				PROCESS_MAIN( fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound ) );
-				PROCESS_MAIN( r2_fmod_util::ERROR_CHECK( fmod_result ) );
+				r2_fmod_util::ERROR_CHECK( fmod_result );
 
 				// Setup
 				PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
-				PROCESS_MAIN( r2_fmod_util::ERROR_CHECK( fmod_result ) );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+				r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 			}
 
 			std::cout << r2::split;
