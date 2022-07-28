@@ -2,6 +2,7 @@
 #include "RootMenu.h"
 
 #include "r2cm/r2cm_Director.h"
+#include "r2cm/r2cm_VersionInfo.h"
 
 #include "test_fmod/item/test_basic.h"
 #include "test_fmod/item/fmod_load_test.h"
@@ -10,6 +11,14 @@
 #include "test_fmod/item/fmod_channel_group_test.h"
 #include "test_fmod/item/fmod_sound_analysis_test.h"
 #include "test_fmod/item/etc_test.h"
+
+const char* RootMenu::GetTitle()
+{
+	static const std::string ret =
+		std::string( "Root Menu" )
+		+ " : <" + r2cm::VersionInfo.String4Version + ">";
+	return ret.c_str();
+}
 
 r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 {
