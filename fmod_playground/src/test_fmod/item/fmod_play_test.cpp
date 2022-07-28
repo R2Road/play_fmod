@@ -27,9 +27,9 @@ namespace fmod_play_test
 
 			std::cout << r2::split;
 
-			DECLARATION_MAIN( FMOD::System* fmod_system = nullptr );
-			DECLARATION_MAIN( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
-			PROCESS_MAIN( r2_fmod_util::CreateSystem( &fmod_system ) );
+			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
+			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
+			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
 
 			std::cout << r2::split;
 
