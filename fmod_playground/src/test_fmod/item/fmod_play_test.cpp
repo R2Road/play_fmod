@@ -26,8 +26,12 @@ namespace fmod_play_test
 
 			std::cout << r2::split;
 
-			std::cout << "[1] " << "Play" << r2::linefeed;
-			std::cout << "[2] " << "Stop" << r2::linefeed;
+			{
+				std::cout << "[1] " << "Play" << r2::linefeed;
+				std::cout << "[2] " << "Stop" << r2::linefeed;
+			}
+
+			std::cout << r2::split;
 
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -68,8 +72,6 @@ namespace fmod_play_test
 
 						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
 
-
-						std::cout << r2::split;
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
