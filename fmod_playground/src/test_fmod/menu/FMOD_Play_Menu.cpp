@@ -17,7 +17,15 @@ r2cm::MenuUp FMOD_Play_Menu::Create( r2cm::Director& director )
 	) );
 
 	{
-		ret->AddItem( '1', fmod_play_test::PlaySound_Demo::GetInstance() );
+		ret->AddItem( '1', fmod_play_test::PlaySound_Basic::GetInstance() );
+		ret->AddItem( '2', fmod_play_test::PlaySound_Demo::GetInstance() );
+
+
+
+		ret->AddLineFeed();
+
+
+
 		ret->AddItem( '2', fmod_play_test::PlayStream::GetInstance() );
 		ret->AddItem( '3', fmod_play_test::PlayAndCallback::GetInstance() );
 		ret->AddItem( '4', fmod_play_test::VolumeControl::GetInstance() );

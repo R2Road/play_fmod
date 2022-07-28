@@ -15,6 +15,72 @@
 
 namespace fmod_play_test
 {
+	r2cm::iItem::TitleFunctionT PlaySound_Basic::GetTitleFunction() const
+	{
+		return []()->const char* { return "Play Sound : Basic"; };
+	}
+	r2cm::iItem::DoFunctionT PlaySound_Basic::GetDoFunction()
+	{
+		return []()->r2cm::eItemLeaveAction
+		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
+			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
+			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
+			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
+
+			std::cout << r2::linefeed;
+
+			//
+			// Audio Load
+			//
+			DECLARATION_SUB( FMOD::Sound* fmod_sound = nullptr );
+
+			PROCESS_SUB( fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound ) );
+			r2_fmod_util::ERROR_CHECK( fmod_result );
+
+			PROCESS_SUB( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
+			r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
+
+			std::cout << r2::split;
+
+			DECLARATION_MAIN( FMOD::Channel* fmod_channel = nullptr );
+			{
+				PROCESS_MAIN( fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel ) );
+				r2_fmod_util::ERROR_CHECK( fmod_result );
+
+				std::cout << r2::linefeed2;
+
+				std::cout << "[Any Key] " << "End" << r2::linefeed;
+				_getch();
+
+				std::cout << r2::linefeed2;
+
+				PROCESS_MAIN( fmod_result = fmod_channel->stop() );
+				r2_fmod_util::ERROR_CHECK( fmod_result );
+			}
+
+			std::cout << r2::split;
+
+			{
+				PROCESS_SUB( fmod_result = fmod_sound->release() );
+				r2_fmod_util::ERROR_CHECK( fmod_result );
+
+				std::cout << r2::linefeed;
+
+				PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
+			}
+
+			std::cout << r2::split;
+
+			return r2cm::eItemLeaveAction::Pause;
+		};
+	}
+
+
+
 	r2cm::iItem::TitleFunctionT PlaySound_Demo::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Sound : Demo"; };

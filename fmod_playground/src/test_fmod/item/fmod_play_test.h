@@ -5,6 +5,13 @@
 
 namespace fmod_play_test
 {
+	class PlaySound_Basic : public r2cm::iItem, public r2cm::SingleTon<PlaySound_Basic>
+	{
+	public:
+		TitleFunctionT GetTitleFunction() const override;
+		DoFunctionT GetDoFunction() override;
+	};
+
 	class PlaySound_Demo : public r2cm::iItem, public r2cm::SingleTon<PlaySound_Demo>
 	{
 	public:
