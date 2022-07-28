@@ -474,12 +474,14 @@ namespace fmod_play_test
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
-				bool process = true;
-				while( process )
+				int input = 0;
+				do
 				{
+
 					if( _kbhit() )
 					{
-						switch( _getch() )
+						input = _getch();
+						switch( input )
 						{
 						case '1':
 							fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
@@ -494,10 +496,6 @@ namespace fmod_play_test
 							{
 								fmod_channel->stop();
 							}
-							break;
-
-						case 27: // ESC
-							process = false;
 							break;
 						}
 					}
@@ -532,7 +530,8 @@ namespace fmod_play_test
 
 						std::cout << r2::split;
 					}
-				}
+
+				} while( 27 != input );
 			}
 
 			//
