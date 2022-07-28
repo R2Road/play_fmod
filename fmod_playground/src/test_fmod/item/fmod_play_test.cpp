@@ -61,9 +61,10 @@ namespace fmod_play_test
 				frame_manager.Reset();
 
 				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
-				bool process = true;
-				while( process )
+				int input = 0;
+				do
 				{
+
 					if( frame_manager.Update() )
 					{
 						fmod_result = fmod_result = fmod_system->update();
@@ -93,7 +94,8 @@ namespace fmod_play_test
 
 					if( _kbhit() )
 					{
-						switch( _getch() )
+						input = _getch();
+						switch( input )
 						{
 						case '1':
 							fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel );
@@ -106,13 +108,10 @@ namespace fmod_play_test
 								fmod_channel->stop();
 							}
 							break;
-
-						case 27: // ESC
-							process = false;
-							break;
 						}
 					}
-				}
+
+				} while( 27 != input );
 			}
 
 			//
