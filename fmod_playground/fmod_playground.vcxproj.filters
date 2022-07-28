@@ -68,6 +68,9 @@
     <ClCompile Include="src\test_fmod\item\fmod_basic_test.cpp">
       <Filter>test_fmod\item</Filter>
     </ClCompile>
+    <ClCompile Include="src\test_fmod\menu\FMOD_Play_Menu.cpp">
+      <Filter>test_fmod\menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
@@ -130,6 +133,9 @@
     </ClInclude>
     <ClInclude Include="src\test_fmod\item\fmod_basic_test.h">
       <Filter>test_fmod\item</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test_fmod\menu\FMOD_Play_Menu.h">
+      <Filter>test_fmod\menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

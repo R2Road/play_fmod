@@ -39,6 +39,7 @@
     <ClCompile Include="src\test_fmod\item\fmod_load_test.cpp" />
     <ClCompile Include="src\test_fmod\item\fmod_play_test.cpp" />
     <ClCompile Include="src\test_fmod\item\fmod_sound_analysis_test.cpp" />
+    <ClCompile Include="src\test_fmod\menu\FMOD_Play_Menu.cpp" />
     <ClCompile Include="src\test_fmod\menu\RootMenu.cpp" />
     <ClCompile Include="src\utility\r2_fmod_util.cpp" />
   </ItemGroup>
@@ -62,6 +63,7 @@
     <ClInclude Include="src\test_fmod\item\fmod_load_test.h" />
     <ClInclude Include="src\test_fmod\item\fmod_play_test.h" />
     <ClInclude Include="src\test_fmod\item\fmod_sound_analysis_test.h" />
+    <ClInclude Include="src\test_fmod\menu\FMOD_Play_Menu.h" />
     <ClInclude Include="src\test_fmod\menu\RootMenu.h" />
     <ClInclude Include="src\utility\r2_fmod_util.h" />
   </ItemGroup>
