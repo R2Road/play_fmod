@@ -9,6 +9,7 @@
 
 #include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
+#include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_play_test
@@ -21,6 +22,13 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
+			std::cout << "[1] " << "Play" << r2::linefeed;
+			std::cout << "[2] " << "Stop" << r2::linefeed;
+
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 			
@@ -48,6 +56,7 @@ namespace fmod_play_test
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
 				bool process = true;
 				while( process )
 				{
@@ -78,11 +87,8 @@ namespace fmod_play_test
 						fmod_result = fmod_result = fmod_system->update();
 						r2_fmod_util::ERROR_CHECK( fmod_result );
 
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " << "Play" << r2::linefeed;
-						std::cout << "[2] " << "Stop" << r2::linefeed;
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+						
 
 						std::cout << r2::split;
 
