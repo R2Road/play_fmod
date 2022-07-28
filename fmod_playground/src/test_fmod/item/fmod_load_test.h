@@ -5,7 +5,7 @@
 
 namespace fmod_load_test
 {
-	class Basic : public r2cm::iItem, public r2cm::SingleTon<Basic>
+	class LoadSound : public r2cm::iItem, public r2cm::SingleTon<LoadSound>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;

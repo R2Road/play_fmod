@@ -14,14 +14,14 @@
 
 namespace fmod_load_test
 {
-	r2cm::iItem::TitleFunctionT Basic::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT LoadSound::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
-			return "Sound Load - Basic";
+			return "Load Sound";
 		};
 	}
-	r2cm::iItem::DoFunctionT Basic::GetDoFunction()
+	r2cm::iItem::DoFunctionT LoadSound::GetDoFunction()
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
