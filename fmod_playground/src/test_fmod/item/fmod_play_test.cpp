@@ -15,11 +15,11 @@
 
 namespace fmod_play_test
 {
-	r2cm::iItem::TitleFunctionT PlaySound::GetTitleFunction() const
+	r2cm::iItem::TitleFunctionT PlaySound_Demo::GetTitleFunction() const
 	{
-		return []()->const char* { return "Play Sound"; };
+		return []()->const char* { return "Play Sound : Demo"; };
 	}
-	r2cm::iItem::DoFunctionT PlaySound::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlaySound_Demo::GetDoFunction()
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

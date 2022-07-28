@@ -46,7 +46,7 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 
 
 		ret->AddItem( '3', fmod_load_test::Basic::GetInstance() );
-		ret->AddItem( '4', fmod_play_test::PlaySound::GetInstance() );
+		ret->AddItem( '4', fmod_play_test::PlaySound_Demo::GetInstance() );
 		ret->AddItem( '5', fmod_play_test::PlayStream::GetInstance() );
 		ret->AddItem( '6', fmod_play_test::PlayAndCallback::GetInstance() );
 		ret->AddItem( '7', fmod_play_test::VolumeControl::GetInstance() );

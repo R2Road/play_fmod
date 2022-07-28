@@ -5,7 +5,7 @@
 
 namespace fmod_play_test
 {
-	class PlaySound : public r2cm::iItem, public r2cm::SingleTon<PlaySound>
+	class PlaySound_Demo : public r2cm::iItem, public r2cm::SingleTon<PlaySound_Demo>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
