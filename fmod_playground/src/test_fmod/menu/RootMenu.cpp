@@ -9,7 +9,7 @@
 #include "r2cm/r2cm_Menu.h"
 #include "r2cm/r2cm_VersionInfo.h"
 
-#include "test_fmod/item/test_basic.h"
+#include "test_fmod/item/fmod_basic_test.h"
 #include "test_fmod/item/fmod_load_test.h"
 #include "test_fmod/item/fmod_play_test.h"
 #include "test_fmod/item/fmod_effect_test.h"

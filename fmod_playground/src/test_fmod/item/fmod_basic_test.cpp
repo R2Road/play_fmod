@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "test_basic.h"
+#include "fmod_basic_test.h"
 
 #include "fmod.hpp"
 #include "fmod_errors.h"
