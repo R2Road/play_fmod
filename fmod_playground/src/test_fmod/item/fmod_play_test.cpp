@@ -140,19 +140,24 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			FMOD::System* fmod_system = nullptr;
-			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
 
-			r2_fmod_util::CreateSystem( &fmod_system );
+			std::cout << r2::split;
+
+			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
+			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
+			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
+
+			std::cout << r2::split;
 
 			//
 			// Audio Load
 			//
-			FMOD::Sound* fmod_sound = nullptr;
-			FMOD::Sound* fmod_current_sound = nullptr;
+			DECLARATION_MAIN( FMOD::Sound* fmod_sound = nullptr );
+			DECLARATION_MAIN( FMOD::Sound* fmod_current_sound = nullptr );
 			{
 				// Load
-				fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound );
+				PROCESS_MAIN( fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
 				int sub_sound_count = 0;
@@ -170,6 +175,16 @@ namespace fmod_play_test
 				}
 			}
 
+			std::cout << r2::split;
+
+			{
+				std::cout << "[1] " << "Play" << r2::linefeed;
+				std::cout << "[2] " << "Stop" << r2::linefeed;
+				std::cout << "[3] " << "Loop ON/OFF" << r2::linefeed;
+			}
+
+			std::cout << r2::split;
+
 			//
 			// Update Loop
 			//
@@ -178,12 +193,40 @@ namespace fmod_play_test
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
-				bool process = true;
-				while( process )
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
+				int input = 0;
+				do
 				{
+
+					if( frame_manager.Update() )
+					{
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
+						r2_fmod_util::PrintSampleRateInfo( fmod_system );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
+
+						std::cout << r2::split;
+					}
+
 					if( _kbhit() )
 					{
-						switch( _getch() )
+						input = _getch();
+						switch( input )
 						{
 						case '1':
 							fmod_result = fmod_system->playSound( fmod_current_sound, 0, false, &fmod_channel );
@@ -207,45 +250,10 @@ namespace fmod_play_test
 								r2_fmod_util::ERROR_CHECK( fmod_result );
 							}
 							break;
-
-						case 27: // ESC
-							process = false;
-							break;
 						}
 					}
 
-					if( frame_manager.Update() )
-					{
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " << "Play" << r2::linefeed;
-						std::cout << "[2] " << "Stop" << r2::linefeed;
-						std::cout << "[3] " << "Loop ON/OFF" << r2::linefeed;
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSampleRateInfo( fmod_system );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSoundInfo( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelInfo( fmod_channel );
-						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
-
-						std::cout << r2::split;
-					}
-				}
+				} while( 27 != input );
 			}
 
 			//
