@@ -531,6 +531,15 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
+			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
+			std::cout << "[1] " << "Volume Up" << r2::linefeed;
+			std::cout << "[2] " << "Volume Down" << r2::linefeed;
+
+			std::cout << r2::split;
+
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
@@ -563,47 +572,17 @@ namespace fmod_play_test
 
 				float volume = 1.0f;
 
-				bool process = true;
-				while( process )
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
+				int input = 0;
+				do
 				{
-					if( _kbhit() )
-					{
-						switch( _getch() )
-						{
-						case '1':
-							volume += 0.1f;
-							volume = std::min( 1.0f, volume );
-
-							fmod_result = fmod_channel->setVolume( volume );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-							break;
-
-						case '2':
-							volume -= 0.1f;
-							volume = std::max( 0.0f, volume );
-
-							fmod_result = fmod_channel->setVolume( volume );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-							break;
-
-						case 27: // ESC
-							process = false;
-							break;
-						}
-					}
 
 					if( frame_manager.Update() )
 					{
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
 						fmod_result = fmod_result = fmod_system->update();
 						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " << "Volume Up" << r2::linefeed;
-						std::cout << "[2] " << "Volume Down" << r2::linefeed;
-
-						std::cout << r2::split;
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
@@ -622,7 +601,31 @@ namespace fmod_play_test
 
 						std::cout << r2::split;
 					}
-				}
+
+					if( _kbhit() )
+					{
+						input = _getch();
+						switch( input )
+						{
+						case '1':
+							volume += 0.1f;
+							volume = std::min( 1.0f, volume );
+
+							fmod_result = fmod_channel->setVolume( volume );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+							break;
+
+						case '2':
+							volume -= 0.1f;
+							volume = std::max( 0.0f, volume );
+
+							fmod_result = fmod_channel->setVolume( volume );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+							break;
+						}
+					}
+					
+				} while( 27 != input );
 			}
 
 			//
