@@ -652,6 +652,15 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
+			std::cout << "[1] " << "Move First" << r2::linefeed;
+			std::cout << "[2] " << "Move Half" << r2::linefeed;
+
+			std::cout << r2::split;
+
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
@@ -682,40 +691,17 @@ namespace fmod_play_test
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
-				bool process = true;
-				while( process )
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
+				int input = 0;
+				do
 				{
-					if( _kbhit() )
-					{
-						switch( _getch() )
-						{
-						case '1':
-							fmod_result = fmod_channel->setPosition( 0u, FMOD_TIMEUNIT_MS );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-							break;
-						case '2':
-							fmod_result = fmod_channel->setPosition( 10000u, FMOD_TIMEUNIT_MS );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-							break;
-
-						case 27: // ESC
-							process = false;
-							break;
-						}
-					}
 
 					if( frame_manager.Update() )
 					{
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
 						fmod_result = fmod_result = fmod_system->update();
 						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " << "Move First" << r2::linefeed;
-						std::cout << "[2] " << "Move Half" << r2::linefeed;
-
-						std::cout << r2::split;
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
@@ -734,7 +720,24 @@ namespace fmod_play_test
 
 						std::cout << r2::split;
 					}
-				}
+
+					if( _kbhit() )
+					{
+						input = _getch();
+						switch( input )
+						{
+						case '1':
+							fmod_result = fmod_channel->setPosition( 0u, FMOD_TIMEUNIT_MS );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+							break;
+						case '2':
+							fmod_result = fmod_channel->setPosition( 10000u, FMOD_TIMEUNIT_MS );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+							break;
+						}
+					}
+
+				} while( 27 != input );
 			}
 
 			//
