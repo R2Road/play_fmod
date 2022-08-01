@@ -11,13 +11,13 @@
 #include "r2cm/r2cm_VersionInfo.h"
 
 #include "test_fmod/item/fmod_basic_test.h"
-#include "test_fmod/item/fmod_load_test.h"
 #include "test_fmod/item/fmod_play_test.h"
 #include "test_fmod/item/fmod_effect_test.h"
 #include "test_fmod/item/fmod_channel_group_test.h"
 #include "test_fmod/item/fmod_sound_analysis_test.h"
 #include "test_fmod/item/etc_test.h"
 
+#include "test_fmod/menu/FMOD_Load_Menu.h"
 #include "test_fmod/menu/FMOD_Play_Menu.h"
 
 const char* RootMenu::GetTitle()
@@ -43,15 +43,14 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 	{
 		ret->AddItem( '1', fmod_basic_test::SystemCreateAndRelease::GetInstance() );
 		ret->AddItem( '2', fmod_basic_test::VersionCheck::GetInstance() );
-		ret->AddItem( '3', fmod_load_test::LoadSound::GetInstance() );
-		ret->AddItem( '4', fmod_load_test::LoadStream::GetInstance() );
-		ret->AddMenu<FMOD_Play_Menu>( '5' );
+		ret->AddMenu<FMOD_Load_Menu>( '3' );
+		ret->AddMenu<FMOD_Play_Menu>( '4' );
 
 
 		ret->AddLineFeed();
 
 
-		ret->AddItem( '9', fmod_load_test::Memory::GetInstance() );
+		
 
 
 		ret->AddLineFeed();
