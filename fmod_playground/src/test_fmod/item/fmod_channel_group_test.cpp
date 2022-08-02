@@ -167,8 +167,8 @@ namespace fmod_channel_group_test
 			std::cout << r2::split;
 
 			std::cout << "[1/2] " << "Group A Volume Up/Down" << r2::linefeed;
-			std::cout << "[3/4] " << "Group B Volume Up/Down" << r2::linefeed;
-			std::cout << "[q/w] " << "Master Channel Group Volume Up/Down" << r2::linefeed;
+			std::cout << "[q/w] " << "Group B Volume Up/Down" << r2::linefeed;
+			std::cout << "[a/s] " << "Master Channel Group Volume Up/Down" << r2::linefeed;
 
 			std::cout << r2::split;
 
@@ -277,45 +277,45 @@ namespace fmod_channel_group_test
 						switch( input )
 						{
 						case '1':
-							group_a_volume += 0.1f;
-							group_a_volume = std::min( 1.0f, group_a_volume );
-
-							fmod_result = groupA->setVolume( group_a_volume );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-							break;
-						case '2':
 							group_a_volume -= 0.1f;
 							group_a_volume = std::max( 0.0f, group_a_volume );
 
 							fmod_result = groupA->setVolume( group_a_volume );
 							r2_fmod_util::ERROR_CHECK( fmod_result );
 							break;
+						case '2':
+							group_a_volume += 0.1f;
+							group_a_volume = std::min( 1.0f, group_a_volume );
 
-						case '3':
-							group_b_volume += 0.1f;
-							group_b_volume = std::min( 1.0f, group_b_volume );
-
-							fmod_result = groupB->setVolume( group_b_volume );
+							fmod_result = groupA->setVolume( group_a_volume );
 							r2_fmod_util::ERROR_CHECK( fmod_result );
 							break;
-						case '4':
+
+						case 'q':
 							group_b_volume -= 0.1f;
 							group_b_volume = std::max( 0.0f, group_b_volume );
 
 							fmod_result = groupB->setVolume( group_b_volume );
 							r2_fmod_util::ERROR_CHECK( fmod_result );
 							break;
+						case 'w':
+							group_b_volume += 0.1f;
+							group_b_volume = std::min( 1.0f, group_b_volume );
 
-						case 'q':
-							master_volume += 0.1f;
-							master_volume = std::min( 1.0f, master_volume );
+							fmod_result = groupB->setVolume( group_b_volume );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+							break;
+
+						case 'a':
+							master_volume -= 0.1f;
+							master_volume = std::max( 0.0f, master_volume );
 
 							fmod_result = fmod_master_channel_group->setVolume( master_volume );
 							r2_fmod_util::ERROR_CHECK( fmod_result );
 							break;
-						case 'w':
-							master_volume -= 0.1f;
-							master_volume = std::max( 0.0f, master_volume );
+						case 's':
+							master_volume += 0.1f;
+							master_volume = std::min( 1.0f, master_volume );
 
 							fmod_result = fmod_master_channel_group->setVolume( master_volume );
 							r2_fmod_util::ERROR_CHECK( fmod_result );
