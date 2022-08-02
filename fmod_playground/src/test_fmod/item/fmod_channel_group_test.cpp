@@ -9,6 +9,7 @@
 
 #include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
+#include "r2cm/r2cm_Inspector.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_channel_group_test
@@ -25,6 +26,9 @@ namespace fmod_channel_group_test
 
 			std::cout << r2::split;
 
+			//
+			//
+			//
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
@@ -34,15 +38,16 @@ namespace fmod_channel_group_test
 			// Master Channel Group
 			//
 			{
-				FMOD::ChannelGroup* fmod_master_channelgroup = nullptr;
-				fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup );
-				r2_fmod_util::ERROR_CHECK( fmod_result );
+				std::cout << r2::tab << "+ Get Master Channel Group" << r2::linefeed2;
 
-				std::cout << r2::tab << "+ Get Master Channel Group" << r2::linefeed << r2::linefeed;
-				std::cout << r2::tab2 << "FMOD::ChannelGroup* fmod_master_channelgroup = nullptr;" << r2::linefeed;
-				std::cout << r2::tab2 << "fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup );" << r2::linefeed;
+				DECLARATION_MAIN( FMOD::ChannelGroup* fmod_master_channelgroup = nullptr );
+				PROCESS_MAIN( fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup ) );
+				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
+			//
+			//
+			//
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
 			std::cout << r2::split;
