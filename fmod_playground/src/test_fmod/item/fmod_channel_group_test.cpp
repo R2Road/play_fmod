@@ -9,6 +9,7 @@
 
 #include "r2/r2_FrameManager.h"
 #include "r2cm/r2cm_Inspector.h"
+#include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_channel_group_test
@@ -161,6 +162,16 @@ namespace fmod_channel_group_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
+			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
+			std::cout << "[1/2] " << "Group A Volume Up/Down" << r2::linefeed;
+			std::cout << "[3/4] " << "Group B Volume Up/Down" << r2::linefeed;
+			std::cout << "[q/w] " << "Master Channel Group Volume Up/Down" << r2::linefeed;
+
+			std::cout << r2::split;
+
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
@@ -225,12 +236,45 @@ namespace fmod_channel_group_test
 				float group_a_volume = 1.0f;
 				float group_b_volume = 1.0f;
 
-				bool process = true;
-				while( process )
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
+				int input = 0;
+				do
 				{
+
+					if( frame_manager.Update() )
+					{
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
+						std::cout << r2::tab << "Group A : ";
+						r2_fmod_util::PrintChannelVolumeInfo( groupA );
+						std::cout << r2::linefeed;
+
+						std::cout << r2::split;
+
+						std::cout << r2::tab << "Group B : ";
+						r2_fmod_util::PrintChannelVolumeInfo( groupB );
+						std::cout << r2::linefeed;
+
+						std::cout << r2::split;
+
+						std::cout << r2::tab << "Master : ";
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_master_channel_group );
+						std::cout << r2::linefeed;
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
+
+						std::cout << r2::split;
+					}
+
 					if( _kbhit() )
 					{
-						switch( _getch() )
+						input = _getch();
+						switch( input )
 						{
 						case '1':
 							group_a_volume += 0.1f;
@@ -276,50 +320,10 @@ namespace fmod_channel_group_test
 							fmod_result = fmod_master_channel_group->setVolume( master_volume );
 							r2_fmod_util::ERROR_CHECK( fmod_result );
 							break;
-
-						case 27: // ESC
-							process = false;
-							break;
 						}
 					}
-
-					if( frame_manager.Update() )
-					{
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1/2] " << "Group A Volume Up/Down" << r2::linefeed;
-						std::cout << "[3/4] " << "Group B Volume Up/Down" << r2::linefeed;
-						std::cout << "[q/w] " << "Master Channel Group Volume Up/Down" << r2::linefeed;
-
-						std::cout << r2::split;
-
-						std::cout << r2::tab << "Group A : ";
-						r2_fmod_util::PrintChannelVolumeInfo( groupA );
-						std::cout << r2::linefeed;
-
-						std::cout << r2::split;
-
-						std::cout << r2::tab << "Group B : ";
-						r2_fmod_util::PrintChannelVolumeInfo( groupB );
-						std::cout << r2::linefeed;
-
-						std::cout << r2::split;
-
-						std::cout << r2::tab << "Master : ";
-						r2_fmod_util::PrintChannelVolumeInfo( fmod_master_channel_group );
-						std::cout << r2::linefeed;
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
-
-						std::cout << r2::split;
-					}
-				}
+					
+				} while( 27 != input );
 			}
 
 			//
