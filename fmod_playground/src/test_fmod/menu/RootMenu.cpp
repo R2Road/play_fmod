@@ -45,15 +45,11 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 		ret->AddItem( '2', fmod_basic_test::VersionCheck::GetInstance() );
 		ret->AddMenu<FMOD_Load_Menu>( '3' );
 		ret->AddMenu<FMOD_Play_Menu>( '4' );
-
-
-		ret->AddLineFeed();
-
-
 		
 
 
 		ret->AddLineFeed();
+
 
 
 		ret->AddItem( 'q', fmod_effect_test::Echo::GetInstance() );
@@ -62,7 +58,9 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 		ret->AddItem( 'r', fmod_effect_test::PitchControl::GetInstance() );
 
 
+
 		ret->AddLineFeed();
+
 
 
 		ret->AddItem( 'a', fmod_channel_group_test::Basic::GetInstance() );
@@ -70,19 +68,25 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 		ret->AddItem( 'd', fmod_channel_group_test::Volume::GetInstance() );
 
 
+
 		ret->AddLineFeed();
+
 
 
 		ret->AddItem( 'z', fmod_sound_analysis_test::Frequency::GetInstance() );
 
 
+
 		ret->AddSplit();
+
 
 
 		ret->AddItem( 32, etc_test::Test1::GetInstance() );
 
 
+
 		ret->AddSplit();
+
 
 
 		ret->AddItem(
