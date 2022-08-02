@@ -7,7 +7,6 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
-#include "r2/r2_Assert.h"
 #include "r2/r2_FrameManager.h"
 #include "utility/r2_fmod_util.h"
 
