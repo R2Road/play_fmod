@@ -43,6 +43,13 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 	{
 		ret->AddItem( '1', fmod_basic_test::SystemCreateAndRelease::GetInstance() );
 		ret->AddItem( '2', fmod_basic_test::VersionCheck::GetInstance() );
+
+
+
+		ret->AddLineFeed();
+
+
+
 		ret->AddMenu<FMOD_Load_Menu>( '3' );
 		ret->AddMenu<FMOD_Play_Menu>( '4' );
 		
