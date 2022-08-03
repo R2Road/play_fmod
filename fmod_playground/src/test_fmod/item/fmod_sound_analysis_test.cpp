@@ -8,6 +8,7 @@
 #include "fmod_errors.h"
 
 #include "r2/r2_FrameManager.h"
+#include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
 //
@@ -28,6 +29,10 @@ namespace fmod_sound_analysis_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
@@ -71,32 +76,20 @@ namespace fmod_sound_analysis_test
 			// Update Loop
 			//
 			{
-				r2::FrameManager frame_manager( 30u );
+				r2::FrameManager frame_manager( 10u );
 				frame_manager.Reset();
 
-				bool process = true;
-				while( process )
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
+				int input = 0;
+				do
 				{
-					if( _kbhit() )
-					{
-						switch( _getch() )
-						{
-						case 27: // ESC
-							process = false;
-							break;
-						}
-					}
 
 					if( frame_manager.Update() )
 					{
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
 						fmod_result = fmod_result = fmod_system->update();
 						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-
-						std::cout << r2::split;
 
 						{
 							FMOD_DSP_PARAMETER_FFT* fft = nullptr;
@@ -115,9 +108,11 @@ namespace fmod_sound_analysis_test
 									}
 								}
 
-								std::cout << r2::split;
+								std::cout << r2::linefeed2;
 							}
 						}
+
+						std::cout << r2::linefeed;
 
 						{
 							const auto backup_precision = std::cout.precision();
@@ -134,7 +129,13 @@ namespace fmod_sound_analysis_test
 
 						std::cout << r2::split;
 					}
-				}
+
+					if( _kbhit() )
+					{
+						input = _getch();
+					}
+
+				} while( 27 != input );
 			}
 
 			//
