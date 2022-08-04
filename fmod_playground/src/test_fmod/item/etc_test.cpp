@@ -7,6 +7,7 @@
 #include "fmod_errors.h"
 
 #include "r2/r2_FrameManager.h"
+#include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
 namespace etc_test
@@ -19,6 +20,15 @@ namespace etc_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+
+			std::cout << r2::split;
+
+			std::cout << "[1] " "Fade Out" << r2::linefeed;
+			std::cout << "[2] " "Fade In" << r2::linefeed;
+
+			std::cout << r2::split;
+
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
@@ -44,12 +54,45 @@ namespace etc_test
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
-				bool process = true;
-				while( process )
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
+				int input = 0;
+				do
 				{
+
+					if( frame_manager.Update() )
+					{
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
+						fmod_result = fmod_result = fmod_system->update();
+						r2_fmod_util::ERROR_CHECK( fmod_result );
+
+						r2_fmod_util::PrintSampleRateInfo( fmod_system );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintSoundInfo( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelInfo( fmod_channel );
+						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
+						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
+
+						std::cout << r2::split;
+
+						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
+
+						std::cout << r2::split;
+
+						std::cout << "Note : Fade Point Works Only Once" << r2::linefeed;
+
+						std::cout << r2::split;
+					}
+
 					if( _kbhit() )
 					{
-						switch( _getch() )
+						input = _getch();
+						switch( input )
 						{
 						case '1':
 						{
@@ -99,49 +142,10 @@ namespace etc_test
 							r2_fmod_util::ERROR_CHECK( fmod_result );
 						}
 						break;
-
-						case 27: // ESC
-							process = false;
-							break;
 						}
 					}
-
-					if( frame_manager.Update() )
-					{
-						fmod_result = fmod_result = fmod_system->update();
-						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
-
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] " "Fade Out" << r2::linefeed;
-						std::cout << "[2] " "Fade In" << r2::linefeed;
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSampleRateInfo( fmod_system );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintSoundInfo( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelInfo( fmod_channel );
-						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
-						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
-
-						std::cout << r2::split;
-
-						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
-
-						std::cout << r2::split;
-
-						std::cout << "Note : Fade Point Works Only Once" << r2::linefeed;
-
-						std::cout << r2::split;
-					}
-				}
+					
+				} while( 27 != input );
 			}
 
 			{
