@@ -2,7 +2,6 @@
 #include "r2_fmod_util.h"
 
 #include <cstdio>
-#include <iostream>
 
 #include "fmod.hpp"
 #include "fmod_errors.h"
