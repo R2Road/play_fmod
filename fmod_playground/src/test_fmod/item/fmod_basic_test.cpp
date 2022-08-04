@@ -107,6 +107,7 @@ namespace fmod_basic_test
 				DECLARATION_MAIN( const FMOD_RESULT fmod_result = fmod_system->getVersion( &version ) );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 				EXPECT_TRUE( version == FMOD_VERSION );
+				OUTPUT_VALUE( version );
 
 				std::cout << r2cm::linefeed2;
 
