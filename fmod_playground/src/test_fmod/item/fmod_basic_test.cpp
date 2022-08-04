@@ -111,6 +111,10 @@ namespace fmod_basic_test
 
 				std::cout << r2cm::linefeed2;
 
+				PROCESS_MAIN( std::cout << std::hex << version << std::dec );
+
+				std::cout << r2cm::linefeed3;
+
 				std::cout << "FMOD lib version : " << std::hex << version << std::dec << r2cm::linefeed;
 			}
 
