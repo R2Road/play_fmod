@@ -6,9 +6,11 @@
 #include "fmod.hpp"
 #include "fmod_errors.h"
 
-#include "r2cm/r2cm_Inspector.h"
-
 #include "r2/r2_FrameManager.h"
+
+#include "r2cm/r2cm_Inspector.h"
+#include "r2cm/r2cm_ostream.h"
+
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_load_test
@@ -24,56 +26,56 @@ namespace fmod_load_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
 			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
 			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_MAIN( FMOD::Sound* fmod_sound = nullptr );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Load
 			//
 			{
-				std::cout << r2::tab << "+ Load" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Load" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_system->createSound( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound ) );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			{
-				std::cout << r2::tab << "+ Setup" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Setup" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Release
 			//
 			{
-				std::cout << r2::tab << "+ Release" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Release" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_sound->release() );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			return r2cm::eItemLeaveAction::Pause;
 		};
@@ -92,56 +94,56 @@ namespace fmod_load_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
 			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
 			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_MAIN( FMOD::Sound* fmod_sound = nullptr );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Load
 			//
 			{
-				std::cout << r2::tab << "+ Load" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Load" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_DEFAULT, 0, &fmod_sound ) );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			{
-				std::cout << r2::tab << "+ Setup" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Setup" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Release
 			//
 			{
-				std::cout << r2::tab << "+ Release" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Release" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_sound->release() );
 				EXPECT_TRUE( r2_fmod_util::ERROR_CHECK( fmod_result ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			return r2cm::eItemLeaveAction::Pause;
 		};
@@ -160,14 +162,14 @@ namespace fmod_load_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
 			r2_fmod_util::CreateSystem( &fmod_system );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Load
@@ -194,25 +196,25 @@ namespace fmod_load_test
 				// Note!
 				// If loading as a stream, the memory must stay active so do not free it!
 
-				std::cout << r2::tab << "+ Variable" << r2::linefeed << r2::linefeed;
-				std::cout << r2::tab2 << "void* buff = 0;" << r2::linefeed;
-				std::cout << r2::tab2 << "int length = 0;" << r2::linefeed;
-				std::cout << r2::tab2 << "FMOD_CREATESOUNDEXINFO exinfo;" << r2::linefeed;
-				std::cout << r2::linefeed;
+				std::cout << r2cm::tab << "+ Variable" << r2cm::linefeed << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "void* buff = 0;" << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "int length = 0;" << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "FMOD_CREATESOUNDEXINFO exinfo;" << r2cm::linefeed;
+				std::cout << r2cm::linefeed;
 
-				std::cout << r2::tab << "+ Load" << r2::linefeed << r2::linefeed;
-				std::cout << r2::tab2 << "r2_fmod_util::Common_LoadFileMemory( \"resources/TremLoadingloopl.wav\", &buff, &length );" << r2::linefeed;
-				std::cout << r2::tab2 << "memset( &exinfo, 0, sizeof( FMOD_CREATESOUNDEXINFO ) );" << r2::linefeed;
-				std::cout << r2::tab2 << "exinfo.cbsize = sizeof( FMOD_CREATESOUNDEXINFO );" << r2::linefeed;
-				std::cout << r2::tab2 << "exinfo.length = length;" << r2::linefeed;
-				std::cout << r2::linefeed;
+				std::cout << r2cm::tab << "+ Load" << r2cm::linefeed << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "r2_fmod_util::Common_LoadFileMemory( \"resources/TremLoadingloopl.wav\", &buff, &length );" << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "memset( &exinfo, 0, sizeof( FMOD_CREATESOUNDEXINFO ) );" << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "exinfo.cbsize = sizeof( FMOD_CREATESOUNDEXINFO );" << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "exinfo.length = length;" << r2cm::linefeed;
+				std::cout << r2cm::linefeed;
 
-				std::cout << r2::tab << "+ Release" << r2::linefeed << r2::linefeed;
-				std::cout << r2::tab2 << "r2_fmod_util::Common_UnloadFileMemory( buff );" << r2::linefeed;
-				std::cout << r2::linefeed;
+				std::cout << r2cm::tab << "+ Release" << r2cm::linefeed << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "r2_fmod_util::Common_UnloadFileMemory( buff );" << r2cm::linefeed;
+				std::cout << r2cm::linefeed;
 
-				std::cout << r2::tab << "+ Note" << r2::linefeed << r2::linefeed;
-				std::cout << r2::tab2 << "If loading as a stream, the memory must stay active so do not free it!" << r2::linefeed;
+				std::cout << r2cm::tab << "+ Note" << r2cm::linefeed << r2cm::linefeed;
+				std::cout << r2cm::tab2 << "If loading as a stream, the memory must stay active so do not free it!" << r2cm::linefeed;
 			}
 
 			FMOD::Channel* fmod_channel = nullptr;
@@ -221,7 +223,7 @@ namespace fmod_load_test
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Update Loop

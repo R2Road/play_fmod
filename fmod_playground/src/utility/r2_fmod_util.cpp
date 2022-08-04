@@ -8,6 +8,7 @@
 #include "fmod_errors.h"
 
 #include "r2/r2_Assert.h"
+#include "r2cm/r2cm_ostream.h"
 
 namespace r2_fmod_util
 {
@@ -71,7 +72,7 @@ namespace r2_fmod_util
 			r2_fmod_util::ERROR_CHECK( fmod_system->getSoftwareFormat( &sample_rate, nullptr, nullptr ) );
 		}
 
-		std::cout << "Sample Rate : " << sample_rate << r2::linefeed;
+		std::cout << "Sample Rate : " << sample_rate << r2cm::linefeed;
 	}
 
 
@@ -101,10 +102,10 @@ namespace r2_fmod_util
 			r2_fmod_util::ERROR_CHECK( fmod_result );
 		}
 
-		std::cout << "Sound Type : " << sound_type << r2::linefeed;
-		std::cout << "Sound Format : " << sound_format << r2::linefeed;
-		std::cout << "Channels : " << channels << r2::linefeed;
-		std::cout << "Bits : " << bits << r2::linefeed;
+		std::cout << "Sound Type : " << sound_type << r2cm::linefeed;
+		std::cout << "Sound Format : " << sound_format << r2cm::linefeed;
+		std::cout << "Channels : " << channels << r2cm::linefeed;
+		std::cout << "Bits : " << bits << r2cm::linefeed;
 	}
 
 
@@ -159,8 +160,8 @@ namespace r2_fmod_util
 			bLoop = FMOD_LOOP_NORMAL & fmod_mode;
 		}
 
-		std::cout << ( paused ? "Paused " : ( playing ? "Playing" : "Stopped" ) ) << r2::linefeed;
-		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2::linefeed;
+		std::cout << ( paused ? "Paused " : ( playing ? "Playing" : "Stopped" ) ) << r2cm::linefeed;
+		std::cout << "Loop : " << ( bLoop ? "ON" : "OFF" ) << r2cm::linefeed;
 		
 		PrintChannelTimeInfo( fmod_channel );
 	}
@@ -192,8 +193,8 @@ namespace r2_fmod_util
 			}
 		}
 
-		std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2::linefeed;
-		std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2::linefeed;
+		std::cout << "Length : " << lenms / 1000 / 60 << " : " << lenms / 1000 % 60 << " : " << lenms / 10 % 100 << r2cm::linefeed;
+		std::cout << "Time : " << ms / 1000 / 60 << " : " << ms / 1000 % 60 << " : " << ms / 10 % 100 << r2cm::linefeed;
 	}
 	void PrintChannelVolumeInfo( FMOD::ChannelControl* const fmod_channel )
 	{
@@ -209,7 +210,7 @@ namespace r2_fmod_util
 			}
 		}
 
-		std::cout << "Volume : " << volume << r2::linefeed;
+		std::cout << "Volume : " << volume << r2cm::linefeed;
 	}
 	void PrintChannelPitchInfo( FMOD::ChannelControl* const fmod_channel )
 	{
@@ -225,7 +226,7 @@ namespace r2_fmod_util
 			}
 		}
 
-		std::cout << "Pitch : " << pitch << r2::linefeed;
+		std::cout << "Pitch : " << pitch << r2cm::linefeed;
 	}
 	void PrintChannelDSPClock( FMOD::ChannelControl* const fmod_channel )
 	{
@@ -242,8 +243,8 @@ namespace r2_fmod_util
 			}
 		}
 
-		std::cout << "DSP Clock : " << dspclock << r2::linefeed;
-		std::cout << "Parent DSP Clock : " << parent_dspclock << r2::linefeed;
+		std::cout << "DSP Clock : " << dspclock << r2cm::linefeed;
+		std::cout << "Parent DSP Clock : " << parent_dspclock << r2cm::linefeed;
 	}
 
 
@@ -253,7 +254,7 @@ namespace r2_fmod_util
 		int channelsplaying = 0;
 		fmod_system->getChannelsPlaying( &channelsplaying, NULL );
 
-		std::cout << "Channels Playing : " << channelsplaying << r2::linefeed;
+		std::cout << "Channels Playing : " << channelsplaying << r2cm::linefeed;
 	}
 
 

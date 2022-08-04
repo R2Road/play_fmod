@@ -8,6 +8,7 @@
 #include "fmod_errors.h"
 
 #include "r2/r2_FrameManager.h"
+#include "r2cm/r2cm_ostream.h"
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_effect_test
@@ -123,36 +124,36 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] Effect ON/OFF" << r2::linefeed;
-						std::cout << "[SPACE] : Pause" << r2::linefeed;
+						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
+						std::cout << "[1] Effect ON/OFF" << r2cm::linefeed;
+						std::cout << "[SPACE] : Pause" << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						bool is_by_pass = false;
 						fmod_result = fsm_dsp_echo->getBypass( &is_by_pass );
 						r2_fmod_util::ERROR_CHECK( fmod_result );
-						std::cout << "Echo " << ( is_by_pass ? "OFF" : "ON" ) << r2::linefeed;
+						std::cout << "Echo " << ( is_by_pass ? "OFF" : "ON" ) << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 				}
 			}
@@ -280,34 +281,34 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1] Fade Out" << r2::linefeed;
-						std::cout << "[2] Fade In" << r2::linefeed;
-						std::cout << "[SPACE] : Pause" << r2::linefeed;
+						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
+						std::cout << "[1] Fade Out" << r2cm::linefeed;
+						std::cout << "[2] Fade In" << r2cm::linefeed;
+						std::cout << "[SPACE] : Pause" << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
-						std::cout << "Note : Fade Point Works Only Once" << r2::linefeed;
+						std::cout << "Note : Fade Point Works Only Once" << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 				}
 			}
@@ -407,26 +408,26 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[SPACE] Play" << r2::linefeed;
+						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
+						std::cout << "[SPACE] Play" << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						if( fmod_channel )
 						{
 							fmod_channel->getFadePoints( &n, d, v );
 						}
-						std::cout << "P : " << n << r2::linefeed;
+						std::cout << "P : " << n << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 				}
 			}
@@ -528,24 +529,24 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
-						std::cout << "[1/2] Pitch Up/Down" << r2::linefeed;
+						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
+						std::cout << "[1/2] Pitch Up/Down" << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelPitchInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 				}
 			}

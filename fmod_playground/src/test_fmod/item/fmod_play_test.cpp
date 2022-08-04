@@ -9,6 +9,7 @@
 
 #include "r2/r2_FrameManager.h"
 #include "r2cm/r2cm_Inspector.h"
+#include "r2cm/r2cm_ostream.h"
 #include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
@@ -22,9 +23,9 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// System
@@ -33,7 +34,7 @@ namespace fmod_play_test
 			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
 			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Sound : Create
@@ -46,36 +47,36 @@ namespace fmod_play_test
 			PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
 			r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_MAIN( FMOD::Channel* fmod_channel = nullptr );
 			{
 				PROCESS_MAIN( fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				std::cout << r2::linefeed2;
+				std::cout << r2cm::linefeed2;
 
-				std::cout << "[Any Key] " << "End" << r2::linefeed;
+				std::cout << "[Any Key] " << "End" << r2cm::linefeed;
 				_getch();
 
-				std::cout << r2::linefeed2;
+				std::cout << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_channel->stop() );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			{
 				PROCESS_SUB( fmod_result = fmod_sound->release() );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				std::cout << r2::linefeed;
+				std::cout << r2cm::linefeed;
 
 				PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			return r2cm::eItemLeaveAction::Pause;
 		};
@@ -91,7 +92,7 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
 			//
 			// System
@@ -114,18 +115,18 @@ namespace fmod_play_test
 				r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			{
-				std::cout << "[1] " << "Play" << r2::linefeed;
-				std::cout << "[2] " << "Stop" << r2::linefeed;
-				std::cout << "[3] " << "Loop ON/OFF" << r2::linefeed2;
+				std::cout << "[1] " << "Play" << r2cm::linefeed;
+				std::cout << "[2] " << "Stop" << r2cm::linefeed;
+				std::cout << "[3] " << "Loop ON/OFF" << r2cm::linefeed2;
 
-				std::cout << r2::tab << "createSound 로 만들어진 Sound 는 Play 이후에는 Loop 속성이 변경되지 않는다." << r2::linefeed;
-				std::cout << r2::tab << "createStream 으로 만들어진 Sound 는 Loop 속성이 즉각 반영된다." << r2::linefeed;
+				std::cout << r2cm::tab << "createSound 로 만들어진 Sound 는 Play 이후에는 Loop 속성이 변경되지 않는다." << r2cm::linefeed;
+				std::cout << r2cm::tab << "createStream 으로 만들어진 Sound 는 Loop 속성이 즉각 반영된다." << r2cm::linefeed;
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Update Loop
@@ -149,20 +150,20 @@ namespace fmod_play_test
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 
 					if( _kbhit() )
@@ -224,15 +225,15 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
 			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
 			PROCESS_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Load
@@ -245,36 +246,36 @@ namespace fmod_play_test
 			PROCESS_MAIN( fmod_result = fmod_sound->setMode( FMOD_LOOP_OFF ) );    /* drumloop.wav has embedded loop points which automatically makes looping turn on, */
 			r2_fmod_util::ERROR_CHECK( fmod_result );	/* so turn it off here.  We could have also just put FMOD_LOOP_OFF in the above CreateSound call. */
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_MAIN( FMOD::Channel* fmod_channel = nullptr );
 			{
 				PROCESS_MAIN( fmod_result = fmod_system->playSound( fmod_sound, 0, false, &fmod_channel ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				std::cout << r2::linefeed2;
+				std::cout << r2cm::linefeed2;
 
-				std::cout << "[Any Key] " << "End" << r2::linefeed;
+				std::cout << "[Any Key] " << "End" << r2cm::linefeed;
 				_getch();
 
-				std::cout << r2::linefeed2;
+				std::cout << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_channel->stop() );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			{
 				PROCESS_SUB( fmod_result = fmod_sound->release() );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 
-				std::cout << r2::linefeed;
+				std::cout << r2cm::linefeed;
 
 				PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			return r2cm::eItemLeaveAction::Pause;
 		};
@@ -290,7 +291,7 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
 			//
 			// System
@@ -324,15 +325,15 @@ namespace fmod_play_test
 				}
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			{
-				std::cout << "[1] " << "Play" << r2::linefeed;
-				std::cout << "[2] " << "Stop" << r2::linefeed;
-				std::cout << "[3] " << "Loop ON/OFF" << r2::linefeed;
+				std::cout << "[1] " << "Play" << r2cm::linefeed;
+				std::cout << "[2] " << "Stop" << r2cm::linefeed;
+				std::cout << "[3] " << "Loop ON/OFF" << r2cm::linefeed;
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Update Loop
@@ -356,20 +357,20 @@ namespace fmod_play_test
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 
 					if( _kbhit() )
@@ -426,7 +427,7 @@ namespace fmod_play_test
 
 	FMOD_RESULT F_CALLBACK TempCallback( FMOD_CHANNELCONTROL* /*channelcontrol*/, FMOD_CHANNELCONTROL_TYPE controltype, FMOD_CHANNELCONTROL_CALLBACK_TYPE /*callbacktype*/, void* /*commanddata1*/, void* /*commanddata2*/ )
 	{
-		std::cout << "Call - TempCallback" << r2::linefeed;
+		std::cout << "Call - TempCallback" << r2cm::linefeed;
 
 		if( controltype == FMOD_CHANNELCONTROL_TYPE::FMOD_CHANNELCONTROL_CHANNEL )
 		{
@@ -451,15 +452,15 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
 			DECLARATION_SUB( FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK );
 			DECLARATION_SUB( r2_fmod_util::CreateSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Load
@@ -470,7 +471,7 @@ namespace fmod_play_test
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Process
@@ -483,9 +484,9 @@ namespace fmod_play_test
 				PROCESS_MAIN( fmod_channel->setCallback( TempCallback ) );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
-			std::cout << r2::tab << "Wait 4 Callback : [Any Key] End" << r2::linefeed2;
+			std::cout << r2cm::tab << "Wait 4 Callback : [Any Key] End" << r2cm::linefeed2;
 			bool input = false;
 			do
 			{
@@ -497,7 +498,7 @@ namespace fmod_play_test
 
 			} while( !input );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Audio Release
@@ -507,14 +508,14 @@ namespace fmod_play_test
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// System : Release
 			//
 			PROCESS_SUB( r2_fmod_util::ReleaseSystem( &fmod_system ) );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			return r2cm::eItemLeaveAction::Pause;
 		};
@@ -530,14 +531,14 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
-			std::cout << "[1] " << "Volume Up" << r2::linefeed;
-			std::cout << "[2] " << "Volume Down" << r2::linefeed;
+			std::cout << "[1] " << "Volume Up" << r2cm::linefeed;
+			std::cout << "[2] " << "Volume Down" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -585,20 +586,20 @@ namespace fmod_play_test
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 
 					if( _kbhit() )
@@ -651,14 +652,14 @@ namespace fmod_play_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
-			std::cout << "[1] " << "Move First" << r2::linefeed;
-			std::cout << "[2] " << "Move Half" << r2::linefeed;
+			std::cout << "[1] " << "Move First" << r2cm::linefeed;
+			std::cout << "[2] " << "Move Half" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -704,20 +705,20 @@ namespace fmod_play_test
 
 						r2_fmod_util::PrintSampleRateInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintSoundInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelInfo( fmod_channel );
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 
 					if( _kbhit() )

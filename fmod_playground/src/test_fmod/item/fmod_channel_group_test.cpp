@@ -9,6 +9,7 @@
 
 #include "r2/r2_FrameManager.h"
 #include "r2cm/r2cm_Inspector.h"
+#include "r2cm/r2cm_ostream.h"
 #include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
@@ -22,9 +23,9 @@ namespace fmod_channel_group_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			//
@@ -38,7 +39,7 @@ namespace fmod_channel_group_test
 			// Master Channel Group
 			//
 			{
-				std::cout << r2::tab << "+ Get Master Channel Group" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Get Master Channel Group" << r2cm::linefeed2;
 
 				DECLARATION_MAIN( FMOD::ChannelGroup* fmod_master_channelgroup = nullptr );
 				PROCESS_MAIN( fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup ) );
@@ -50,7 +51,7 @@ namespace fmod_channel_group_test
 			//
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			return r2cm::eItemLeaveAction::Pause;
 		};
@@ -66,7 +67,7 @@ namespace fmod_channel_group_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
 			//
 			//
@@ -75,7 +76,7 @@ namespace fmod_channel_group_test
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 			r2_fmod_util::CreateSystem( &fmod_system );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			//
@@ -84,25 +85,25 @@ namespace fmod_channel_group_test
 			DECLARATION_MAIN( FMOD::ChannelGroup* groupA = nullptr );
 			DECLARATION_MAIN( FMOD::ChannelGroup* groupB = nullptr );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Master Channel Group
 			//
 			{
-				std::cout << r2::tab << "+ Get Master Channel Group" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Get Master Channel Group" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_system->getMasterChannelGroup( &fmod_master_channelgroup ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Create Channel Group
 			//
 			{
-				std::cout << r2::tab << "+ Create Channel Group" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Create Channel Group" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_system->createChannelGroup( "Group A", &groupA ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
@@ -111,13 +112,13 @@ namespace fmod_channel_group_test
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Add Channel Group
 			//
 			{
-				std::cout << r2::tab << "+ Add Channel Group" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Add Channel Group" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = fmod_master_channelgroup->addGroup( groupA ) );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
@@ -126,13 +127,13 @@ namespace fmod_channel_group_test
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			//
 			// Release Channel Group
 			//
 			{
-				std::cout << r2::tab << "+ Release Channel Group" << r2::linefeed2;
+				std::cout << r2cm::tab << "+ Release Channel Group" << r2cm::linefeed2;
 
 				PROCESS_MAIN( fmod_result = groupA->release() );
 				r2_fmod_util::ERROR_CHECK( fmod_result );
@@ -146,7 +147,7 @@ namespace fmod_channel_group_test
 			//
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			return r2cm::eItemLeaveAction::Pause;
 		};
@@ -162,15 +163,15 @@ namespace fmod_channel_group_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
-			std::cout << "[1/2] " << "Group A Volume Up/Down" << r2::linefeed;
-			std::cout << "[q/w] " << "Group B Volume Up/Down" << r2::linefeed;
-			std::cout << "[a/s] " << "Master Channel Group Volume Up/Down" << r2::linefeed;
+			std::cout << "[1/2] " << "Group A Volume Up/Down" << r2cm::linefeed;
+			std::cout << "[q/w] " << "Group B Volume Up/Down" << r2cm::linefeed;
+			std::cout << "[a/s] " << "Master Channel Group Volume Up/Down" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -248,27 +249,27 @@ namespace fmod_channel_group_test
 
 						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
 
-						std::cout << r2::tab << "Group A : ";
+						std::cout << r2cm::tab << "Group A : ";
 						r2_fmod_util::PrintChannelVolumeInfo( groupA );
-						std::cout << r2::linefeed;
+						std::cout << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
-						std::cout << r2::tab << "Group B : ";
+						std::cout << r2cm::tab << "Group B : ";
 						r2_fmod_util::PrintChannelVolumeInfo( groupB );
-						std::cout << r2::linefeed;
+						std::cout << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
-						std::cout << r2::tab << "Master : ";
+						std::cout << r2cm::tab << "Master : ";
 						r2_fmod_util::PrintChannelVolumeInfo( fmod_master_channel_group );
-						std::cout << r2::linefeed;
+						std::cout << r2cm::linefeed;
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 
 					if( _kbhit() )

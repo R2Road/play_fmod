@@ -8,6 +8,7 @@
 #include "fmod_errors.h"
 
 #include "r2/r2_FrameManager.h"
+#include "r2cm/r2cm_ostream.h"
 #include "r2cm/r2cm_WindowUtility.h"
 #include "utility/r2_fmod_util.h"
 
@@ -29,9 +30,9 @@ namespace fmod_sound_analysis_test
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2::linefeed;
+			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 
-			std::cout << r2::split;
+			std::cout << r2cm::split;
 
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -100,19 +101,19 @@ namespace fmod_sound_analysis_test
 								for( int bin = 0; fft->length > bin; ++bin )
 								{
 									float freqVal = fft->spectrum[channel][bin];
-									std::cout << static_cast<int>( freqVal * 10000 ) << r2::tab;
+									std::cout << static_cast<int>( freqVal * 10000 ) << r2cm::tab;
 
 									if( 0 == ( bin + 1 ) % 14 )
 									{
-										std::cout << r2::linefeed;
+										std::cout << r2cm::linefeed;
 									}
 								}
 
-								std::cout << r2::linefeed2;
+								std::cout << r2cm::linefeed2;
 							}
 						}
 
-						std::cout << r2::linefeed;
+						std::cout << r2cm::linefeed;
 
 						{
 							const auto backup_precision = std::cout.precision();
@@ -120,14 +121,14 @@ namespace fmod_sound_analysis_test
 							float dfft = 0.f;
 
 							fsm_dsp_fft->getParameterFloat( FMOD_DSP_FFT_DOMINANT_FREQ, &dfft, 0, 0 );
-							std::cout << dfft << r2::linefeed;
+							std::cout << dfft << r2cm::linefeed;
 						}
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 
 						r2_fmod_util::PrintChannelTimeInfo( fmod_channel );
 
-						std::cout << r2::split;
+						std::cout << r2cm::split;
 					}
 
 					if( _kbhit() )
