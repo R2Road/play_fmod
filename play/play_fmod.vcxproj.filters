@@ -7,16 +7,19 @@
     <Filter Include="utility">
       <UniqueIdentifier>{abef3520-7cdf-44e1-9ede-8fafcfbe17cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="r2">
-      <UniqueIdentifier>{7f8e3881-6ccf-4203-a030-363f487d65bd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="test_fmod\menu">
       <UniqueIdentifier>{4093bd03-4cb2-493d-b960-ad93b7dcd157}</UniqueIdentifier>
     </Filter>
     <Filter Include="test_fmod\item">
       <UniqueIdentifier>{00b0807e-d477-422e-b460-a49e91af26a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="r2cm">
+    <Filter Include="external">
+      <UniqueIdentifier>{74935438-f40a-40ee-a67e-a3e9b6f65228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\r2">
+      <UniqueIdentifier>{7f8e3881-6ccf-4203-a030-363f487d65bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\r2cm">
       <UniqueIdentifier>{81ab3847-2894-4251-856b-66f39b090229}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -25,9 +28,6 @@
     <ClCompile Include="src\pch.cpp" />
     <ClCompile Include="src\utility\r2_fmod_util.cpp">
       <Filter>utility</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2\r2_FrameManager.cpp">
-      <Filter>r2</Filter>
     </ClCompile>
     <ClCompile Include="src\test_fmod\menu\RootMenu.cpp">
       <Filter>test_fmod\menu</Filter>
@@ -50,21 +50,6 @@
     <ClCompile Include="src\test_fmod\item\fmod_sound_analysis_test.cpp">
       <Filter>test_fmod\item</Filter>
     </ClCompile>
-    <ClCompile Include="src\r2cm\r2cm_Director.cpp">
-      <Filter>r2cm</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2cm\r2cm_Inspector.cpp">
-      <Filter>r2cm</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2cm\r2cm_Menu.cpp">
-      <Filter>r2cm</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2cm\r2cm_StopWatch.cpp">
-      <Filter>r2cm</Filter>
-    </ClCompile>
-    <ClCompile Include="src\r2cm\r2cm_WindowUtility.cpp">
-      <Filter>r2cm</Filter>
-    </ClCompile>
     <ClCompile Include="src\test_fmod\item\fmod_basic_test.cpp">
       <Filter>test_fmod\item</Filter>
     </ClCompile>
@@ -74,14 +59,29 @@
     <ClCompile Include="src\test_fmod\menu\FMOD_Load_Menu.cpp">
       <Filter>test_fmod\menu</Filter>
     </ClCompile>
+    <ClCompile Include="external\r2\r2_FrameManager.cpp">
+      <Filter>external\r2</Filter>
+    </ClCompile>
+    <ClCompile Include="external\r2cm\r2cm_Director.cpp">
+      <Filter>external\r2cm</Filter>
+    </ClCompile>
+    <ClCompile Include="external\r2cm\r2cm_Inspector.cpp">
+      <Filter>external\r2cm</Filter>
+    </ClCompile>
+    <ClCompile Include="external\r2cm\r2cm_Menu.cpp">
+      <Filter>external\r2cm</Filter>
+    </ClCompile>
+    <ClCompile Include="external\r2cm\r2cm_StopWatch.cpp">
+      <Filter>external\r2cm</Filter>
+    </ClCompile>
+    <ClCompile Include="external\r2cm\r2cm_WindowUtility.cpp">
+      <Filter>external\r2cm</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\utility\r2_fmod_util.h">
       <Filter>utility</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2\r2_FrameManager.h">
-      <Filter>r2</Filter>
     </ClInclude>
     <ClInclude Include="src\test_fmod\menu\RootMenu.h">
       <Filter>test_fmod\menu</Filter>
@@ -104,36 +104,6 @@
     <ClInclude Include="src\test_fmod\item\fmod_sound_analysis_test.h">
       <Filter>test_fmod\item</Filter>
     </ClInclude>
-    <ClInclude Include="src\r2\r2_Assert.h">
-      <Filter>r2</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_Director.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_iItem.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_Inspector.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_Menu.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_ostream.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_Singleton.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_StopWatch.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_VersionInfo.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
-    <ClInclude Include="src\r2cm\r2cm_WindowUtility.h">
-      <Filter>r2cm</Filter>
-    </ClInclude>
     <ClInclude Include="src\test_fmod\item\fmod_basic_test.h">
       <Filter>test_fmod\item</Filter>
     </ClInclude>
@@ -142,6 +112,39 @@
     </ClInclude>
     <ClInclude Include="src\test_fmod\menu\FMOD_Load_Menu.h">
       <Filter>test_fmod\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2\r2_Assert.h">
+      <Filter>external\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2\r2_FrameManager.h">
+      <Filter>external\r2</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_Director.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_iItem.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_Inspector.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_Menu.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_ostream.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_Singleton.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_StopWatch.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_VersionInfo.h">
+      <Filter>external\r2cm</Filter>
+    </ClInclude>
+    <ClInclude Include="external\r2cm\r2cm_WindowUtility.h">
+      <Filter>external\r2cm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

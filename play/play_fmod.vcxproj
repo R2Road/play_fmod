@@ -19,6 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external\r2cm\r2cm_Director.cpp" />
+    <ClCompile Include="external\r2cm\r2cm_Inspector.cpp" />
+    <ClCompile Include="external\r2cm\r2cm_Menu.cpp" />
+    <ClCompile Include="external\r2cm\r2cm_StopWatch.cpp" />
+    <ClCompile Include="external\r2cm\r2cm_WindowUtility.cpp" />
+    <ClCompile Include="external\r2\r2_FrameManager.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -26,12 +32,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\r2cm\r2cm_Director.cpp" />
-    <ClCompile Include="src\r2cm\r2cm_Inspector.cpp" />
-    <ClCompile Include="src\r2cm\r2cm_Menu.cpp" />
-    <ClCompile Include="src\r2cm\r2cm_StopWatch.cpp" />
-    <ClCompile Include="src\r2cm\r2cm_WindowUtility.cpp" />
-    <ClCompile Include="src\r2\r2_FrameManager.cpp" />
     <ClCompile Include="src\test_fmod\item\etc_test.cpp" />
     <ClCompile Include="src\test_fmod\item\fmod_basic_test.cpp" />
     <ClCompile Include="src\test_fmod\item\fmod_channel_group_test.cpp" />
@@ -45,18 +45,18 @@
     <ClCompile Include="src\utility\r2_fmod_util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="external\r2cm\r2cm_Director.h" />
+    <ClInclude Include="external\r2cm\r2cm_iItem.h" />
+    <ClInclude Include="external\r2cm\r2cm_Inspector.h" />
+    <ClInclude Include="external\r2cm\r2cm_Menu.h" />
+    <ClInclude Include="external\r2cm\r2cm_ostream.h" />
+    <ClInclude Include="external\r2cm\r2cm_Singleton.h" />
+    <ClInclude Include="external\r2cm\r2cm_StopWatch.h" />
+    <ClInclude Include="external\r2cm\r2cm_VersionInfo.h" />
+    <ClInclude Include="external\r2cm\r2cm_WindowUtility.h" />
+    <ClInclude Include="external\r2\r2_Assert.h" />
+    <ClInclude Include="external\r2\r2_FrameManager.h" />
     <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\r2cm\r2cm_Director.h" />
-    <ClInclude Include="src\r2cm\r2cm_iItem.h" />
-    <ClInclude Include="src\r2cm\r2cm_Inspector.h" />
-    <ClInclude Include="src\r2cm\r2cm_Menu.h" />
-    <ClInclude Include="src\r2cm\r2cm_ostream.h" />
-    <ClInclude Include="src\r2cm\r2cm_Singleton.h" />
-    <ClInclude Include="src\r2cm\r2cm_StopWatch.h" />
-    <ClInclude Include="src\r2cm\r2cm_VersionInfo.h" />
-    <ClInclude Include="src\r2cm\r2cm_WindowUtility.h" />
-    <ClInclude Include="src\r2\r2_Assert.h" />
-    <ClInclude Include="src\r2\r2_FrameManager.h" />
     <ClInclude Include="src\test_fmod\item\etc_test.h" />
     <ClInclude Include="src\test_fmod\item\fmod_basic_test.h" />
     <ClInclude Include="src\test_fmod\item\fmod_channel_group_test.h" />
@@ -142,14 +142,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\fmod\core\inc;$(ProjectDir)external\fmod\studio\inc;$(ProjectDir)external;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>vld\lib\Win32;fmod\core\lib\x86;fmod\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\external\vld\lib\Win32;$(ProjectDir)\external\fmod\core\lib\x86;$(ProjectDir)\external\fmod\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <CustomBuildStep>
@@ -158,8 +158,8 @@
     </CustomBuildStep>
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(ProjectDir)vld\bin\Win32\*.*" "$(OutDir)" /D /E /I /F /Y
-xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)external\vld\bin\Win32\*.*" "$(OutDir)" /D /E /I /F /Y
+xcopy "$(ProjectDir)external\fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -171,20 +171,20 @@ xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>vld\include;fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\fmod\core\inc;$(ProjectDir)external\fmod\studio\inc;$(ProjectDir)external;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>vld\lib\Win64;fmod\core\lib\x64;fmod\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\external\vld\lib\Win64;$(ProjectDir)\external\fmod\core\lib\x64;$(ProjectDir)\external\fmod\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(ProjectDir)vld\bin\Win64\*.*" "$(OutDir)" /D /E /I /F /Y
-xcopy "$(ProjectDir)fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)external\vld\bin\Win64\*.*" "$(OutDir)" /D /E /I /F /Y
+xcopy "$(ProjectDir)external\fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -200,7 +200,7 @@ xcopy "$(ProjectDir)fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\fmod\core\inc;$(ProjectDir)external\fmod\studio\inc;$(ProjectDir)external;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -208,11 +208,11 @@ xcopy "$(ProjectDir)fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>fmod\core\lib\x86;fmod\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\external\fmod\core\lib\x86;$(ProjectDir)\external\fmod\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)external\fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -228,7 +228,7 @@ xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>fmod\core\inc;fmod\studio\inc;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\fmod\core\inc;$(ProjectDir)external\fmod\studio\inc;$(ProjectDir)external;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -236,11 +236,11 @@ xcopy "$(ProjectDir)fmod\core\lib\x86\*.dll" "$(OutDir)" /D /E /I /F /Y</Command
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>fmodstudio_vc.lib;fmodstudioL_vc.lib;fmod_vc.lib;fmodL_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>fmod\core\lib\x64;fmod\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)\external\fmod\core\lib\x64;$(ProjectDir)\external\fmod\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy "$(ProjectDir)fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
+xcopy "$(ProjectDir)external\fmod\core\lib\x64\*.dll" "$(OutDir)" /D /E /I /F /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,4 +1,4 @@
-# fmod_playground
+# play_fmod
 
 ## 개괄 | Overview
 - fmod 테스트 | fmod Test
