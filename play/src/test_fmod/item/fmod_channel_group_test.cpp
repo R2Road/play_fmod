@@ -19,7 +19,7 @@ namespace fmod_channel_group_test
 	{
 		return []()->const char* { return "Channel Group - Basic"; };
 	}
-	r2cm::iItem::DoFunctionT Basic::GetDoFunction()
+	r2cm::iItem::DoFunctionT Basic::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -63,7 +63,7 @@ namespace fmod_channel_group_test
 	{
 		return []()->const char* { return "Channel Group - Group"; };
 	}
-	r2cm::iItem::DoFunctionT Group::GetDoFunction()
+	r2cm::iItem::DoFunctionT Group::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -159,7 +159,7 @@ namespace fmod_channel_group_test
 	{
 		return []()->const char* { return "Channel Group - Volume"; };
 	}
-	r2cm::iItem::DoFunctionT Volume::GetDoFunction()
+	r2cm::iItem::DoFunctionT Volume::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

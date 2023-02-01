@@ -18,7 +18,7 @@ namespace fmod_basic_test
 			return "System Create And Release";
 		};
 	}
-	r2cm::iItem::DoFunctionT SystemCreateAndRelease::GetDoFunction()
+	r2cm::iItem::DoFunctionT SystemCreateAndRelease::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -84,7 +84,7 @@ namespace fmod_basic_test
 			return "Version Check";
 		};
 	}
-	r2cm::iItem::DoFunctionT VersionCheck::GetDoFunction()
+	r2cm::iItem::DoFunctionT VersionCheck::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

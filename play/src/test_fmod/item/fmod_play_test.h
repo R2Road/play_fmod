@@ -9,14 +9,14 @@ namespace fmod_play_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class PlaySound_Demo : public r2cm::iItem, public r2cm::SingleTon<PlaySound_Demo>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 
@@ -25,14 +25,14 @@ namespace fmod_play_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class PlayStream_Demo: public r2cm::iItem, public r2cm::SingleTon<PlayStream_Demo>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 
@@ -41,20 +41,20 @@ namespace fmod_play_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class VolumeControl : public r2cm::iItem, public r2cm::SingleTon<VolumeControl>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class PositionControl : public r2cm::iItem, public r2cm::SingleTon<PositionControl>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 }

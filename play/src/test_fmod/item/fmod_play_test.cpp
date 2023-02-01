@@ -19,7 +19,7 @@ namespace fmod_play_test
 	{
 		return []()->const char* { return "Play Sound : Basic"; };
 	}
-	r2cm::iItem::DoFunctionT PlaySound_Basic::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlaySound_Basic::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -88,7 +88,7 @@ namespace fmod_play_test
 	{
 		return []()->const char* { return "Play Sound : Demo"; };
 	}
-	r2cm::iItem::DoFunctionT PlaySound_Demo::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlaySound_Demo::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -221,7 +221,7 @@ namespace fmod_play_test
 	{
 		return []()->const char* { return "Play Stream : Basic"; };
 	}
-	r2cm::iItem::DoFunctionT PlayStream_Basic::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlayStream_Basic::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -287,7 +287,7 @@ namespace fmod_play_test
 	{
 		return []()->const char* { return "Play Stream : Demo"; };
 	}
-	r2cm::iItem::DoFunctionT PlayStream_Demo::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlayStream_Demo::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -448,7 +448,7 @@ namespace fmod_play_test
 	{
 		return []()->const char* { return "Play And Callback"; };
 	}
-	r2cm::iItem::DoFunctionT PlayAndCallback::GetDoFunction()
+	r2cm::iItem::DoFunctionT PlayAndCallback::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -527,7 +527,7 @@ namespace fmod_play_test
 	{
 		return []()->const char* { return "Volume Control"; };
 	}
-	r2cm::iItem::DoFunctionT VolumeControl::GetDoFunction()
+	r2cm::iItem::DoFunctionT VolumeControl::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -648,7 +648,7 @@ namespace fmod_play_test
 	{
 		return []()->const char* { return "Position Control"; };
 	}
-	r2cm::iItem::DoFunctionT PositionControl::GetDoFunction()
+	r2cm::iItem::DoFunctionT PositionControl::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

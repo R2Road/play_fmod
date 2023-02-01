@@ -17,7 +17,7 @@ namespace etc_test
 	{
 		return []()->const char* { return "ETC : Test 1"; };
 	}
-	r2cm::iItem::DoFunctionT Test1::GetDoFunction()
+	r2cm::iItem::DoFunctionT Test1::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

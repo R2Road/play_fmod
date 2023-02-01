@@ -26,7 +26,7 @@ namespace fmod_sound_analysis_test
 	{
 		return []()->const char* { return "Sound Analysis - Frequency"; };
 	}
-	r2cm::iItem::DoFunctionT Frequency::GetDoFunction()
+	r2cm::iItem::DoFunctionT Frequency::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

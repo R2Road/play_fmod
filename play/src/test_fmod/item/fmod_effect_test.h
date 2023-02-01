@@ -9,27 +9,27 @@ namespace fmod_effect_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class Fade : public r2cm::iItem, public r2cm::SingleTon<Fade>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class FadeStartFadeEnd : public r2cm::iItem, public r2cm::SingleTon<FadeStartFadeEnd>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class PitchControl : public r2cm::iItem, public r2cm::SingleTon<PitchControl>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 }

@@ -9,13 +9,13 @@ namespace fmod_basic_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class VersionCheck : public r2cm::iItem, public r2cm::SingleTon<VersionCheck>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 }

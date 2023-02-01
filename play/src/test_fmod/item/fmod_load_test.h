@@ -9,20 +9,20 @@ namespace fmod_load_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class LoadStream : public r2cm::iItem, public r2cm::SingleTon<LoadStream>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 	class Memory : public r2cm::iItem, public r2cm::SingleTon<Memory>
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 }

@@ -22,7 +22,7 @@ namespace fmod_load_test
 			return "Load Sound";
 		};
 	}
-	r2cm::iItem::DoFunctionT LoadSound::GetDoFunction()
+	r2cm::iItem::DoFunctionT LoadSound::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -90,7 +90,7 @@ namespace fmod_load_test
 			return "Load Stream";
 		};
 	}
-	r2cm::iItem::DoFunctionT LoadStream::GetDoFunction()
+	r2cm::iItem::DoFunctionT LoadStream::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -158,7 +158,7 @@ namespace fmod_load_test
 			return "Sound Load - Memory";
 		};
 	}
-	r2cm::iItem::DoFunctionT Memory::GetDoFunction()
+	r2cm::iItem::DoFunctionT Memory::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{

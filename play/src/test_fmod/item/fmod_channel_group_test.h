@@ -9,7 +9,7 @@ namespace fmod_channel_group_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 
@@ -18,7 +18,7 @@ namespace fmod_channel_group_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 
 
@@ -27,6 +27,6 @@ namespace fmod_channel_group_test
 	{
 	public:
 		TitleFunctionT GetTitleFunction() const override;
-		DoFunctionT GetDoFunction() override;
+		DoFunctionT GetDoFunction() const override;
 	};
 }

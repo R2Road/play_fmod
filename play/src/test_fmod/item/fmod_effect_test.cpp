@@ -17,7 +17,7 @@ namespace fmod_effect_test
 	{
 		return []()->const char* { return "Effect - Echo"; };
 	}
-	r2cm::iItem::DoFunctionT Echo::GetDoFunction()
+	r2cm::iItem::DoFunctionT Echo::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -188,7 +188,7 @@ namespace fmod_effect_test
 	{
 		return []()->const char* { return "Effect - Fade"; };
 	}
-	r2cm::iItem::DoFunctionT Fade::GetDoFunction()
+	r2cm::iItem::DoFunctionT Fade::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -330,7 +330,7 @@ namespace fmod_effect_test
 	{
 		return []()->const char* { return "Effect - Fade Start and Fade End"; };
 	}
-	r2cm::iItem::DoFunctionT FadeStartFadeEnd::GetDoFunction()
+	r2cm::iItem::DoFunctionT FadeStartFadeEnd::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
@@ -449,7 +449,7 @@ namespace fmod_effect_test
 	{
 		return []()->const char* { return "Effect - Pitch Control"; };
 	}
-	r2cm::iItem::DoFunctionT PitchControl::GetDoFunction()
+	r2cm::iItem::DoFunctionT PitchControl::GetDoFunction() const
 	{
 		return []()->r2cm::eItemLeaveAction
 		{
