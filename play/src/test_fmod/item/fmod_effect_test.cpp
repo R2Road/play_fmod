@@ -98,6 +98,7 @@ namespace fmod_effect_test
 				int input = true;
 				do
 				{
+
 					if( frame_manager.Update() )
 					{
 						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
@@ -159,6 +160,7 @@ namespace fmod_effect_test
 						break;
 						}
 					}
+
 				} while( 27 != input );
 			}
 
