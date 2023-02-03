@@ -84,15 +84,16 @@ namespace fmod_effect_test
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
 				int input = true;
 				do
 				{
 					if( frame_manager.Update() )
 					{
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
 						fmod_result = fmod_result = fmod_system->update();
 						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						system( "cls" );
 
 						std::cout << "[1] Effect ON/OFF" << r2cm::linefeed;
 						std::cout << "[SPACE] : Pause" << r2cm::linefeed;
