@@ -14,7 +14,7 @@ int main()
 	//
 	// Environment : Title
 	//
-	r2cm::WindowUtility::ChangeTitle( "fmod_playground" );
+	r2cm::WindowUtility::ChangeTitle( "play_fmod" );
 
 	//
 	// Environment : Size
