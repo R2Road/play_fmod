@@ -9,6 +9,8 @@
 
 #include "r2/r2_FrameManager.h"
 #include "r2cm/r2cm_ostream.h"
+#include "r2cm/r2cm_WindowUtility.h"
+
 #include "utility/r2_fmod_util.h"
 
 namespace fmod_effect_test
@@ -82,12 +84,13 @@ namespace fmod_effect_test
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
 
-				bool process = true;
-				while( process )
+				int input = true;
+				do
 				{
 					if( _kbhit() )
 					{
-						switch( _getch() )
+						input = _getch();
+						switch( input )
 						{
 						case '1':
 						{
@@ -110,10 +113,6 @@ namespace fmod_effect_test
 							r2_fmod_util::ERROR_CHECK( fmod_result );
 						}
 						break;
-
-						case 27: // ESC
-							process = false;
-							break;
 						}
 					}
 
@@ -154,7 +153,7 @@ namespace fmod_effect_test
 
 						std::cout << r2cm::split;
 					}
-				}
+				} while( 27 != input );
 			}
 
 			//
