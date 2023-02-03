@@ -77,6 +77,16 @@ namespace fmod_effect_test
 				r2_fmod_util::ERROR_CHECK( fmod_result );
 			}
 
+			std::cout << r2cm::split;
+
+			{
+				std::cout << "[   1   ] Effect ON/OFF" << r2cm::linefeed;
+				std::cout << "[ SPACE ] Pause" << r2cm::linefeed;
+				std::cout << "[  ESC  ] Exit" << r2cm::linefeed;
+			}
+
+			std::cout << r2cm::split;
+
 			//
 			// Update Loop
 			//
@@ -94,12 +104,7 @@ namespace fmod_effect_test
 
 						fmod_result = fmod_result = fmod_system->update();
 						r2_fmod_util::ERROR_CHECK( fmod_result );
-
-						std::cout << "[1] Effect ON/OFF" << r2cm::linefeed;
-						std::cout << "[SPACE] : Pause" << r2cm::linefeed;
-
-						std::cout << r2cm::split;
-
+						
 						bool is_by_pass = false;
 						fmod_result = fsm_dsp_echo->getBypass( &is_by_pass );
 						r2_fmod_util::ERROR_CHECK( fmod_result );
