@@ -87,35 +87,6 @@ namespace fmod_effect_test
 				int input = true;
 				do
 				{
-					if( _kbhit() )
-					{
-						input = _getch();
-						switch( input )
-						{
-						case '1':
-						{
-							bool is_by_pass = false;
-							fmod_result = fsm_dsp_echo->getBypass( &is_by_pass );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-
-							fmod_result = fsm_dsp_echo->setBypass( !is_by_pass );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-						}
-						break;
-
-						case 32:
-						{
-							bool bPaused = false;
-							fmod_result = fmod_channel->getPaused( &bPaused );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-
-							fmod_result = fmod_channel->setPaused( !bPaused );
-							r2_fmod_util::ERROR_CHECK( fmod_result );
-						}
-						break;
-						}
-					}
-
 					if( frame_manager.Update() )
 					{
 						fmod_result = fmod_result = fmod_system->update();
@@ -152,6 +123,35 @@ namespace fmod_effect_test
 						r2_fmod_util::PrintChannelsPlayingInfo( fmod_system );
 
 						std::cout << r2cm::split;
+					}
+
+					if( _kbhit() )
+					{
+						input = _getch();
+						switch( input )
+						{
+						case '1':
+						{
+							bool is_by_pass = false;
+							fmod_result = fsm_dsp_echo->getBypass( &is_by_pass );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+
+							fmod_result = fsm_dsp_echo->setBypass( !is_by_pass );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+						}
+						break;
+
+						case 32:
+						{
+							bool bPaused = false;
+							fmod_result = fmod_channel->getPaused( &bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+
+							fmod_result = fmod_channel->setPaused( !bPaused );
+							r2_fmod_util::ERROR_CHECK( fmod_result );
+						}
+						break;
+						}
 					}
 				} while( 27 != input );
 			}
