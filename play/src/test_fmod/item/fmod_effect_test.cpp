@@ -349,6 +349,15 @@ namespace fmod_effect_test
 			FMOD::Sound* fmod_sound = nullptr;
 			r2_fmod_util::ERROR_CHECK( fmod_system->createStream( "resources/TremLoadingloopl.wav", FMOD_LOOP_OFF | FMOD_2D, 0, &fmod_sound ) );
 
+			std::cout << r2cm::split;
+
+			{
+				std::cout << "[ SPACE ] Play" << r2cm::linefeed;
+				std::cout << "[  ESC  ] Exit" << r2cm::linefeed;
+			}
+
+			std::cout << r2cm::split;
+
 			{
 				r2::FrameManager frame_manager( 30u );
 				frame_manager.Reset();
@@ -359,12 +368,38 @@ namespace fmod_effect_test
 				unsigned long long* d = 0ll;
 				float* v = nullptr;
 
-				bool process = true;
-				while( process )
+				const auto pivot_point = r2cm::WindowUtility::GetCursorPoint();
+				int input = true;
+				do
 				{
+
+					if( frame_manager.Update() )
+					{
+						r2cm::WindowUtility::MoveCursorPointWithClearBuffer( pivot_point );
+
+						r2_fmod_util::ERROR_CHECK( fmod_system->update() );
+
+						r2_fmod_util::PrintChannelInfo( fmod_channel );
+
+						std::cout << r2cm::split;
+
+						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
+
+						std::cout << r2cm::split;
+
+						if( fmod_channel )
+						{
+							fmod_channel->getFadePoints( &n, d, v );
+						}
+						std::cout << "P : " << n << r2cm::linefeed;
+
+						std::cout << r2cm::split;
+					}
+
 					if( _kbhit() )
 					{
-						switch( _getch() )
+						input = _getch();
+						switch( input )
 						{
 						case 32:
 						{
@@ -404,40 +439,10 @@ namespace fmod_effect_test
 							}
 						}
 						break;
-
-						case 27: // ESC
-							process = false;
-							break;
 						}
 					}
 
-					if( frame_manager.Update() )
-					{
-						r2_fmod_util::ERROR_CHECK( fmod_system->update() );
-
-						system( "cls" );
-
-						std::cout << "[SPACE] Play" << r2cm::linefeed;
-
-						std::cout << r2cm::split;
-
-						r2_fmod_util::PrintChannelInfo( fmod_channel );
-
-						std::cout << r2cm::split;
-
-						r2_fmod_util::PrintChannelDSPClock( fmod_channel );
-
-						std::cout << r2cm::split;
-
-						if( fmod_channel )
-						{
-							fmod_channel->getFadePoints( &n, d, v );
-						}
-						std::cout << "P : " << n << r2cm::linefeed;
-
-						std::cout << r2cm::split;
-					}
-				}
+				} while( 27 != input );
 			}
 
 			{
