@@ -15,19 +15,17 @@
 
 namespace fmod_load_test
 {
-	r2cm::iItem::TitleFunctionT LoadSound::GetTitleFunction() const
+	r2cm::TitleFunctionT LoadSound::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Load Sound";
 		};
 	}
-	r2cm::iItem::DoFunctionT LoadSound::GetDoFunction() const
+	r2cm::DoFunctionT LoadSound::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
@@ -77,25 +75,23 @@ namespace fmod_load_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT LoadStream::GetTitleFunction() const
+	r2cm::TitleFunctionT LoadStream::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Load Stream";
 		};
 	}
-	r2cm::iItem::DoFunctionT LoadStream::GetDoFunction() const
+	r2cm::DoFunctionT LoadStream::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
@@ -145,25 +141,23 @@ namespace fmod_load_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT Memory::GetTitleFunction() const
+	r2cm::TitleFunctionT Memory::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Sound Load - Memory";
 		};
 	}
-	r2cm::iItem::DoFunctionT Memory::GetDoFunction() const
+	r2cm::DoFunctionT Memory::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
 
@@ -263,7 +257,7 @@ namespace fmod_load_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 }

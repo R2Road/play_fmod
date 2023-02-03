@@ -13,13 +13,13 @@
 
 namespace fmod_effect_test
 {
-	r2cm::iItem::TitleFunctionT Echo::GetTitleFunction() const
+	r2cm::TitleFunctionT Echo::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Echo"; };
 	}
-	r2cm::iItem::DoFunctionT Echo::GetDoFunction() const
+	r2cm::DoFunctionT Echo::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -124,7 +124,6 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 						std::cout << "[1] Effect ON/OFF" << r2cm::linefeed;
 						std::cout << "[SPACE] : Pause" << r2cm::linefeed;
 
@@ -178,19 +177,19 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT Fade::GetTitleFunction() const
+	r2cm::TitleFunctionT Fade::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Fade"; };
 	}
-	r2cm::iItem::DoFunctionT Fade::GetDoFunction() const
+	r2cm::DoFunctionT Fade::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -281,7 +280,6 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 						std::cout << "[1] Fade Out" << r2cm::linefeed;
 						std::cout << "[2] Fade In" << r2cm::linefeed;
 						std::cout << "[SPACE] : Pause" << r2cm::linefeed;
@@ -320,19 +318,19 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT FadeStartFadeEnd::GetTitleFunction() const
+	r2cm::TitleFunctionT FadeStartFadeEnd::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Fade Start and Fade End"; };
 	}
-	r2cm::iItem::DoFunctionT FadeStartFadeEnd::GetDoFunction() const
+	r2cm::DoFunctionT FadeStartFadeEnd::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			r2_fmod_util::CreateSystem( &fmod_system );
@@ -408,7 +406,6 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 						std::cout << "[SPACE] Play" << r2cm::linefeed;
 
 						std::cout << r2cm::split;
@@ -438,20 +435,20 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 
 
 
 
-	r2cm::iItem::TitleFunctionT PitchControl::GetTitleFunction() const
+	r2cm::TitleFunctionT PitchControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Effect - Pitch Control"; };
 	}
-	r2cm::iItem::DoFunctionT PitchControl::GetDoFunction() const
+	r2cm::DoFunctionT PitchControl::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
 			FMOD::System* fmod_system = nullptr;
 			FMOD_RESULT fmod_result = FMOD_RESULT::FMOD_OK;
@@ -529,7 +526,6 @@ namespace fmod_effect_test
 
 						system( "cls" );
 
-						std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
 						std::cout << "[1/2] Pitch Up/Down" << r2cm::linefeed;
 
 						std::cout << r2cm::split;
@@ -558,7 +554,7 @@ namespace fmod_effect_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 }

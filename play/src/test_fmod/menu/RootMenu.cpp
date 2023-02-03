@@ -7,7 +7,6 @@
 #include "fmod_common.h"
 
 #include "r2cm/r2cm_Director.h"
-#include "r2cm/r2cm_Menu.h"
 #include "r2cm/r2cm_VersionInfo.h"
 
 #include "test_fmod/item/fmod_basic_test.h"
@@ -20,29 +19,34 @@
 #include "test_fmod/menu/FMOD_Load_Menu.h"
 #include "test_fmod/menu/FMOD_Play_Menu.h"
 
-const char* RootMenu::GetTitle()
+r2cm::TitleFunctionT RootMenu::GetTitleFunction() const
 {
-	static const std::string ret =
-	(
-		std::stringstream()
-		<< "Root Menu"
-		<< " : <FMOD : v" << std::hex << FMOD_VERSION << ">"
-		<< " : <" << r2cm::VersionInfo.String4Version << ">"
-	).str();
-	return ret.c_str();
+	return []()->const char*
+	{
+		static const std::string ret =
+			(
+				std::stringstream()
+				<< "Root Menu"
+				<< " : <FMOD : v" << std::hex << FMOD_VERSION << ">"
+				<< " : <" << r2cm::VersionInfo.String4Version << ">"
+				).str();
+		return ret.c_str();
+	};
+}
+r2cm::DescriptionFunctionT RootMenu::GetDescriptionFunction() const
+{
+	return []()->const char*
+	{
+		return "";
+	};
 }
 
-r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
+r2cm::WriteFunctionT RootMenu::GetWriteFunction() const
 {
-	r2cm::MenuUp ret( new ( std::nothrow ) r2cm::Menu(
-		director
-		, GetTitle()
-		, "> To do : FMOD Studio È°¿ë"
-	) );
-
+	return []( r2cm::MenuProcessor* ret )
 	{
-		ret->AddItem( '1', fmod_basic_test::SystemCreateAndRelease::GetInstance() );
-		ret->AddItem( '2', fmod_basic_test::VersionCheck::GetInstance() );
+		ret->AddItem( '1', fmod_basic_test::SystemCreateAndRelease() );
+		ret->AddItem( '2', fmod_basic_test::VersionCheck() );
 
 
 
@@ -50,8 +54,8 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 
 
 
-		ret->AddMenu<FMOD_Load_Menu>( '3' );
-		ret->AddMenu<FMOD_Play_Menu>( '4' );
+		ret->AddMenu( '3', FMOD_Load_Menu() );
+		ret->AddMenu( '4', FMOD_Play_Menu() );
 		
 
 
@@ -59,10 +63,10 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 
 
 
-		ret->AddItem( 'q', fmod_effect_test::Echo::GetInstance() );
-		ret->AddItem( 'w', fmod_effect_test::Fade::GetInstance() );
-		ret->AddItem( 'e', fmod_effect_test::FadeStartFadeEnd::GetInstance() );
-		ret->AddItem( 'r', fmod_effect_test::PitchControl::GetInstance() );
+		ret->AddItem( 'q', fmod_effect_test::Echo() );
+		ret->AddItem( 'w', fmod_effect_test::Fade() );
+		ret->AddItem( 'e', fmod_effect_test::FadeStartFadeEnd() );
+		ret->AddItem( 'r', fmod_effect_test::PitchControl() );
 
 
 
@@ -70,9 +74,9 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 
 
 
-		ret->AddItem( 'a', fmod_channel_group_test::Basic::GetInstance() );
-		ret->AddItem( 's', fmod_channel_group_test::Group::GetInstance() );
-		ret->AddItem( 'd', fmod_channel_group_test::Volume::GetInstance() );
+		ret->AddItem( 'a', fmod_channel_group_test::Basic() );
+		ret->AddItem( 's', fmod_channel_group_test::Group() );
+		ret->AddItem( 'd', fmod_channel_group_test::Volume() );
 
 
 
@@ -80,7 +84,7 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 
 
 
-		ret->AddItem( 'z', fmod_sound_analysis_test::Frequency::GetInstance() );
+		ret->AddItem( 'z', fmod_sound_analysis_test::Frequency() );
 
 
 
@@ -88,7 +92,7 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 
 
 
-		ret->AddItem( 32, etc_test::Test1::GetInstance() );
+		ret->AddItem( 32, etc_test::Test1() );
 
 
 
@@ -96,12 +100,6 @@ r2cm::MenuUp RootMenu::Create( r2cm::Director& director )
 
 
 
-		ret->AddItem(
-			27
-			, []()->const char* { return "Exit"; }
-			, []()->r2cm::eItemLeaveAction { return r2cm::eItemLeaveAction::Exit; }
-		);
-	}
-
-	return ret;
+		ret->AddExit( 27 );
+	};
 }

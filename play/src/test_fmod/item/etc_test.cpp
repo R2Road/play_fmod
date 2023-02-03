@@ -13,16 +13,14 @@
 
 namespace etc_test
 {
-	r2cm::iItem::TitleFunctionT Test1::GetTitleFunction() const
+	r2cm::TitleFunctionT Test1::GetTitleFunction() const
 	{
 		return []()->const char* { return "ETC : Test 1"; };
 	}
-	r2cm::iItem::DoFunctionT Test1::GetDoFunction() const
+	r2cm::DoFunctionT Test1::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			std::cout << "[1] " "Fade Out" << r2cm::linefeed;
@@ -156,7 +154,7 @@ namespace etc_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 }

@@ -15,16 +15,14 @@
 
 namespace fmod_play_test
 {
-	r2cm::iItem::TitleFunctionT PlaySound_Basic::GetTitleFunction() const
+	r2cm::TitleFunctionT PlaySound_Basic::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Sound : Basic"; };
 	}
-	r2cm::iItem::DoFunctionT PlaySound_Basic::GetDoFunction() const
+	r2cm::DoFunctionT PlaySound_Basic::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			//
@@ -78,22 +76,20 @@ namespace fmod_play_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT PlaySound_Demo::GetTitleFunction() const
+	r2cm::TitleFunctionT PlaySound_Demo::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Sound : Demo"; };
 	}
-	r2cm::iItem::DoFunctionT PlaySound_Demo::GetDoFunction() const
+	r2cm::DoFunctionT PlaySound_Demo::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			//
 			// System
 			//
@@ -211,22 +207,20 @@ namespace fmod_play_test
 			//
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT PlayStream_Basic::GetTitleFunction() const
+	r2cm::TitleFunctionT PlayStream_Basic::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Stream : Basic"; };
 	}
-	r2cm::iItem::DoFunctionT PlayStream_Basic::GetDoFunction() const
+	r2cm::DoFunctionT PlayStream_Basic::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
@@ -277,22 +271,20 @@ namespace fmod_play_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT PlayStream_Demo::GetTitleFunction() const
+	r2cm::TitleFunctionT PlayStream_Demo::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play Stream : Demo"; };
 	}
-	r2cm::iItem::DoFunctionT PlayStream_Demo::GetDoFunction() const
+	r2cm::DoFunctionT PlayStream_Demo::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			//
 			// System
 			//
@@ -419,7 +411,7 @@ namespace fmod_play_test
 			//
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 
@@ -444,16 +436,14 @@ namespace fmod_play_test
 
 		return FMOD_RESULT::FMOD_OK;
 	}
-	r2cm::iItem::TitleFunctionT PlayAndCallback::GetTitleFunction() const
+	r2cm::TitleFunctionT PlayAndCallback::GetTitleFunction() const
 	{
 		return []()->const char* { return "Play And Callback"; };
 	}
-	r2cm::iItem::DoFunctionT PlayAndCallback::GetDoFunction() const
+	r2cm::DoFunctionT PlayAndCallback::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			DECLARATION_SUB( FMOD::System* fmod_system = nullptr );
@@ -517,22 +507,20 @@ namespace fmod_play_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT VolumeControl::GetTitleFunction() const
+	r2cm::TitleFunctionT VolumeControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Volume Control"; };
 	}
-	r2cm::iItem::DoFunctionT VolumeControl::GetDoFunction() const
+	r2cm::DoFunctionT VolumeControl::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			std::cout << "[1] " << "Volume Up" << r2cm::linefeed;
@@ -638,22 +626,20 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT PositionControl::GetTitleFunction() const
+	r2cm::TitleFunctionT PositionControl::GetTitleFunction() const
 	{
 		return []()->const char* { return "Position Control"; };
 	}
-	r2cm::iItem::DoFunctionT PositionControl::GetDoFunction() const
+	r2cm::DoFunctionT PositionControl::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			std::cout << "[1] " << "Move First" << r2cm::linefeed;
@@ -750,7 +736,7 @@ namespace fmod_play_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 }

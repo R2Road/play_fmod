@@ -1,19 +1,11 @@
 #pragma once
 
-#include <memory>
+#include "r2cm/r2cm_iMenu.h"
 
-namespace r2cm
+class FMOD_Load_Menu : public r2cm::iMenu
 {
-	class Director;
-	using MenuUp = std::unique_ptr<class Menu>;
-}
-
-class FMOD_Load_Menu
-{
-private:
-	FMOD_Load_Menu() = delete;
-
 public:
-	static const char* GetTitle() { return "FMOD Load Menu"; };
-	static r2cm::MenuUp Create( r2cm::Director& director );
+	r2cm::TitleFunctionT GetTitleFunction() const override;
+	r2cm::DescriptionFunctionT GetDescriptionFunction() const override;
+	r2cm::WriteFunctionT GetWriteFunction() const override;
 };

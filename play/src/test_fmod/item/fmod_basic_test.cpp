@@ -11,19 +11,17 @@
 
 namespace fmod_basic_test
 {
-	r2cm::iItem::TitleFunctionT SystemCreateAndRelease::GetTitleFunction() const
+	r2cm::TitleFunctionT SystemCreateAndRelease::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "System Create And Release";
 		};
 	}
-	r2cm::iItem::DoFunctionT SystemCreateAndRelease::GetDoFunction() const
+	r2cm::DoFunctionT SystemCreateAndRelease::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-			
 			std::cout << r2cm::split;
 
 			DECLARATION_MAIN( FMOD::System* fmod_system = nullptr );
@@ -71,25 +69,23 @@ namespace fmod_basic_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT VersionCheck::GetTitleFunction() const
+	r2cm::TitleFunctionT VersionCheck::GetTitleFunction() const
 	{
 		return []()->const char*
 		{
 			return "Version Check";
 		};
 	}
-	r2cm::iItem::DoFunctionT VersionCheck::GetDoFunction() const
+	r2cm::DoFunctionT VersionCheck::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			DECLARATION_MAIN( FMOD::System* fmod_system = nullptr );
@@ -124,7 +120,7 @@ namespace fmod_basic_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 }

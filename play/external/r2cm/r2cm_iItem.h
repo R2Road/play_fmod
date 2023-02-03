@@ -1,22 +1,12 @@
 #pragma once
 
-#include <functional>
+#include "r2cm_MenuConstant.h"
 
 namespace r2cm
 {
-	enum class eItemLeaveAction
-	{
-		None,
-		Pause,
-		Exit,
-	};
-
 	class iItem
 	{
 	public:
-		using TitleFunctionT = std::function<const char*()>;
-		using DoFunctionT = std::function<eItemLeaveAction()>;
-
 		virtual ~iItem() {}
 
 		virtual TitleFunctionT GetTitleFunction() const = 0;

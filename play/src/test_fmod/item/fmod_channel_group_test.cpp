@@ -15,16 +15,14 @@
 
 namespace fmod_channel_group_test
 {
-	r2cm::iItem::TitleFunctionT Basic::GetTitleFunction() const
+	r2cm::TitleFunctionT Basic::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Basic"; };
 	}
-	r2cm::iItem::DoFunctionT Basic::GetDoFunction() const
+	r2cm::DoFunctionT Basic::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			//
@@ -53,22 +51,20 @@ namespace fmod_channel_group_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT Group::GetTitleFunction() const
+	r2cm::TitleFunctionT Group::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Group"; };
 	}
-	r2cm::iItem::DoFunctionT Group::GetDoFunction() const
+	r2cm::DoFunctionT Group::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()( ) << " #" << r2cm::linefeed;
-
 			//
 			//
 			//
@@ -149,22 +145,20 @@ namespace fmod_channel_group_test
 
 			std::cout << r2cm::split;
 
-			return r2cm::eItemLeaveAction::Pause;
+			return r2cm::eDoLeaveAction::Pause;
 		};
 	}
 
 
 
-	r2cm::iItem::TitleFunctionT Volume::GetTitleFunction() const
+	r2cm::TitleFunctionT Volume::GetTitleFunction() const
 	{
 		return []()->const char* { return "Channel Group - Volume"; };
 	}
-	r2cm::iItem::DoFunctionT Volume::GetDoFunction() const
+	r2cm::DoFunctionT Volume::GetDoFunction() const
 	{
-		return []()->r2cm::eItemLeaveAction
+		return []()->r2cm::eDoLeaveAction
 		{
-			std::cout << "# " << GetInstance().GetTitleFunction()() << " #" << r2cm::linefeed;
-
 			std::cout << r2cm::split;
 
 			std::cout << "[1/2] " << "Group A Volume Up/Down" << r2cm::linefeed;
@@ -348,7 +342,7 @@ namespace fmod_channel_group_test
 
 			r2_fmod_util::ReleaseSystem( &fmod_system );
 
-			return r2cm::eItemLeaveAction::None;
+			return r2cm::eDoLeaveAction::None;
 		};
 	}
 }
